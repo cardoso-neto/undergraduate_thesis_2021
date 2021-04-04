@@ -1,0 +1,489 @@
+
+
+
+\chapter{Introdução}
+
+Redes sociais são plataformas online onde pessoas interagem entre si construindo relações sociais.
+Surgindo nos anos 2000 com os avanços na qualidade do serviço e inclusão massiva de pessoas à internet, começaram com objetivos despretensiosos, como o \textit{Facebook}, criado em 2004 nos EUA, para ajudar alunos em universidades a conhecerem uns aos outros~\cite{Facebook1}.
+Hoje evoluíram a ponto de representarem o maior tráfego da internet, com o mesmo \textit{Facebook} tendo alcançado a marca de 2 bilhões de usuários~\cite{Facebook2}~\cite{RedesSociais1}.
+
+A rápida ascensão das mídias sociais fizeram com que empresas, após pouco mais de uma década de sua criação, aparecessem nos rankings de empresas mais valiosas do mundo~\cite{RedesSociais2}.
+O sucesso das redes sociais se deve à inclusão de mais pessoas aos espaços de discussão, fazendo com que pequenos grupos pudessem influenciar e mudar grandes estruturas, formando um espaço de discussão com implicações globais~\cite{RedesSociais3}.
+Assim, as novas mídias sociais serviram de berço para importantes movimentos das primeiras décadas do século XXI como: a primavera árabe, protestos pré-copa no Brasil, \textit{Brexit} no Reino Unido, e em diversas eleições pelo mundo dando destaque para a eleição Estadunidense em 2016 e a Brasileira em 2018~\cite{RedesSociais4}.
+
+As novas mídias sociais definitivamente são um avanço se comparado às mídias tradicionais, visto que concedem a inclusão de mais pessoas aos espaços de discussão.
+Entretanto, possuem um problema em comum com suas antecessoras: o controle privado da discussão pública e com o adendo de ter este controle ainda mais concentrado em poucas entidades do que no modelo anterior.
+O tamanho poder adquirido nas últimas décadas por essas organizações foi muito maior do que uma empresa poderia ter tido antes e, como sabemos, \textit{com grandes poderes, vêm grandes responsabilidades}.
+Isso gerou incidentes de uso imoral desse poder como a venda de dados do \textit{Facebook} para a \textit{Cambridge Analytica}, caso que resultou numa multa milionária para a empresa norte-americana e serviu de catalisador na mudança da opinião pública sobre o gerenciamento de dados pessoais feito pelas empresas de redes sociais~\cite{Facebook3}.
+
+Os escândalos e polêmicas expuseram os defeitos dessas plataformas sociais da web 2.0, iniciando um período de discussão e tentativas de regulação das funções e do controle e uso de dados dos usuários.
+Exemplos disso são a lei brasileira LGPD (Lei Geral de Proteção de Dados) e a regulamentação Europeia GDPR (\textit{General Data Protection Regulation})~\cite{LGPD1} \cite{GPDR1}.
+Ambas são regulações que visam proteger os usuários e seus dados em relação aos que controlam esses dados, assim as empresas devem cumprir certas obrigações com seus usuários envolvendo multas em caso de descumprimento dessas obrigações.
+
+O problema inicial que iremos abordar será o da centralização, pois com este diversas outras adversidades surgem, incluindo a principal que é o controle dos dados dos usuários por corporações e o mau uso deles; fato esse que foi o gerador das leis de proteção de dados já citadas.
+Para evitar esse problema, propomos redes sociais descentralizadas, onde os usuários controlam seus dados e escolhem com quem compartilhar, estabelecendo uma plataforma que serve de meio de compartilhamento e não de concentração de informação.
+
+O modelo distribuído confere ao usuário (que é o criador de conteúdo das redes sociais) o poder sobre seus dados, podendo utilizá-los em outras plataformas evitando a duplicação de dados e facilitando a migração destes em novas plataformas, aumentando a disponibilidade visto que não dependerá de um servidor centralizado vulnerável a  ponto único de falha, e permitindo a utilização da aplicação mesmo que nodos não estejam disponíveis e também em redes de área local sem acesso a rede externa.
+
+Um dos benefícios da arquitetura que será proposta é delimitar as funções do usuário e da plataforma, fazendo com que o modelo arquitetônico das redes sociais fique claro e não permita a utilização de dados de usuários por terceiros, invertendo os papéis conferindo ao usuário o poder e as obrigações em relação aos seus dados, e tornando a plataforma apenas no elo de ligação entre usuários.
+
+Diante destes contexto, o objetivo geral deste trabalho é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+
+
+\chapter{Caracterização do problema e justificativa}
+
+Todas as mais usadas plataformas de mídia social pertencem a entidades privadas com os mais variados interesses.
+Elas são gratuitas para usar, mas as corporações que detêm seu controle possuem fins lucrativos e, em sua grande maioria, são empresas de capital aberto.
+Assim como as empresas da indústria que as precedeu, elas dependem da receita de anúncios para se sustentarem.
+
+Por serem entidades privadas são livres para praticar a censura de qualquer conteúdo ou pessoa que quiserem sem implicações legais.
+Não obstante, uma proporção muito grande (e constantemente crescente) das nossas comunicações diárias acontece através dessas plataformas.
+Plataformas cujo interesse, em vez de prover a melhor experiência de usuário possível, é maximizar seus lucros.
+
+Para mitigar esse problema de interesses desalinhados, alguém poderia pensar que a solução seria a criação de mídias sociais inteiramente descentralizadas e que não dependam de nenhum terceiro no controle.
+Entretanto, a tecnologia para criar plataformas do tipo não apenas existe há anos, como já foi posta para uso no Dtube, diaspora, LBRY, Peertube, mastodon, scuttlebutt... e uma longa lista de redes sociais com poucos usuários e pouco conteúdo.
+
+Como o inteiro objetivo de mídias sociais é o compartilhamento de conteúdo gerado e curado por usuários, o \textit{network-effect}[footnote aqui explicando] é especialmente expressivo aqui.
+Portanto, criar soluções novas e completamente separadas do tradicional está longe do ideal e, na nossa opinião, é prejudicial ao ecossistema, pois introduz mais fragmentação.
+
+Acreditamos que para possibilitar o alavancamento de um \textit{shift} no uso de mídias sociais controladas exclusivamente por terceiros para algo mais descentralizado seja necessária uma solução que faça bom uso do conteúdo já disponível nas mídias sociais atuais e, idealmente, que os interesses das, atualmente extremamente poderosas, empresas do espaço possam ser alinhados com os interesses dos usuários. 
+
+\section{A importância da descentralização}
+
+O modelo atual de mídia social, em que uma empresa \textit{for-profit} possui controle absoluto e inquestionável sobre todos aspectos de ferramentas das quais somos muito dependentes, é típico da web 2.0 e se popularizou porque foi o que permitiu que a majoritariamente estática web 1.0, com conteúdo criado apenas por aqueles que soubessem programar, fosse acessível para qualquer um criar e compartilhar conteúdo, em vez de apenas \textit{webmasters}.
+No entanto, esse modelo, embora muito bem difundido, por ser centralizado, sofre com todos os problemas inerentes à centralização. 
+
+Quando falamos em centralização, evidenciamos nesse contexto de mídias sociais as seguintes desvantagens:
+\begin{enumerate*}[label=(\arabic*)]
+    \item facilidade de censura,
+    \item interesses desalinhados com os dos usuários,
+    \item ponto único de falha,
+    \item obrigações sob às leis locais, e
+    \item vulnerabilidade à corrupção.
+\end{enumerate*}
+
+\subsection{Interesses}
+
+Teoria de jogos dita que, se atalhos existem para alcançar algum objetivo, jogadores encontrarão esse atalho e o explorarão.
+Por serem entidades privadas e terem controle incontestado das suas plataformas, na busca de alcançar seu objetivo-mór, a maximização dos lucros que se dão através dos usuários vendo e/ou clicando em anúncios, os game-theoretic shortcuts aqui são sobre
+\begin{enumerate*}[label=(\arabic*)]
+    \item abusar dos mecanismos de recompensa do nosso cérebro de macaco para nos manter engajados,
+    \item adquirir competidores assim que se tornem uma ameaça (e.g., Facebook adquirindo WhatsApp, Instagram, LiveRail, Onavo, Redkix, e outras 83\footnote{\url{https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Facebook}} empresas menos conhecidas da área.
+    \item criar limitações artificias de interoperabilidade (estilo \textit{vendor lock-in}) para que um usuário não consiga utilizar serviços de terceiros ou próprios em conjunto, e
+    \item usar os dados dos usuários como ``reféns'' para segurá-los em suas plataformas (e.g., não tendo como exportar os dados).
+\end{enumerate*}
+Essas são apenas algumas das estratégias que podem ser empregadas (e na prática sempre são) quando os incentivos se desalinham.
+E eles só se desalinham porque a centralização torna isso possível.
+Concedendo poder que nenhuma entidade única deveria ter sobre coisas tão valiosas quanto nossa atenção, nossos dados pessoais, nossas preferências, e nosso conteúdo.
+
+% social media began as toys
+% social media evolved to be used by millions all the time
+% network effect, agora elas têm muito alcance e muitos dados
+% por serem controladas por third parties
+% eles podem usar esse alcance para influenciar opiniões
+% e.g. elections, brexit, primavera árabe, movimentos sociais/políticos
+
+% why giving that much power to corporations is a bad idea
+% elas usarão seu poder para se manter no poder
+% exemplo: Facebook selling user data
+% GPDR, tentando conter o poder que os dados dão para corporações
+% "precisamos de um corpo legal para controlar isso"
+% "com multas pesadas para puní-los"
+
+% (estatísticas de uso, o user-created content e.g. videos, images, etc)
+
+O esgotamento do modelo de arquitetura de software da Web 2.0 na figura das redes sociais torna nítida a necessidade de se propôr, não apenas novas arquiteturas, mas também, modelos de transição.
+Que visem suplantar os problemas das antigas arquiteturas, enquanto trazendo melhoras substanciais ao seus usuários em todas as etapas.
+Afinal, dada a alta quantidade de usuários que as mídias atuais possuem e o \textit{network effect} [citation], seria difícil competir com essas gigantes pelos seus usuários, pois elas mantêm os dados deles reféns erguendo \textit{walled gardens}\ref{foot:walled-gardens}.
+\longfootnote[foot:walled-gardens]{
+    \textit{Walled gardens}~\cite{CLOSEDPLAT} se referem a plataformas tecnológicas que possuem barreiras artificiais levantadas por seus criadores com a intenção de dificultar que usuários migrem para uma plataforma competidora, talvez possibilitando um monopólio.
+}
+
+A centralização confere muito poder aos seus administradores, pois podem influenciar um grande número de usuários e podem fazê-lo de forma bem focada (usando os dados dos seus algoritmos de direcionamento de anúncios).
+Isso será chamado censura interna ao longo deste trabalho, i.e., quando membros pertencentes à organização que controla a aplicação influenciam o conteúdo através de meios não-disponíveis aos usuários.
+A Centralização também os torna muito vulneráveis à censura externa, i.e., quando membros externos à organização os compelem usando quaisquer meios a influenciarem no conteúdo independentemente da vontade da organização.
+Além das alegações de pesado viés político~\cite{TLIB} e visões conspurcadas de justiça social fortemente entrelaçadas na cultura dessas empresas~\cite{DAMORE}, temos a proposital falta de transparência nos feeds algorítmicos empregados delas que, aparentemente, compartilham da ilusão coletiva de segurança por obscuridade que é provadamente ineficaz a longo prazo.
+
+\chapter{Fundamentação teórica}
+
+\section{Modelo de fases da World Wide Web}
+
+O modelo de fases da web visa explicar as evoluções significativas da web, no formato onde uma fase é consequência da outra, de modo que cada uma trouxe novidades que permitiram o surgimento da outra~\cite{Web31}.
+
+\subsection{Web 1.0}
+
+Na primeira fase da Web, Web 1.0, os sites contém conteúdo estático e não são interativos com o usuário.
+O surgimento da web foi marcado pela centralização da produção de conteúdo. 
+Ainda com poucos usuários, e esses em sua grande maioria fazendo um uso bastante técnico da rede, predominavam os sites de empresas e instituições recheados de páginas “em construção”. Evoluindo de suas raízes de uso militar e universitário, a internet começou a caminhar e tomar forma diante das necessidades das pessoas. Essa foi a era do e-mail, dos motores de busca simplistas e uma época onde todo site tinha uma seção de links recomendados.
+
+O usuário era apenas responsável por navegar e localizar conteúdo relevante, agindo predominantemente de modo passivo, num processo onde poucos produzem e muitos consomem.
+A novidade foi a democratização do acesso à informação.
+
+\subsection{Web 2.0}
+
+Na segunda fase, Web 2.0, foi introduzido sites com conteúdo dinâmico e interativo, possuindo um layout claramente focado no consumidor e também na usabilidade dos buscadores. tornando o usuário um produtor de conteúdo.
+Conceitos de criação de site e da otimização de site são altamente essenciais para os sites a partir da Web 2.0.
+Nesse momento a navegação mobile e uso de aplicativos já tem forte presença no dia-a-dia das pessoas.
+Também chamada de web participativa, foi a revolução dos blogs e chats, das mídias sociais colaborativas, das redes sociais e do conteúdo produzido pelos próprios internautas~\cite{Web32}.
+Agora num processo onde muitos produzem e muitos consomem.
+A novidade da Web 2.0 foi a democratização da produção de informação.
+
+\subsection{Web 3.0}
+
+Na terceira fase, Web 3.0, será adicionado o poder de alta personalização dos dados da web por parte do usuário, promovendo a democratização da capacidade de ação e conhecimento, o que anteriormente era apenas acessível a companhias e governos.
+O termo Web 3.0 foi criado pelo jornalista John Markoff, do New York Times, baseado na evolução do termo Web 2.0 criado por O’Really em 2004~\cite{Web32}. Outras denominações desse mesmo momento são ``Web Semântica'' ou ``Web Inteligente''.
+
+Essa era da internet permite a conexão de usuários até mesmo fora do resto da web, permitindo o agrupamento de conteúdo na web de modo a contextualizar a informação e agrupá-la mais eficiente e rapidamente.
+
+\section{\textit{Web-scraping}}
+
+\textit{Web-scraping} é uma técnica de extração de dados que visa extrair, estruturar e armazenar os dados de um fonte web com a finalidade de obter algum resultado.
+Enfatizamos que se trata de uma técnica não-consensual, ou seja, que não exige consentimento dos donos dos sites que serão \textit{scraped}.
+
+A extração pode ser feita através de diversas estratégias; as mais comuns segundo~\cite{Scraping1} são: 
+
+\begin{itemize}
+    \item \textbf{HTML parsing} consiste em analisar a estrutura de um HTML (\textit{Hypertext Markup Language}), identificar elementos parecidos e então extrair os dados de forma automatizada. 
+    Essa técnica é melhor utilizada com páginas HTML com estruturas similares.
+    \item \textbf{DOM parsing} uma evolução da técnica de \textit{HTML parsing}, utiliza-se muito o CSS (Cascading Stylesheets) e o \textit{JavaScript} para  realizar a extração. O uso dessa técnica revela novas formas de endereçar partes da página.
+    \item \textbf{XPath} (XML Path Language) funciona de modo similar aos endereçamentos da técnica de \textit{DOM parsing}.
+    O nome sugere o uso para documentos XML (XML Path Language).
+    Porém também pode ser utilizado para documentos HTML.
+    O \textit{XPath} necessita de uma página com a estrutura mais precisa do que DOM e tem as mesma capacidade de endereçar segmentos da página.
+    \item \textbf{APIs} enquanto as outras técnicas extraem dados não estruturados, a estratégia utilizando uma API (Application Programming Interface) espera se comunicar com outra aplicação, assim coletando dados estruturados~\cite{Scraping2}.
+    Uma solicitação HTTP (Hypertext Transfer Protocol) padrão enviada a uma API retorna uma resposta do servidor.
+    Cada API tem sua própria especificação e opções.
+    O formato da resposta pode ser definido como opção na solicitação.
+    O formato mais usado para comunicação da API é JSON (JavaScript Object Notation).
+\end{itemize}
+
+\section{Redes de computadores}
+
+Rede de computadores ou Rede de dados, é um conjunto de dois ou mais dispositivos eletrônicos de computação (ou módulos processadores ou nós da rede) interligados por um sistema de comunicação digital (ou link de dados), guiados por um conjunto de regras (protocolo de rede) para compartilhar entre si informação, serviços, e recursos físicos e lógicos[referencia].
+Nessa seção, abordaremos uma arquitetura de rede centralizada e uma descentralizada (Ponto-a-Ponto).
+
+\subsection{Redes centralizadas}
+
+São arquitetura de redes de computadores que visam centralizar o acesso a dados e serviços.
+Assim todos os outros nodos da rede dependem de um nodo central que controla todos os recursos da rede.
+Esse tipo de rede sofre do ponto único de falha ou ponto crítico de falha é uma tradução vinda da língua inglesa da expressão \textit{Single Point of Failure} para designar um local num sistema informático que, caso falhe, provoca a falha de todo o sistema.
+Assim caso o nodo central falhar toda a rede se torna inoperável.
+
+\subsection{Redes \textit{peer-to-peer}}
+
+São arquitetura de redes de computadores onde cada um dos pontos ou nós da rede funciona tanto como cliente quanto como servidor, permitindo compartilhamentos de serviços e dados sem a necessidade de um servidor central.
+Por não se basear em uma arquitetura cliente-servidor, onde apenas o servidor é responsável pela execução de todas as funções da rede, o P2P (Peer-to-Peer) tem uma enorme vantagem justamente por não depender de um servidor e de todos os nós estarem interconectados permitindo o acesso a qualquer nó de qualquer nó. 
+Por esse motivo a rede tem uma elevada disponibilidade~\ref{cap disponibilidade}
+\begin{figure}[htb!]
+\centering\includegraphics[width=.65\textwidth]{fig/Centralized-vs-Decentralized-vs-Distributed-Networks.eps}
+\caption[Representação das arquiteturas de redes]
+        {\label{fig:tipos-de-redes}Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada 
+        (c) Distribuída~\cite{Imagem1} TODO verificar essa citação e achar .svg}
+\end{figure}
+
+\section{Funções de hash criptográficas}
+
+Nicolau, faz essa por mim, se tu puderes nem sei o que dizer aqui, mas lembro que o roland ficava incomodando para falar algo mesmo sendo algo que a gente aprende em algoritmos estruturas de dados 1
+falando nisso, tu vais fazer ou fizeste essa cadeira já?
+
+\section{Endereçamento}
+
+Técnicas de endereçamento são utilizadas para referenciar ou apontar (\textit{link}) arquivos na web.
+
+\subsection{Endereçamento por nomes}
+
+A principal técnica de endereçamento utilizada na internet e na web até hoje emprega nomes.
+Do ponto de vista de endereços de computadores, dependemos de servidores de nomes (name servers, DNS).
+Do ponto de vista de arquivos, dependemos de caminhos (\textit{paths}) em servidores (\textit{hosts}) específicos (e.g.: \url{http://some-server:80/image.png}).
+Se o arquivo mudar de nome no servidor o apontamento se quebrará; se o servidor mudar de endereço o apontamento se quebrará; se o servidor estiver offline o cliente não conseguirá acessar o arquivo mesmo que alguém na LAN do cliente tenha uma cópia local do arquivo requisitado.
+Embora prática e bastante \textit{human-readable}, essa abordagem é repleta de fragilidades, desperdícios de recursos (as cópias locais dos clientes), e sofre com todos os problemas inerentes à centralização. Mas aqui, o que gostaríamos realmente de enfatizar enquanto fragilidade é a falta de escalabilidade dessa abordagem.
+
+\subsection{Endereçamento por conteúdo}
+
+Uma técnica mais moderna de endereçamento é criar identificadores baseados no conteúdo dos arquivos utilizando \textit{checksums} por exemplo.
+Praticamente, entretanto, usa-se funções de \textit{hash} criptográficas, pois suas propriedades beneficiam o problema de endereçamento dos seguintes modos:
+\begin{itemize}
+    \item \textbf{autenticidade} um arquivo não pode ter sido forjado nem modificado.
+    \item \textbf{busca rápida} existe uma miríade de estruturas de dados com operações de complexidade temporal assintótica amortizada constante para dados que sejam \textit{hashable}. 
+    \item \textbf{deduplicação por padrão} arquivos com o mesmo conteúdo são reaproveitados de forma convergente.
+    \item \textbf{imutabilidade} um endereço calculado hoje será o mesmo hoje e sempre.
+    \item \textbf{integridade} oferece proteção contra possível corrupção de dados.
+\end{itemize}
+
+\chapter{Objetivos}
+
+Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
+
+\section{Objetivo gerais}
+
+O objetivo geral deste trabalho de conclusão é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+
+\section{Objetivos específicos}
+
+Para atingir o objetivo geral, foram estabelecidos os seguintes objetivos específicos:
+
+\begin{itemize}
+    \item mapear e identificar vantagens e desvantagens do funcionamento da arquitetura centralizada das mídias sociais da Web 2.0.
+    \item propor uma arquitetura descentralizada baseada na Web 3.0.
+    \item desenvolver a migração da arquitetura através de um sistema que nos permita transformá-la de mídias sociais existentes da Web 2.0 em mídias sociais descentralizadas da Web 3.0.
+    \item testar o sistema
+    \item validar o sistema com usuários
+\end{itemize}
+
+\chapter{Análise das mídias sociais atuais}
+
+Realizaremos neste capítulo uma breve análise das arquiteturas, aplicações, formas de monetização, armazenamento de dados, base de usuários, e sensibilidade à censura apontando as principais características e deficiências das mídias sociais modernas. 
+A fim de que possamos formular soluções que mitiguem as principais desvantagens encontradas.
+
+\section{Facebook}
+
+É uma rede social criada em 2004 nos EUA, para ajudar alunos em universidades a conhecerem uns aos outros.
+Seu proposito inicial foi superado e hoje é uma rede social com proposito mais geral do que o inicial,
+conta com a marca de 2 bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}. Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o Facebook ou até mesmo pelo próprio Facebook censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
+
+\section{4chan}
+
+É uma rede social que funciona como um quadro de avisos baseado em imagens, onde qualquer pessoa pode postar comentários e compartilhar imagens, usuários não precisam se cadastrar para participar de uma comunidade.
+Apesar do anonimato prometido, qualquer postagem tem que passar pelas regras do 4chan e podem ser deletadas a qualquer momento pela equipe de moderação~\cite{4chan1}.
+Foi criado em 2003 e alcança a marca de mais de 20 milhões de acessos por mês. Não a cobrança pelo uso da rede social e a monetização é feita por propagandas no site~\cite{4chan2}.
+
+\section{Diaspora}
+
+É uma rede social descentralizada criada em 2010, conta com mais de 2 milhões de usuários e permite integração com outras redes sociais como Twitter, Facebook e Tumblr~\cite{Diaspora1}.
+O usuário tem controle sobre seus dados podendo baixar a qualquer momento todos os dados de texto e imagem que foram carregados na plataforma,
+permite a liberdade para escolher em qual servidor ficará seus dados, 
+além da transparência por ser um software de código aberto licenciado sob a licença GNU AGPL (Affero General Public License)~\cite{Diaspora2}. 
+Uma das marcas da Diaspora é a promessa de ser uma rede social resistente à censura devido a sua arquitetura descentralizada.
+Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}.
+
+\section{Bitstagram}
+
+É uma rede social de fotos que permite o usuário armazenar as fotos em uma blockchain (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados), e quando necessário a aplicação lê as imagens na \textit{blockchains}.
+As fotos postadas no Bitstagram são imutáveis e são cobradas, esse é um fator que afasta os usuários visto que se a foto postada for a foto errada não terão como editar e ainda será cobrado, isso tira a naturalidade com que os usuários utilizam a rede social, sendo um problema se comparado aos seus concorrentes centralizados.
+
+%\section{Solid}
+
+%\section{Steem}
+
+%\section{Mastodon}
+
+%\section{Sola}
+
+%\section{Manyverse}
+
+%\section{SocialX}
+
+%\section{akasha}
+
+%\section{Peepeth}
+
+%\section{breaker}
+
+\section{Memo}
+
+É uma aplicação mídia social similar ao Twitter, armazena os dados dos seus usuário em \textit{blockchains} (com blocos de tamanho grande, neste caso o BCashABC~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário dados permanentes e incensurável.
+Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchains} causa tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
+
+% faltou ref a figura no texto
+\begin{figure}[htb!]
+\centering\includegraphics[width=.65\textwidth]{fig/Memo.jpg}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:memo-protocol}Protocolo Memo~\cite{Memo1}}
+\end{figure}
+
+\section{Comparativo}
+
+\begin{table}[htb]
+\begin{center}
+\caption{\label{tab:tab1}Tabela Comparativa das Redes Sociais}
+%\rowcolors{4}{black!10}{black!15}
+\setlength{\tabcolsep}{.25cm}
+\resizebox{1.0\linewidth}{!}{
+\begin{tabular}
+{ r*{2}{>{\columncolor[gray]{0.95}}c>{\columncolor[gray]{1.0}}c}}
+\noalign{\smallskip}
+\hline
+\multirow{1}{*}{\textbf{Rede Social}} & {\textbf{Monetização}} & {\textbf{Arquitetura}} & {\textbf{Base de Usuários}} & {\textbf{Sensibilidade à Censura}}
+\tabularnewline \hline Facebook   &  Anúncios intrusivos  & Centralizada     & 2.7B [citation] &   Extremamente Sensível à Censura        
+\tabularnewline 4Chan             &  Anúncios não-intrusivos  & Centralizada     & 20M [citation] &   Sensível à Censura        
+\tabularnewline Diaspora          &    & Descentralizada  & 756k [https://the-federation.info/diaspora]  &   Relativamente Sensível a Censura
+\tabularnewline Bitstagram        &  pay-to-use  & Distribuída      &  &  Resistente à Censura
+\tabularnewline Memo              &  pay-to-use  & Distribuída      &  &  Resistente à Censura   \tabularnewline Twetch            &  pay and earn  & interface centralizada, dados distribuídos &  &  Resistente à Censura*       
+\end{tabular}}
+\end{center}
+\end{table}
+
+\chapter{Nossa proposta: arquitetura baseada na Web 3.0}
+
+Propomos uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede peer-to-peer e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
+Quando as corporações por trás das mídias sociais perderem o monopólio que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando seus interesses com os interesses dos usuários.
+Interesses que, atualmente, estão majoritariamente focados em tornar suas plataformas jardins com muros cada vez mais altos.
+
+
+
+Para que haja real descentralização dos dados, é necessário que estruturas de dados sejam escolhidas e padrões e protocolos criados e seguidos.
+
+\chapter{Arquitetura aplicada: descentralizando o 4chan.org}
+
+Com o objetivo de instanciar um exemplo concreto da estratégia de transição que propomos, implementaremos ferramentas que permitam o armazenamento e compartilhamento de conteúdo do 4chan de forma descentralizada.
+Prevemos três ferramentas necessárias para o bom funcionamento do projeto:
+\begin{enumerate*}[label=(\arabic*)]
+    \item Um \textit{scraper} com alta confiabilidade e desempenho,
+    \item um módulo de \textit{networking} capaz de localizar quais peers possuem quais dados, e
+    \item um módulo de criptografia para assinar e verificar assinaturas, a fim de montarmos uma \textit{internet of trust}. 
+\end{enumerate*}
+
+\section{Requisitos da Solução}
+
+Neste capítulo serão apresentados os Requisitos Funcionais e Requisitos Não Funcionais do sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+
+Segundo Sommerville (2011, p. 57)~\cite{SOMMERVILLE1}, os requisitos de um sistema são:
+
+\begin{directcite}
+as descrições do que o sistema deve fazer, os serviços que oferece e as restrições a seu funcionamento.
+Esses requisitos refletem as necessidades dos clientes para um sistema que serve a uma finalidade determinada, como controlar um dispositivo, colocar um pedido ou encontrar informações.
+\end{directcite}
+
+\subsection{Requisitos Funcionais}
+
+Os requisitos funcionais de um sistema representam as necessidades que o sistema deverá suprir e todas as funções que o sistema deve ter.
+Sobre os requisitos funcionais de uma solução, Sommerville (2011, p. 59) considera que~\cite{SOMMERVILLE1}:
+
+\begin{directcite}
+São declarações de serviços que o sistema deve fornecer, de como
+o sistema deve reagir a entradas específicas e de como o sistema
+deve se comportar em determinadas situações. Em alguns casos, os
+requisitos funcionais também podem explicitar o que o sistema não
+deve fazer.
+\end{directcite}
+
+De acordo com a análise realizada o sistema possui os seguintes requisitos funcionais.
+
+\begin{enumerate}
+    \item Módulo de \textit{scraping}:
+    \begin{enumerate}
+        \item \textbf{baixar todo o texto de uma thread.} explicação 
+        \item baixar toda a mídia (fotos, vídeos) de uma thread.
+        \item baixar todas threads de um board.
+        \item reconhecer quando uma thread estiver fechada e marcá-la como tal para evitar desperdício de recursos.
+        \item monitorar threads por novos posts e baixá-los assim que postados.
+        \item monitorar boards por novos posts e adicioná-las a fila de monitoramento de threads assim que criadas.
+        \item converter os dados baixados em um formato padronizado.
+    \end{enumerate}
+    \item Módulo de \textit{networking}:
+    \begin{enumerate}
+        \item Requisitar conteúdo para outros peers.
+        \item Servir conteúdo baixado para outros peers.
+    \end{enumerate}
+    \item Módulo de criptografia:
+    \begin{enumerate}
+        \item Escolher em quais peers confio para baixar conteúdo que não esteja disponível no servidor do 4chan.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Requisitos Não Funcionais}
+
+Sobre os requisitos não funcionais de uma solução, Sommerville (2011, p. 59) considera que~\cite{SOMMERVILLE1}:
+
+\begin{directcite}
+Os requisitos não funcionais, como o nome sugere, são requisitos
+que não estão diretamente relacionados com os serviços específicos
+oferecidos pelo sistema a seus usuários.
+Eles podem estar
+relacionados às propriedades emergentes do sistema, como
+confiabilidade, tempo de resposta e ocupação de área.
+\end{directcite}
+
+Em outras palavras, os requisitos não funcionais de um sistema representam as necessidades internas do sistema, necessidades estas que devem ser de compreensão do desenvolvedor, resumindo-se aos itens de segurança, usabilidade, confiabilidade, desempenho, hardware e software.
+De acordo com a análise realizada, o sistema possui os seguintes requisitos não funcionais:
+
+\begin{enumerate}
+    \item Ter desempenho em termos de \textit{response time} similares às redes que já estou acostumado.
+    \item Empregar um formato de dados base ado em padrões livres e \textit{open-source}.
+    \item Utilizar estruturas de dados que permitam downloads de granularidade pequena (não quero ter que baixar um \textit{board} inteiro se eu só quiser uma \textit{thread}).
+    \item Utilizar estruturas de dados que possam ser replicadas e atualizadas independentemente e paralelamente num rede peer-to-peer sem a necessidade de coordenação entre as réplicas nem uma entidade central (CRDTs SIGLA + CITAR \url{https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type}
+    \item O formato de dados deve evitar duplicação de conteúdo, a fim de economizar recursos de armazenamento.
+\end{enumerate}
+
+\section{Tecnologias que utilizaremos}
+
+Enfatizamos que o que guiou nossas escolhas de tecnologias foram os seguintes princípios:
+
+\begin{enumerate}
+    \item Comunidade ativa
+    \item É free e open-source software
+    \item Emprega formatos largamente difundidos
+    \item Funciona offline
+\end{enumerate}
+
+\subsection{\label{sec:ipfs}InterPlanetary File System}
+
+IPFS is a peer-to-peer distributed file system and hypermedia protocol~\cite{IPFS}.
+It provides a high throughput content-addressed block storage model, with content-addressed hyper links; all through its core data format called IPLD (InterPlanetary Linked Data) which is going to be further explained in subsection~\ref{subsec:ipld}.
+Juan Benet, IPFS's author, often describes it in his talks as a single BitTorrent swarm\ref{bittorent-swarm} with peers exchanging objects within a Git repository~\cite{github:ipfspaper}.
+This is simple, informal, and incomplete, but it is a powerful analogy that captures the essential mechanics of IPFS.
+\longfootnote[bittorent-swarm]{
+    Together, all peers (including seeds) sharing a torrent are called a swarm.
+}
+IPFS has no single point of failure, nodes do not need to trust each other, and all peers are independent.
+This section will now go into each relevant subsystem of IPFS.
+
+\subsubsection{\label{subsec:ipld}IPLD}
+
+IPLD is a common hash-chain format for distributed data structures that are universally addressable and linkable~\cite{github:ipld}.
+All IPFS data is stored and transferred in this format.
+Shortly said, it is a Merkle DAG where links between objects are cryptographic hashes of the objects' to which they point.
+An IPLD implementation offers developers the ability to traverse it using Unix-style paths when the Merkle DAG has named Merkle links, a data model to describe Merkle DAGs that is flexible, JSON-inspired, and self-describing, and standard serialization algorithms for different formats (e.g., JSON, CBOR, Protobuf, RDF).
+These structures allow us to do for data what URLs and links did for HTML web pages.
+It is also worth emphasizing that no feature is lost when using this data format.
+
+\subsubsection{\label{subsec:libp2p}libp2p}
+
+An ever-growing, fully modular, flexible, and extensible network stack; a collection of peer-to-peer protocols geared towards multi-platform interoperability with high-latency scenarios considered and easy upgrades in mind.
+Protocols for finding peers and connecting to them, and for finding content and transferring it.
+All while keeping it secure by not relying on centralized registers and third parties (allowing users to work offline or work on their LAN only), as well as enabling encrypted connections by default.
+
+One of the main goals of developing libp2p separately from IPFS is so that developers no longer need to reinvent the P2P networking wheel yet again in the near-future.
+Each big Web3.0 project like BitTorrent or DAT had to write their networking code mostly from scratch.
+Juan Benet often refers to IPFS as a thin waste protocol\ref{foot:thinWaist}; meaning the data structures are what needs to be standardized and everything else will communicate.
+\longfootnote[foot:thinWaist]{
+    The term “thin-waist” has been used because there is a vast diversity of applications and hardware that sit above and below the thin waist of universally shared control mechanisms (IPLD). Further details on network architecture and protocols can be found on this Caltech wiki page by Doyle et al~\cite{INTERNETWAIST} and, more formally, on a 2005 paper by Doyle as well on the robustness of the internet~\cite{INTERNETROBUSTNESS}.
+}
+
+\section{Implementação}
+
+Focaremos nossos esforços de implementação inteiramente no scraper, pois é o mais relevante para fins de demonstração do conceito e de contribuição open-source.
+Graças aos excelentes esforços da Protocol Labs no IPFS~\ref{label da seção que explica o ipfs}, poderemos nos apoiar nos ombros de gigantes no tocante a questão de \textit{networking} realizando apenas de integrações simples com a API da libp2p~\ref{subsec:libp2p} e da IPLD~\ref{subsec:ipld}.
+
+\subsection{Diagramas de arquitetura}
+
+\subsection{Estruturas de dados}
+
+\chapter{Testes do sistema}
+
+\chapter{Validação com usuário}
+
+\chapter{Metodologia}
+
+A metodologia empregada para o planejamento e desenvolvimento do sistema deste trabalho de conclusão é o tradicional modelo cascata.
+Esse modelo funciona como um exemplo de um processo dirigido a planos, onde, em princípio deve-se planejar e programar todas as atividades do processo até a implementação e a manutenção do dele~\cite{SOMMERVILLE1}.
+
+Consiste numa sequência de fases em que cada fase dá suporte para a próxima, assim o produto de cada fase torna-se a entrada para a seguinte~\cite{BALTZAN1}, a fase inicial é definição de requisitos que busca estabelecer os serviços, restrições e metas do sistema, normalmente por meio de consultas com o usuário~\cite{SOMMERVILLE1}; a próxima fase projeto de sistema e software é a fase em que a identificação e descrição das abstrações fundamentais do sistema é realizada, alocando os requisitos do sistema por meio de uma arquitetura geral do sistema~\cite{SOMMERVILLE1}; a terceira fase implementação e teste unitário é a fase de desenvolvimento do projeto como um conjunto de programas ou unidades de programa, utilizando o teste unitário para verificar de cada unidade, tendo certeza de que a mesma cumpra sua especificação~\cite{SOMMERVILLE1}; a quarta fase integração e teste de sistema é quando as unidades criadas na fase anterior de maneira independente são integradas e testadas como um sistema único e completo, verificando se todos os requisitos estão sendo atendidos~\cite{SOMMERVILLE1}.
+Na fase final, Operação e manutenção, é o momento em que o sistema é de fato instalado e colocado em uso, é onde os eventuais erros que não apareceram anteriormente são resolvidos e, também, onde novos requisitos podem ser descobertos~\cite{SOMMERVILLE1}. 
+
+Por mais que essa seja uma metodologia não mais tão utilizada pelas empresas devido à sua característica de precisão extrema que não leva em consideração mudanças durante o desenvolvimento do projeto~\cite{BALTZAN1}, para este trabalho ela se torna uma boa escolha, pois se trata de um Trabalho de Conclusão de Curso, com um único desenvolvedor e prazos muito bem definidos.
+Devido à inexistência de um cliente e visando um público alvo, reuniões com o cliente são impossíveis e testes durante o desenvolvimento do trabalho com alguém que faça parte do público alvo não acontecerão facilmente, o modelo cascata se torna a melhor opção como metodologia de desenvolvimento do projeto. A partir de agora as fases alvo são: a codificação, os testes e a implementação/manutenção do sistema, concluindo assim o ciclo completo do modelo tradicional em cascata.
+
+\chapter{Conclusão}
+
+\section{Limitações}
+
+
+
+\section{Trabalhos futuros}
+
+\subsection{Sistema de governança}
+
+A definição dos formatos e estruturas de dados precisa ser gerida de forma aberta, transparente, e não-momnopolística.
+
+\subsection{}

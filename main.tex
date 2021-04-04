@@ -1,0 +1,222 @@
+%----------------------------------------------------------------------------------
+% Exemplo do uso da classe tcc.cls. Veja o arquivo .cls
+% para mais detalhes e instruções.
+%----------------------------------------------------------------------------------
+
+% Seleção de idioma da monografia. Por enquanto as únicas opções
+% suportadas são 'portuguese' e 'english'
+% Para impressão em frente e verso, use a opção 'twoside'. Da
+% mesma forma, use 'oneside' para impressão em um lado apenas.
+\documentclass[portuguese,oneside]{tcc}
+
+%----------------------------------------------------------------
+% Coloque seus pacotes abaixo.
+%
+% Obs.: muitos pacotes de uso comum do LaTeX, como amsmath,
+% geometry e url já são automaticamente incluídos pela classe
+% (veja o arquivo .cls). Isso torna obrigatória a presença destes
+% no sistema para o uso desta classe, mas ao mesmo tempo o uso se
+% torna mais simples.  Recomendo a instalação da versão mais
+% recente da distribuição TeXLive (para Windows e UNIXes):
+% www.tug.org/texlive/
+%
+% Pacotes e opções já incluídas automaticamente:
+%
+% \RequirePackage[T1]{fontenc}[2005/09/27]
+% \RequirePackage[utf8x]{inputenc}[2008/03/30]
+% \RequirePackage[english,brazil]{babel}[2008/07/06]
+% \RequirePackage[a4paper]{geometry}[2010/09/12]
+% \RequirePackage{textcomp}[2005/09/27]
+% \RequirePackage{lmodern}[2009/10/30]
+% \RequirePackage{indentfirst}[1995/11/23]
+% \RequirePackage{setspace}[2000/12/01]
+% \RequirePackage{textcase}[2004/10/07]
+% \RequirePackage{float}[2001/11/08]
+% \RequirePackage{amsmath}[2000/07/18]
+% \RequirePackage{amssymb}[2009/06/22]
+% \RequirePackage{amsfonts}[2009/06/22]
+% \RequirePackage{url}
+% \RequirePackage[table]{xcolor}[2007/01/21]
+%----------------------------------------------------------------
+% Para inserção de figuras.
+\usepackage{graphicx}
+% Utilize a opção 'pdftex' se você estiver usando o pdflatex (que
+% permite figuras em formatos como .jpg ou .png)
+%\usepackage[pdftex]{graphicx}
+
+% Para tabelas com elementos ocupando mais de uma linha
+\usepackage{multirow}
+% Para frações na mesma linha (ex. ⅓).
+\usepackage{nicefrac}
+% Para inserir figuras lado a lado.
+% \usepackage{subfigure}
+% Para formatar algoritmos.
+% A opção [algo2e] é necessária para evitar conflitos
+% com as definições da classe.
+%\usepackage[algo2e]{algorithm2e}
+\usepackage{algorithmic}
+% Um float do tipo algoritmo. No momento
+% este pacote é incompatível com a classe.
+%\usepackage{algorithm}
+
+% custom packages
+\usepackage[inline]{enumitem}
+\usepackage{url}
+\urlstyle{rm}
+
+% create longfootnote macro
+\makeatletter
+  \def\longfootnote[#1]{%
+    \stepcounter{footnote}%
+    \@bsphack
+      \protected@write\@auxout{}%
+        {\string\newlabel{#1}{{%
+          \string\begingroup
+            \string\c@footnote \number\c@footnote\string\relax
+            \string\unrestored@protected@xdef\string\@thefnmark{%
+              \string\thefootnote}%
+          \string\endgroup
+          \string\@footnotemark
+        }{\thepage}}}%
+    \@esphack
+    \protected@xdef\@thefnmark{\thefootnote}
+    \@footnotetext}
+\makeatother
+
+\author{Nei Cardoso, Nicolas Curço}
+
+\title{O Futuro das Redes Sociais na Web 3.0}
+      {The Future of Social Media in the Web 3.0}
+
+% \tipotrabalho{\ptci}         % Proposta de Trabalho de Conclusão
+\tipotrabalho{\tci}         % Trabalho de Conclusão I
+%\tipotrabalho{\tcii}        % Trabalho de Conclusão II
+
+% \curso{\cc} % Ciência da Computação
+\curso{\si} % Sistemas de Informação
+%\curso{\es} % Engenharia de Software
+
+\orientador{Lucia Giraffa}
+\coorientador{Alessandra C. S. Dutra}
+
+\begin{document}
+
+%\dedicatoria{Dedico este trabalho a meus pais.}
+
+%\epigrafe{The art of simplicity is a puzzle of complexity.}
+         %{Douglas Horton}
+
+%----------------------------------------------------------------
+% Também dá para fazer as duas na mesma página:
+%----------------------------------------------------------------
+%\dedigrafe{Dedico este trabalho a meus pais.}
+%          {The art of simplicity is a puzzle of complexity.}
+%          {Douglas Horton}
+
+%----------------------------------------------------------------
+% A seguir, a página de agradecimentos (OPCIONAL):
+%----------------------------------------------------------------
+%\begin{agradecimentos}
+%À lorem ipsum, dolor sit amet consetetur sadipscing elitr sed diam
+%nonumy eirmod tempor. invidunt ut labore et dolore magna aliquyam
+
+%À erad sed, diam voluptua at vero, eos et accusam et justo duo
+%dolores et ea rebum stet clita.
+
+%À kasd gubergren, no sea. takimata sanctus est lorem ipsum dolor sit
+%amet lorem ipsum dolor sit amet. consetetur sadipscing elitr sed
+
+%À diam nonumy, eirmod tempor, invidunt ut labore et dolore magna
+%aliquyam erat sed diam voluptua at.
+%\end{agradecimentos}
+
+%----------------------------------------------------------------
+% Resumo, com as palavras-chave passadas por parâmetro
+% (OBRIGATÓRIO, ao menos para teses e dissertações)
+%----------------------------------------------------------------
+\begin{resumo}{mídia social, web 3.0}
+% Este trabalho debate o futuro e propõe soluções para problemas das redes sociais.
+% Devido a sua interdisciplinaridade, mídias sociais são muito difíceis de serem estudadas sob um aspecto isolado, assim será proposto o uso de novas tecnologias buscando melhorar o funcionamento e o uso das redes sociais tanto em aspectos computacionais como em aspectos sociológicos, políticos e éticos. Abordando os problemas e sugerindo soluções de forma isolada, por fim propondo o uso de uma rede social na Web 3.0.
+Este trabalho expõe os problemas das redes sociais advindos de serem plataformas fechadas e propõe uma estratégia para mitigá-los.
+Sugerindo soluções de forma isolada e, por fim, concretizaremos nossa estratégia com o desenvolvimento de uma solução que faça a transição do modelo atual , Web 2.0 , para  uma nova arquitetura de software, Web 3.0 , que vise superar as limitações da anterior.
+\end{resumo}
+
+%----------------------------------------------------------------
+% Abstract, com as palavras-chave passadas por parâmetro
+% (OBRIGATÓRIO, ao menos para teses e dissertações)
+%----------------------------------------------------------------
+\begin{abstract}{social media, decentralization, web 3.0, scraping}
+Your abstract in English here. lorem ipsum dolor sit amet
+consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt
+ut labore et dolore magna aliquyam erat sed diam voluptua at vero
+eos et accusam et justo duo dolores et ea rebum stet clita kasd
+gubergren no sea takimata sanctus est lorem ipsum dolor sit amet
+lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+erat sed diam voluptua at
+\end{abstract}
+
+%----------------------------------------------------------------
+% Listas e sumário, nessa ordem. Somente o sumário é obrigatório,
+% portanto, comente as outras listas, caso sejam desnecessárias.
+%----------------------------------------------------------------
+\listoffigures       % Lista de figuras      (OPCIONAL)
+\listoftables        % Lista de tabelas      (OPCIONAL)
+%\listofalgorithms    % Lista de algoritmos   (OPCIONAL)
+\listofacronyms      % Lista de siglas       (OPCIONAL)
+%----------------------------------------------------------------
+\sigla{AGPL}{Affero General Public License}
+\sigla{API}{Application programming interface}
+\sigla{CSS}{Cascading Style Sheets}
+\sigla{DOM}{Document Object Model}
+\sigla{GDPR}{General Data Protection Regulation}
+\sigla{HTML}{Hypertext Markup Language}
+\sigla{HTTP}{Hypertext Transfer Protocol}
+\sigla{JSON}{JavaScript Object Notation}
+\sigla{LGPD}{Lei Geral de Proteção de Dados}
+\sigla{XML}{Extensible Markup Language}
+\sigla{XPATH}{XML Path Language}
+%----------------------------------------------------------------
+%\listofabbreviations % Lista de abreviaturas (OPCIONAL)
+%\listofsymbols       % Lista de símbolos     (OPCIONAL)
+\tableofcontents     % Sumário               (OBRIGATÓRIO)
+
+%----------------------------------------------------------------
+% Aqui começa o desenvolvimento do trabalho. Para uma melhor
+% organização do documento, separe-o em arquivos,
+% um para cada capítulo. Para isso, utilize o comando \include,
+% como mostrado abaixo.
+%----------------------------------------------------------------
+\include{dissertation}
+% \include{exemplo-cap1}
+% \include{exemplo-cap2}
+
+%----------------------------------------------------------------
+% Aqui vai a bibliografia. Existem 3 estilos de citação: use
+% 'tcc-alpha' para citações do tipo [Abc+] ou [XYZ] (em ordem
+% alfabética na bibliografia), 'tcc-num' para citações
+% numéricas do tipo [1], [20], etc., em ordem de referência e
+% 'tcc-alpha-full' para citações estilo 'alpha' mas com nomes completos.
+%----------------------------------------------------------------
+%\bibliographystyle{tcc-alpha}
+\bibliographystyle{tcc-num}
+\bibliography{bibliography}
+
+%----------------------------------------------------------------
+% Após \appendix, se iniciam os capítulos de Apêndice, com
+% numeração alfabética.
+%----------------------------------------------------------------
+%\appendix
+%\chapter{Meu primeiro apêndice}
+%\chapter{My second appendix}
+
+%----------------------------------------------------------------
+% Aqui vão os "capítulos" de anexos. Cada anexo deve
+% ser considerado um capítulo.
+%----------------------------------------------------------------
+%\anexos
+%\chapter{Meu primeiro anexo}
+%\chapter{My second attachment}
+
+% E aqui (para a felicidade de todos) termina o documento.
+\end{document}
