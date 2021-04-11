@@ -26,7 +26,7 @@ Um dos benefícios da arquitetura que será proposta é delimitar as funções d
 
 Diante deste contexto, o objetivo geral deste trabalho é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
-\chapter{Caracterização do problema e justificativa}
+\chapter{\label{chap:problem}Caracterização do problema e justificativa}
 
 Todas as mais usadas plataformas de mídia social pertencem a entidades privadas com os mais variados interesses.
 Elas são gratuitas para usar, mas as corporações que detêm seu controle possuem fins lucrativos e, em sua grande maioria, são empresas de capital aberto.
@@ -221,17 +221,20 @@ Funções de \textit{hash} são usadas em muitas partes da criptografia e existe
 \subsection{Propriedades}
 
 As funções \textit{hash} criptográficas são projetadas para receber uma cadeia de caracteres de qualquer tamanho como entrada e produzir um valor \textit{hash} de tamanho fixo.
-Para uma função de \textit{hash} ser considerada criptograficamente útil, no mínimo, ela deve ser resistente aos ataques de colisão, pré-imagem, e segunda-pré-imagem. 
+Para uma função de \textit{hash} $\mathbb{H}$ ser considerada criptograficamente útil, no mínimo, ela deve ser resistente aos ataques de colisão, pré-imagem, e segunda-pré-imagem. 
 
 \begin{itemize}
-    \item \textbf{Resistência à pré-imagem}, dado um valor \textit{hash} h deve ser difícil encontrar qualquer mensagem m tal que h = \textit{hash}(m).
-    Este conceito está relacionado ao da função de mão única (ou função unidirecional).
-    Funções que não possuem essa propriedade estão vulneráveis a ataques de pré-imagem.
-    \item \textbf{Resistência à segunda pré-imagem}, dada uma entrada m1 deve ser difícil encontrar outra entrada m2 tal que \textit{hash}(m1) = \textit{hash}(m2).
-    Funções que não possuem essa propriedade estão vulneráveis a ataques de segunda pré-imagem.
-    \item \textbf{Resistência à colisão},  deve ser difícil encontrar duas mensagens diferentes m1 e m2 tal que \textit{hash}(m1) = \textit{hash}(m2).
-    Tal par é chamado de colisão \textit{hash} criptográfica. Essa propriedade também é conhecida como forte resistência à colisão.
-    Ela requer um valor \textit{hash} com pelo menos o dobro do comprimento necessário para resistência à pré-imagem; caso contrário, colisões podem ser encontradas através de um ataque do aniversário.
+    \item \textbf{Resistência à pré-imagem}
+        \subitem A partir de um valor $h$ (um resumo, uma \textit{hash}) deve ser computacionalmente inviável encontrar a mensagem $m$ que gerou $h$ tal que $h = \mathbb{H}(m)$.
+        Este conceito está relacionado ao da função de mão única (ou função unidirecional).
+        Funções que não possuem essa propriedade estão vulneráveis a ataques de pré-imagem.
+    \item \textbf{Resistência à segunda pré-imagem}
+        \subitem Dada uma entrada $m_1$ deve ser difícil encontrar outra entrada $m_2$ tal que $\mathbb{H}(m_1) = \mathbb{H}(m_2)$.
+        Funções que não possuem essa propriedade estão vulneráveis a ataques de segunda pré-imagem, o que implica em vulnerabilidade a colisões, afinal este é apenas um ataque de segunda pré-imagem mais aberto, i.e., com $m_1$ pré-definido. 
+    \item \textbf{Resistência à colisão}
+        \subitem Deve ser computacionalmente inviável encontrar quaisquer duas mensagens diferentes $m_1$ e $m_2$ tal que cujo resumo (\textit{hash}) seja igual, i.e., $\mathbb{H}(m_1) = \mathbb{H}(m_2)$.
+        \subitem Tal par seria chamado de colisão de \textit{hash} criptográfica.
+        Ela requer um valor \textit{hash} com pelo menos o dobro do comprimento necessário para resistência à pré-imagem; caso contrário, colisões poderiam ser encontradas através de um ataque do aniversário\footnote{\url{https://en.wikipedia.org/wiki/Birthday_attack}}.
 \end{itemize}
 
 \subsection{Aplicações}
@@ -305,11 +308,13 @@ Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
 O objetivo geral deste trabalho de conclusão é three-fold.
 Firstly, to attempt to empower users over their data and over the way they want to interact with it (e.g., using a custom front-end to access one's Instagram DMs or a different recommendation algorithm for one's TikTok For You page).
 Secondly, to diminish the walled-garden-granted ``power'' social media platforms currently have over their users (e.g., hindering creators' reach because of their political opinions or making obscene changes to their apps' interfaces).
-And thirdly, (mostly as a consequence of the previous ones) to allow for much easier historical archiving efforts as content will be seldom lost\footnotemark.
+And thirdly, (mostly as a consequence of the previous ones) to allow for much easier historical archiving efforts as content will be seldom lost, because there will be control mechanisms (probably some sort of DHT) tracking what data each host/node has.
+Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media\footnotemark.
 \footnotetext{
-    Because there will be control mechanisms (probably some sort of DHT) tracking what data each host/node has.
-    Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media.
+    Arquivos digitais com registros de terem existido, mas que nenhuma cópia pode ser encontrada mais.
+    Projeto que cataloga famous lost media: \url{https://lostmediawiki.com/Home}
 }
+
 
 \section{Objetivos específicos}
 
@@ -328,56 +333,61 @@ A fim de que possamos formular soluções que mitiguem as principais desvantagen
 
 \section{Facebook}
 
-É uma rede social criada em 2004 nos EUA, para ajudar alunos em universidades a conhecerem uns aos outros.
+É uma rede social criada no ano de dois mil e quatro nos EUA, para ajudar alunos em universidades a conhecerem uns aos outros.
 Seu proposito inicial foi superado e hoje é uma rede social com proposito mais geral do que o inicial,
-conta com a marca de 2 bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}.
-Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o Facebook ou até mesmo pelo próprio Facebook censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
+conta com a marca de dois bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}.
+Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o \textit{Facebook}\footnote{\url{https://www.facebook.com/}} ou até mesmo pelo próprio \textit{Facebook} censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
+\begin{figure}[htb!]
+\centering\includesvg[width = .2\textwidth]{fig/Facebook_icon.svg}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:twetch-profit}\textit{Facebook, Inc.}(original logo)~\cite{wiki:facebooklogo}}
+\end{figure}
 
 \section{4chan}
 
 É uma rede social que funciona como um quadro de avisos baseado em imagens, onde qualquer pessoa pode postar comentários e compartilhar imagens, usuários não precisam se cadastrar para participar de uma comunidade.
-Apesar do anonimato prometido, qualquer postagem tem que passar pelas regras do 4chan e podem ser deletadas a qualquer momento pela equipe de moderação~\cite{4chan1}.
-Foi criado em 2003 e alcança a marca de mais de 20 milhões de acessos por mês. Não a cobrança pelo uso da rede social e a monetização é feita por propagandas no site~\cite{4chan2}.
-
+Apesar do anonimato prometido, qualquer postagem tem que passar pelas regras do \textit{4chan}\footnote{\url{https://www.4chan.org/}} e podem ser deletadas a qualquer momento pela equipe de moderação~\cite{4chan1}.
+Foi criado no ano de dois mil e três e alcançou a marca de mais de vinte milhões de acessos por mês. Não há cobrança pelo uso da rede social e a monetização é feita por propagandas no site~\cite{4chan2}.
+\begin{figure}[htb!]
+\centering\includesvg[width = .35\textwidth]{fig/4chan_logo.svg}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:twetch-profit}\textit{4chan} logo~\cite{4chanlogo}}
+\end{figure}
 \section{Diaspora}
 
-É uma rede social descentralizada criada em 2010, conta com mais de 2 milhões de usuários e permite integração com outras redes sociais como Twitter, Facebook, e Tumblr~\cite{Diaspora1}.
+É uma rede social descentralizada criada no ano de dois mil e dez, conta com mais de dois milhões de usuários e permite integração com outras redes sociais como \textit{Twitter}, \textit{Facebook}, e \textit{Tumblr}~\cite{Diaspora1}.
 O usuário tem controle sobre seus dados podendo baixar a qualquer momento todos os dados de texto e imagem que foram carregados na plataforma, permite a liberdade para escolher em qual servidor ficará seus dados, além da transparência por ser um software de código aberto licenciado sob a licença GNU AGPL (Affero General Public License)~\cite{Diaspora2}. 
-Uma das marcas da Diaspora é a promessa de ser uma rede social resistente à censura devido a sua arquitetura descentralizada.
-Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}, porem por padrão não mantém anúncios, sendo a opção de adicionar propagandas dos usuários para a monetização de seus textit{posts}.
-
+Uma das marcas da \textit{Diaspora}\footnote{\url{https://diasporafoundation.org/}} é a promessa de ser uma rede social resistente à censura devido a sua arquitetura descentralizada.
+Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}, porem por padrão não mantém anúncios, sendo a opção de adicionar propagandas dos usuários para a monetização de seus \textit{posts}.
+\begin{figure}[htb!]
+\centering\includesvg[width = .25\textwidth]{fig/Diaspora_logo.svg}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:twetch-profit}\textit{Diaspora} logo~\cite{diasporalogo}}
+\end{figure}
 \section{Bitstagram}
 
-É uma rede social de fotos que permite o usuário armazenar as fotos em uma blockchain (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados), e quando necessário a aplicação lê as imagens na \textit{blockchains}.
-As fotos postadas no Bitstagram são imutáveis e são cobradas, esse é um fator que afasta os usuários visto que se a foto postada for a foto errada não terão como editar e ainda será cobrado, isso tira a naturalidade com que os usuários utilizam a rede social, sendo um problema se comparado aos seus concorrentes centralizados.
-
-%\section{Solid}
-
-%\section{Steem}
-
-%\section{Mastodon}
-
-%\section{Sola}
-
-%\section{Manyverse}
-
-%\section{SocialX}
-
-%\section{akasha}
-
-%\section{Peepeth}
-
-%\section{breaker}
-
+É uma rede social de fotos que permite o usuário armazenar as fotos em uma \textit{blockchain} (com o tamanho de bloco consideravelmente grande como\textit{BCashSV}~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados), e quando necessário a aplicação lê as imagens na \textit{blockchains}.
+As fotos postadas no \textit{Bitstagram}\footnote{\url{https://bitstagram.bitdb.network/}} são imutáveis e são cobradas, esse é um fator que afasta os usuários visto que se a foto postada for a foto errada não terão como editar e ainda será cobrado, isso tira a naturalidade com que os usuários utilizam a rede social, sendo um problema se comparado aos seus concorrentes centralizados.
+\begin{figure}[htb!]
+\centering\includegraphics[width = .5\textwidth]{fig/bitstagram_logo.png}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:twetch-profit}\textit{Bitstagram} logo~\cite{bitstagramlogo}}
+\end{figure}
 \section{\textit{Twitch}}
 
- É uma rede social de transmissão de vídeo que surgiu em junho de 2011. 
- O conteúdo da plataforma pode ser visto ao vivo ou sob demanda. 
- Em 2015 a \textit{Twitch} bateu a marca de mais de cem milhões de espectadores por mês~\cite{Twitch1}. Pela natureza do conteúdo ser ao vivo é garantido certa liberdade a censura, porém se algum ato violar a politica da plataforma o canal pode ser banido indefinidamente e todos as gravações do canal deletadas. A monetização da plataforma se da através de propagandas, inscrições e doações, sendo parte do dinheiro destinado ao canal e parte da própria \textit{Twitch}. A interface da plataforma opera com a arquitetura centralizada, porém os dados são distribuídos
- 
+É uma rede social de transmissão de vídeo que surgiu em junho de 2011. 
+O conteúdo da plataforma pode ser visto ao vivo ou sob demanda. 
+Em dois mil e quinze a \textit{Twitch}\footnote{\url{https://www.twitch.tv/}} bateu a marca de mais de cem milhões de espectadores por mês~\cite{Twitch1}.
+Pela natureza do conteúdo ser ao vivo é garantido certa liberdade a censura, porém se algum ato violar a politica da plataforma o canal pode ser banido indefinidamente e todos as gravações do canal deletadas.
+A monetização da plataforma se da através de propagandas, inscrições e doações, sendo parte do dinheiro destinado ao canal e parte da própria \textit{Twitch}.
+\begin{figure}[htb!]
+\centering\includesvg[width = .3\textwidth]{fig/twitch_logo.svg}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:twetch-profit}\textit{Twitch} logo~\cite{diasporalogo}}
+\end{figure}
 \section{Memo}
 
-É uma aplicação mídia social similar ao Twitter, armazena os dados dos seus usuário em \textit{blockchains} (com blocos de tamanho grande, neste caso o BCashABC~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário dados permanentes e incensurável.
+É uma aplicação mídia social similar ao \textit{Twitter}, armazena os dados dos seus usuário em \textit{blockchains} (com blocos de tamanho grande, neste caso o \textit{BCashABC}~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário dados permanentes e incensurável.
 Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchains}  tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
 \begin{figure}[H]
 \centering\includegraphics[width=.55\textwidth]{fig/Memo.jpg}
@@ -386,9 +396,9 @@ Essa imutabilidade é muito interessante para garantir a liberdade e o livre arb
 \end{figure}
 
 \section{\textit{Twetch}}
-Assim como o \textit{Memo} é uma aplicação similar ao \textit{Twitter}, com arquitetura distribuída, que também utiliza \textit{blockchain} (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados) para armazenar os dados dos usuários.
+Assim como o \textit{Memo}\footnote{\url{https://memo.cash/}} é uma aplicação similar ao \textit{Twitter}, com arquitetura distribuída, que também utiliza \textit{blockchain} (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados) para armazenar os dados dos usuários.
 
-\textit{Twetch} promete eu seu site ser uma rede social onde o usuário é dono de seus dados e e ganha dinheiro pelo seu conteúdo sem interferência de terceiros, garante um sistema de chat completamente privado onde apenas acessível a quem o usuário der permissão, permitindo que seus dados sejam realmente apenas seus~\cite{Twetch1}.
+\textit{Twetch}\footnote{\url{https://twetch.app/}} promete eu seu site ser uma rede social onde o usuário é dono de seus dados e e ganha dinheiro pelo seu conteúdo sem interferência de terceiros, garante um sistema de chat completamente privado onde apenas acessível a quem o usuário der permissão, permitindo que seus dados sejam realmente apenas seus~\cite{Twetch1}.
 
 A monetização é controlada pelo usuário que pode determinar quanto irá cobrar para interagirem com seu \textit{post} (veja figura \ref{fig:twetch-profit}), qualquer um pode comentar em qualquer \textit{post} porém a funcionalidade \textit{TrollToll} permite cobrar um valor maior de um usuário para interagir no seu \textit{post}, uma maneira de evitar usuários sem bloqueá-los. Essas funcionalidades de personalização de cobrança e anonimato dos dados, fizeram com que a rede social alcançasse a marca de um milhão de transações na \textit{blockchain} apenas dezoito meses após sua criação~\cite{Twetch2}. 
 
@@ -406,7 +416,7 @@ Através das plataformas e dos elementos de comparação analisados na tabela \r
 
 Enquanto as redes sociais que apresentaram na coluna arquiteturas a característica de  distribuídas e utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguiram apresentar na coluna sensibilidade a censura total resistência à censura. Fica evidente que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los. Assim, por os dados estarem distribuídos pela rede exercer algum controle sobre eles fica dificultado pois um mesmo dado pode estar em vários nodos da rede, assim para exercer a mesma influência que no modelo centralizado necessita o controle de todos os nodos da rede. Outro aliado é o armazenamento de dados na \textit{blockchain}, pois armazenando os dados no formato de transações garante a autenticidade dos dados pela rede, assegurando também a imutabilidade dos dados.
 
-Outro elemento que pode se inferir a partir da análise, é que os resultados  da coluna monetização interferem nos resultados da coluna base de usuários, assim as redes sociais que apresentam o modelo \textit{pay-to-use}/\textit{pay and earn} , apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades, isso naturalmente se deve ao fato que cobrança diretas ao usuário aparentam ser mais intrusivas que publicidades pelo site, apresentando assim uma barreira de entrada. Outro dado relaciona a coluna de base de usuário é a relação com a coluna arquitetura, assim redes sociais que apresentam arquiteturas centralizadas contém mais usuários que as que apresentam arquiteturas distribuídas, isso se deve a dois fatores, o primeiro as redes sociais de arquitetura centralizada existem a mais tempo sendo amplamente difundidas nos anos dois mil, enquanto redes sociais distribuídas começam a surgir na segunda metade da década de dois mil e dez. O segundo fato é os já mencionados \textit{Walled gardens}, detendo o maior número de usuários por terem surgido primeiro as redes sociais centralizadas criam barreiras para evitar a migração de seus usuários para outras redes sociais, dificultando o surgimento e crescimento de redes sociais distribuídas.
+Outro elemento que pode se inferir a partir da análise, é que os resultados  da coluna monetização interferem nos resultados da coluna base de usuários, assim as redes sociais que apresentam o modelo \textit{pay-to-use}/\textit{pay and earn}, apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades, isso naturalmente se deve ao fato que cobrança diretas ao usuário aparentam ser mais intrusivas que publicidades pelo site, apresentando assim uma barreira de entrada. Outro dado relaciona a coluna de base de usuário é a relação com a coluna arquitetura, assim redes sociais que apresentam arquiteturas centralizadas contém mais usuários que as que apresentam arquiteturas distribuídas, isso se deve a dois fatores, o primeiro as redes sociais de arquitetura centralizada existem a mais tempo sendo amplamente difundidas nos anos dois mil, enquanto redes sociais distribuídas começam a surgir na segunda metade da década de dois mil e dez. O segundo fato é os já mencionados \textit{Walled gardens}, detendo o maior número de usuários por terem surgido primeiro as redes sociais centralizadas criam barreiras para evitar a migração de seus usuários para outras redes sociais, dificultando o surgimento e crescimento de redes sociais distribuídas.
 
 Assim concluímos a comparação, analisando que as redes sociais com arquitetura distribuída apresentam vantagens importantes se comparadas às que apresentam arquitetura centralizada, porém ainda não apresentam uma forma atrativa para atrair os usuários de plataformas centralizadas, seja por seus problemas na barreira de entrada com o modelo monetização, ou por barreiras impostas pelas outras plataformas para a migração de usuários, necessitando um modelo de transição gradual e amigável ao usuário.
 
@@ -446,43 +456,90 @@ Bitstagram     &  pay-to-use              & Distribuída      & 10.2k & Resisten
 Propomos uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede \textit{peer-to-peer} e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
 Assim retirando o poder de ação sobre os dados, que hoje as corporações detentoras de mídia sociais populares têm, e distribuindo esse poder entre seus usuários.
 
-\section{Consequências da quebra do muro}
-% \section{Cenário ganha-ganha}
-
-Quando as corporações por trás das mídias sociais perderem o controle que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando  interesses com os  usuários.
-Interesses que, atualmente, estão majoritariamente focados em tornar suas plataformas jardins com muros cada vez mais altos, enquanto seus usuários querem apenas uma ferramenta eficiente e confortável para se comunicarem.
-Salientamos que nossa proposta vem com benefícios para as corporações que aproveitarão uma diminuição das suas obrigações e responsabilidades.
-Pois poderão, por exemplo, simplificar suas políticas de cumprimento das leis de proteção de dados regionais (LGPD, GDPR) e, uma vez que madura a rede peer-to-peer, poderão aproveitá-la como CDN (rede de entrega de conteúdo do inglês \textit{content delivery network}).
-Ainda, os usuários beneficiar-se-ão não somente da foco redirecionado da empresa original atualizando sua interface com a melhor UX possível, mas também do saudável ecossistema de competição que surgirá para a criação de interfaces alternativas e aglomerativas (e.g., combinando o feed de stories do Instagram e do Facebook, o feed de fleets do Twitter, e o de status do WhatsApp num só).
+Nas próximas seções apresentaremos individualmente cada classe de programas necessária para concretizar nossa visão para uma mídia social. Em seguida, na última seção, teremos clarificações sobre como nossa solução lida com os problemas delineados no capítulo~\ref{chap:problem}. 
 
 \section{Web-scrapers como estratégia de extração de dados não-consensual}
 
 O primeiro desafio é ``atravessar o muro'', i.e., facilitar a migração do conteúdo dos usuários de um plataforma centralizada da web 2.0 para uma descentralizada da web 3.0 sem dependermos da boa vontade das corporações que as controlam.
-Para isso propomos que se desenvolva web-scrapers open-source para que usuários possam \textit{download} conteúdo facilmente.
-Ademais, para que haja real descentralização dos dados, é necessário que estruturas de dados sejam escolhidas e padrões e protocolos criados e seguidos. 
+Para isso propomos que se desenvolva \textit{web-scrapers} \textit{open-source} para que usuários possam \textit{download} (baixar) conteúdo facilmente de modo automatizado.
+Ademais, para que haja real descentralização dos dados, é necessário que estruturas de dados sejam escolhidas e padrões criados e seguidos pelos desenvolvedores dos \textit{scrapers}, pois os dados precisam ser estruturados de modo que convenha o compartilhamento de dados entre usuários.
+Conveniente nos nossos olhos implica no uso de estruturas de dados auto-verificantes (\textit{hashing}), determinísticas (endereçamento por conteúdo), convergentes (livre de conflitos que exijam resolução manual e independente de ordem), e serializáveis.
 
-\section{}
+\section{Rede de compartilhamento de dados peer-to-peer}
+
+Depender de livre associação dos usuários provavelmente condenaria o projeto a falhar.
+Logo, propomos a criação de um protocolo não somente de envio de arquivos, mas também de \textit{location tracking} (rastreamento de localizações) para permitir que um nó da rede descubra quais outros nós possuem algum item.
+Algumas diretrizes gerais para a rede são:
+\begin{itemize}
+    \item suportar grandes quantidades de arquivos (na escala de bilhões)
+    \item prevenir duplicação de conteúdo\ref{foot:content-dup}
+    \item permitir que os usuários decidam qual conteúdo, se algum, vão armazenar em seus computadores permanentemente
+\end{itemize}
+\longfootnote[foot:content-dup]{
+    Duplicação, diferentemente de replicação que é quando usuários fazem cópias que são corretamente rastreadas no sistema, se trata de conteúdo armazenado repetidas vezes na rede sem serem associados entre si, o que poderia ser considerado um caso especial de particionamento da rede~\cite{wiki:cap-theorem}, causaria perda de dados e deveria ser considerado um bug. 
+}
+
+\section{Internet de confiança}
+
+Um dos casos de uso centrais do nosso projeto é acoplar resistência à censura às mídias sociais.
+Para tal, precisamos de algum mecanismo que nos permita distinguir quais usuários são confiáveis o suficiente para baixarmos conteúdo que não esteja mais hospedado no provedor original (e.g., que tenha sido apagado dos servidores do Facebook).
+Sem empregar autoridades centrais, a única solução para consenso (confiança) global, num sistema distribuído com participantes desconhecidos, estabelecida são blockchains com \textit{cryptocurrencies} associadas como Bitcoin~\cite{bitcoin-paper}.
+Utilizar uma blockchain já estabelecida, envolveria custos para aquisição dos tokens e implementar uma própria traria várias complicações e preocupações de segurança e complexidade.
+Então, seguindo o princípio KISS\footnote{``Keep It Simple, Stupid.'', \url{https://en.wikipedia.org/wiki/KISS_principle}}, optamos por uma solução customizada em que um grafo direcionado (uma rede, uma internet) de confiança emerge como consequência do design feito.
+Design esse que será explicado a seguir:
+
+\begin{itemize}
+    \item Cada usuário pode criar um par de chaves criptográficas assimétricas para si
+    \item Cada usuário deverá também manter uma lista de chaves públicas dos nós em que ele confia
+    \item Cada usuário pode assinar as \textit{hashes} do conteúdo que ele disponibilizar para download
+    \item Deve ser mantida uma estrutura de dados (compartilhada para não onerar os nós a ponto de sacrificarmos a descentralização) que mapeie IDs de posts para \textit{hashes} endereçadoras da rede \textit{peer-to-peer}
+    \item Quando um usuário adicionar um nó confiável à sua lista de nós confiáveis, ele deve ser capaz de parametrizar um inteiro especificando a quantos níveis de indireção ele confia nesse nó (e.g., 0: apenas ele, 1: ele e os nós que ele confia, e assim por diante) 
+\end{itemize}
+
+Dadas essas premissas, vamos explicar agora o fluxo para um usuário download da rede \textit{peer-to-peer} um post hipotético que tenha sido apagado dos servidores oficiais da plataforma em questão.
+
+\begin{enumerate}
+    \item Tentar acessar um post por sua ID
+    \item Notar que ele foi apagado
+    \item Query a rede com a ID do post para descobrir a \textit{hash} dele
+    \item Query a rede com a \textit{hash} para descobrir quais nós possuem esse post
+    \item Verificar se algum desses nós se encontra na minha lista de nós confiáveis
+        \subitem Caso algum esteja, download dele.
+        \subitem Caso nenhum esteja, um aviso deve ser dado ao usuário perguntando se ele está disposto a download de um nó não-confiável.
+\end{enumerate}
+
+\section{Consequências da quebra dos muros}
+% \section{Cenário ganha-ganha}
+
+Quando as corporações por trás das mídias sociais perderem o controle que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando seus interesses com os dos usuários.
+Interesses que, atualmente, estão majoritariamente focados em tornar suas plataformas jardins com muros cada vez mais altos, enquanto seus usuários querem apenas uma ferramenta eficiente e confortável para se comunicarem.
+Salientamos que nossa proposta vem com benefícios para as corporações que aproveitarão uma diminuição das suas obrigações e responsabilidades.
+Pois poderão, por exemplo, simplificar suas políticas de cumprimento das leis de proteção de dados regionais (LGPD, GDPR) e, uma vez que madura a rede \textit{peer-to-peer}, poderão aproveitá-la como CDN (rede de entrega de conteúdo do inglês \textit{content delivery network}).
+Ainda, os usuários beneficiar-se-ão não somente da foco redirecionado da empresa original atualizando sua interface com a melhor UX possível, mas também do saudável ecossistema de competição que surgirá para a criação de interfaces alternativas e aglomerativas (e.g., combinando o feed de stories do Instagram e do Facebook, o feed de fleets do Twitter, e o de status do WhatsApp num só).
 
 \chapter{Cronograma}
 
 Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e nosso planejamento.
 
 \begin{enumerate}
-	\item \label{cron:proposal} Elaboração da proposta de TC.
-	\item \label{cron:analiseI} Análise 
-	\item \label{cron:analiseII} Análise
-	\item \label{cron:analiseIII} Análise 
-	\item \label{cron:estudoI} Estudo
-	\item \label{cron:estudoII}  Estudo 
-	\item \label{cron:estudoIII} Estudo
-	\item \label{cron:esc-tcI}  Escrita do TC I.
-	\item \label{cron:imI} Implementação
-	\item \label{cron:imII} Implementação
-	\item \label{cron:imIII} Implementação
-	\item \label{cron:tec} Teste e correções.
-		\subitem correção 1
-		\subitem correção 2
-	\item \label{cron:esc-tcII} Escrita do TC II.
+    \item \label{cron:search} Investigação e análise das redes sociais atuais.
+    \item \label{cron:background} Elaboração da fundamentação teórica.
+    \item \label{cron:architecture} Elaboração da proposta de Arquitetura.
+	\item \label{cron:proposal} Entrega da proposta de TC.
+	\item \label{cron:requirements} Identificação dos requisitos do sistema.
+	\item \label{cron:diagrams} Elaboração da modelagem do sistema.
+	\item \label{cron:methodology} Definição da metodologia de desenvolvimento.
+	\item \label{cron:esc-tcI}  Entrega do volume final de TC1.
+	\item \label{cron:scraper} Desenvolvimento do \textit{Scraper}.
+	\item \label{cron:val1}  Teste e validação do \textit{Scraper} e estrutura de dados. 
+	\item \label{cron:network} Desenvolvimento da rede.
+	\item \label{cron:val2} Teste e validação da rede e do protocolo da rede.
+	\item \label{cron:integration} Integração entre \textit{Scraper} e rede de dados.
+	\item \label{cron:val3} Testes da Integração.
+	\item \label{cron:gui} Desenvolvimento da interface gráfica.
+	\item \label{cron:val4} Testes e validações finais do sistema.
+	\item \label{cron:poster} Entrega dos Cartazes.
+	\item \label{cron:esc-tcII} Entrega da volume final de TC2.
 \end{enumerate}
 
 \definecolor{midgray}{gray}{.5}
@@ -494,31 +551,41 @@ Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e 
 		\hline
 		&MAR&ABR&MAI&JUN&JUL\\
 		\hline
-		\ref{cron:proposal}&\cellcolor{midgray}&&&&\\
+		\ref{cron:search}&\cellcolor{midgray}&&&&\\
 		\hline
-		\ref{cron:analiseI}&&\cellcolor{midgray}&&&\\
+		\ref{cron:background}&\cellcolor{midgray}&&&&\\
+		\hline
+		\ref{cron:architecture}&&\cellcolor{midgray}&&&\\
+		\hline
+		\ref{cron:proposal}&&\cellcolor{midgray}&&&\\
+		\hline
+		\ref{cron:requirements}&&\cellcolor{midgray}&&&\\
 		\hline	
-		\ref{cron:analiseII}&&\cellcolor{midgray}&&&\\
+		\ref{cron:diagrams}&&\cellcolor{midgray}&&&\\
 		\hline			
-		\ref{cron:analiseIII}&&\cellcolor{midgray}&\cellcolor{midgray}&&\\
+		\ref{cron:methodology}&&\cellcolor{midgray}&&&\\
 		\hline	
-		\ref{cron:estudoI}&&&\cellcolor{midgray}&&\\
+		\ref{cron:esc-tcI}&&\cellcolor{midgray}&&&\\
+		\hline	
+		\ref{cron:scraper}&&&\cellcolor{midgray}&&\\
 		\hline
-		\ref{cron:estudoII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\ref{cron:val1}&&&\cellcolor{midgray}&&\\
 		\hline	
-		\ref{cron:estudoIII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\ref{cron:network}&&&\cellcolor{midgray}&&\\
 		\hline	
-		\ref{cron:esc-tcI}&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}&&\\
+		\ref{cron:val2}&&&\cellcolor{midgray}&&\\
 		\hline	
-		\ref{cron:imI}&&&&\cellcolor{midgray}&\\
+		\ref{cron:integration}&&&&\cellcolor{midgray}&\\
 		\hline	
-		\ref{cron:imII}&&\cellcolor{midgray}&&&\\
+		\ref{cron:val3}&&&&\cellcolor{midgray}&\\
 		\hline	
-		\ref{cron:imIII}&&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\ref{cron:gui}&&&&\cellcolor{midgray}&\\
 		\hline	
-		\ref{cron:tec}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
-		\hline	
-		\ref{cron:esc-tcII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}\\
+		\ref{cron:val4}&&&&\cellcolor{midgray}&\\
+		\hline
+		\ref{cron:poster}&&&&\cellcolor{midgray}&\\
+		\hline
+		\ref{cron:esc-tcII}&&&&&\cellcolor{midgray}\\
 		\hline	
 		\end{tabular}
 \end{table}
