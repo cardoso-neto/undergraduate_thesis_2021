@@ -24,7 +24,7 @@ O modelo distribuído confere ao usuário (que é o criador de conteúdo das red
 
 Um dos benefícios da arquitetura que será proposta é delimitar as funções do usuário e da plataforma, fazendo com que o modelo arquitetônico das redes sociais fique claro e não permita a utilização de dados de usuários por terceiros, invertendo os papéis conferindo ao usuário o poder e as obrigações em relação aos seus dados, e tornando a plataforma apenas no elo de ligação entre usuários.
 
-Diante destes contexto, o objetivo geral deste trabalho é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+Diante deste contexto, o objetivo geral deste trabalho é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
 \chapter{Caracterização do problema e justificativa}
 
@@ -39,7 +39,13 @@ Plataformas cujo interesse, em vez de prover a melhor experiência de usuário p
 Para mitigar esse problema de interesses desalinhados, alguém poderia pensar que a solução seria a criação de mídias sociais inteiramente descentralizadas e que não dependam de nenhum terceiro no controle.
 Entretanto, a tecnologia para criar plataformas do tipo não apenas existe há anos, como já foi posta para uso no Dtube, diaspora, LBRY, Peertube, mastodon, scuttlebutt... e uma longa lista de redes sociais com poucos usuários e pouco conteúdo.
 
-Como o inteiro objetivo de mídias sociais é o compartilhamento de conteúdo gerado e curado por usuários, o \textit{network-effect}[footnote aqui explicando] é especialmente expressivo aqui.
+Como o inteiro objetivo de mídias sociais é o compartilhamento de conteúdo gerado e curado por usuários, o \textit{network-effect}\ref{foot:net-effect} é especialmente expressivo aqui.
+\longfootnote[foot:net-effect]{
+    Em teoria econômica, o fenômeno em que o valor agregado a um bem ou serviço é proporcional ao número de usuários utilizando-o é chamado de efeito de rede~\cite{wiki:net-effect}, em referência às redes de teoria de redes do corpo teórico da matemática, onde o número de arestas de uma rede totalmente conectada cresce quadraticamente em função do número de vértices.
+    In economics, a network effect (also called network externality or demand-side economies of scale) is the phenomenon by which the value or utility a user derives from a good or service depends on the number of users of compatible products. Network effects are typically positive, resulting in a given user deriving more value from a product as other users join the same network. The adoption of a product by an additional user can be broken into two effects: an increase in the value to all other users ( "total effect") and also the enhancement of other non-users motivation for using the product ("marginal effect").[1]
+
+
+}
 Portanto, criar soluções novas e completamente separadas do tradicional está longe do ideal e, na nossa opinião, é prejudicial ao ecossistema, pois introduz mais fragmentação.
 
 Acreditamos que para possibilitar o alavancamento de um \textit{shift} no uso de mídias sociais controladas exclusivamente por terceiros para algo mais descentralizado seja necessária uma solução que faça bom uso do conteúdo já disponível nas mídias sociais atuais e, idealmente, que os interesses das, atualmente extremamente poderosas, empresas do espaço possam ser alinhados com os interesses dos usuários. 
@@ -100,9 +106,15 @@ Essas são apenas algumas das estratégias que podem ser empregadas (e na práti
 E eles só se desalinham porque a centralização torna isso possível concedendo poderes que nenhuma entidade única deveria ter sobre coisas muito valiosas como nossa atenção, nossos dados pessoais, nossas preferências, e nosso conteúdo.
 
 Acreditamos que, quando ``derrubarmos os muros'' desses \textit{walled gardens}\ref{foot:walled-gardens}, as corporações não terão escolha fora direcionar seus esforços a conquistar os usuários para usarem seus front-ends, pois graças aos dados descentralizados, a competição poderá surgir muito mais facilmente.
+
 \longfootnote[foot:walled-gardens]{
     \textit{Walled gardens}~\cite{CLOSEDPLAT} se referem a plataformas tecnológicas que possuem barreiras artificiais levantadas por seus criadores com a intenção de dificultar que usuários migrem para uma plataforma competidora, talvez possibilitando um monopólio.
 }
+
+Desta forma, a questão de pesquisa que norteará este trabalho será: ``Como deverá ser a arquitetura de redes sociais que permitirá que a informação seja compartilhada?''
+
+A hipótese sobre a qual o trabalho está norteado é: ``As plataformas de mídias sociais mais usadas atualmente são centralizadas e por isso detêm o poder de ação sobre os dados dos usuários, utilizando esse controle para impor barreiras e manter seus usuários.''.
+
 
 % O esgotamento do modelo de arquitetura de software da Web 2.0 na figura das redes sociais torna nítida a necessidade de se propôr, não apenas novas arquiteturas, mas também, modelos de transição.
 % Que visem suplantar os problemas das antigas arquiteturas, enquanto trazendo melhoras substanciais ao seus usuários em todas as etapas.
@@ -200,12 +212,12 @@ Funções de \textit{hash} são usadas em muitas partes da criptografia e existe
 \begin{figure}[htb!]
 \centering
 \label{fig:função-hash}
-\includesvg[width = 483.7pt]{fig/Cryptographic_Hash_Function.svg}
+\includesvg[width = \textwidth]{fig/Cryptographic_Hash_Function.svg}
 \caption[Representação da entrada e saída de uma função de hash criptográfica]{
     Uma função de hash criptográfica (especificamente, SHA-1) funcionando.
     Note que mesmo pequenas mudanças na sua entrada alteram drasticamente a saída do resultado, pelo chamado efeito avalanche.
     
-    % \textbf{Fonte:} \url{https://commons.wikimedia.org/wiki/File:Cryptographic_Hash_Function.svg}
+    Fonte: \url{https://commons.wikimedia.org/wiki/File:Cryptographic_Hash_Function.svg}
 }
 \end{figure}
 
@@ -260,11 +272,7 @@ Por essa razão, elas costumam ser usadas em contextos onde seja necessário que
 \section{Endereçamento}
 
 Nesta seção serão abordadas as técnicas de endereçamento que são utilizadas para referenciar ou apontar (\textit{link}) arquivos na web.
-Segundo o dicionário da \textit{Oxford Languages} a definição de ``link'' na informática é: 
-
-\begin{directcite}
-ato ou efeito de endereçar ou identificar um registro [...] por meio de um endereço.
-\end{directcite}
+Segundo o dicionário da \textit{Oxford Languages} a definição de ``link'' na informática é ``ato ou efeito de endereçar ou identificar um registro [...] por meio de um endereço''.
 
 \subsection{Endereçamento por nomes}
 
@@ -272,7 +280,8 @@ A principal técnica de endereçamento utilizada na internet e na web até hoje 
 Do ponto de vista de endereços de computadores, dependemos de servidores de nomes (name servers, DNS).
 Do ponto de vista de arquivos, dependemos de caminhos (\textit{paths}) em servidores (\textit{hosts}) específicos (e.g.: \url{http://some-server:80/image.png}).
 Se o arquivo mudar de nome no servidor o apontamento se quebrará; se o servidor mudar de endereço o apontamento se quebrará; se o servidor estiver offline o cliente não conseguirá acessar o arquivo mesmo que alguém na LAN do cliente tenha uma cópia local do arquivo requisitado.
-Embora prática e bastante \textit{human-readable}, essa abordagem é repleta de fragilidades, desperdícios de recursos (as cópias locais dos clientes), e sofre com todos os problemas inerentes à centralização. Mas aqui, o que gostaríamos realmente de enfatizar enquanto fragilidade é a falta de escalabilidade dessa abordagem.
+Embora prática e bastante \textit{human-readable}, essa abordagem é repleta de fragilidades, desperdícios de recursos (as cópias locais dos clientes), e sofre com todos os problemas inerentes à centralização.
+Mas aqui, o que gostaríamos realmente de enfatizar enquanto fragilidade é a falta de escalabilidade dessa abordagem.
 
 \subsection{Endereçamento por conteúdo}
 
@@ -282,8 +291,9 @@ Praticamente, entretanto, usa-se funções de \textit{hash} criptográficas, poi
 
 \begin{itemize}
     \item \textbf{autenticidade}, garante a autenticidade de um arquivo ou recurso contra tentativas de forjamento do conteúdo ou modificações.
-    \item \textbf{busca rápida} existe uma miríade de estruturas de dados com operações de complexidade temporal assintótica amortizada constante para dados que sejam \textit{hashable}.Pois devido a compressão do conteúdo em um resumo é capaz a partir do resumo gerado autenticar e identificar o dado não necessitando a verificação integral do dado.
-    \item \textbf{deduplicação por padrão} arquivos com o mesmo conteúdo são reaproveitados de forma convergente. Pois devido ao resumo gerado pela \textit{hash} arquivos com mesmo conteúdo terão o mesmo nome, pois a \textit{hash} gerada será a partir do conteúdo.
+    \item \textbf{busca rápida} existe uma miríade de estruturas de dados com operações de complexidade temporal assintótica amortizada constante para dados que sejam \textit{hashable}, e.g., \textit{hash tables}, \textit{merkle trees}, e \textit{hash-linked DAGs} (\textit{Directed Acyclic Graphs}) em geral.
+    \item \textbf{deduplicação por padrão} arquivos com o mesmo conteúdo são reaproveitados de forma convergente.
+    Pois \textit{hashes} de arquivos com mesmo conteúdo são idênticas.
     \item \textbf{imutabilidade} um endereço calculado hoje será o mesmo hoje e sempre.
     \item \textbf{integridade} oferece proteção contra possível corrupção de dados.
 \end{itemize}
@@ -294,7 +304,7 @@ Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
 
 \section{Objetivo gerais}
 
-O objetivo geral deste trabalho de conclusão é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+O objetivo geral deste trabalho de conclusão é investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
 \section{Objetivos específicos}
 
@@ -303,9 +313,7 @@ Para atingir o objetivo geral, foram estabelecidos os seguintes objetivos espec�
 \begin{itemize}
     \item mapear e identificar vantagens e desvantagens do funcionamento da arquitetura centralizada das mídias sociais da Web 2.0.
     \item propor uma arquitetura descentralizada baseada na Web 3.0.
-    \item desenvolver a migração da arquitetura através de um sistema que nos permita transformá-la de mídias sociais existentes da Web 2.0 em mídias sociais descentralizadas da Web 3.0.
-    \item testar o sistema
-    \item validar o sistema com usuários
+    \item desenvolver um protótipo para a migração da arquitetura através de um sistema que nos permita transformá-la de mídias sociais existentes da Web 2.0 em mídias sociais descentralizadas da Web 3.0.
 \end{itemize}
 
 \chapter{Análise das mídias sociais atuais}
@@ -331,7 +339,7 @@ Foi criado em 2003 e alcança a marca de mais de 20 milhões de acessos por mês
 É uma rede social descentralizada criada em 2010, conta com mais de 2 milhões de usuários e permite integração com outras redes sociais como Twitter, Facebook, e Tumblr~\cite{Diaspora1}.
 O usuário tem controle sobre seus dados podendo baixar a qualquer momento todos os dados de texto e imagem que foram carregados na plataforma, permite a liberdade para escolher em qual servidor ficará seus dados, além da transparência por ser um software de código aberto licenciado sob a licença GNU AGPL (Affero General Public License)~\cite{Diaspora2}. 
 Uma das marcas da Diaspora é a promessa de ser uma rede social resistente à censura devido a sua arquitetura descentralizada.
-Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}.
+Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}, porem por padrão não mantém anúncios, sendo a opção de adicionar propagandas dos usuários para a monetização de seus textit{posts}.
 
 \section{Bitstagram}
 
@@ -356,21 +364,44 @@ As fotos postadas no Bitstagram são imutáveis e são cobradas, esse é um fato
 
 %\section{breaker}
 
+\section{\textit{Twitch}}
+
+ É uma rede social de transmissão de vídeo que surgiu em junho de 2011. 
+ O conteúdo da plataforma pode ser visto ao vivo ou sob demanda. 
+ Em 2015 a \textit{Twitch} bateu a marca de mais de cem milhões de espectadores por mês~\cite{Twitch1}. Pela natureza do conteúdo ser ao vivo é garantido certa liberdade a censura, porém se algum ato violar a politica da plataforma o canal pode ser banido indefinidamente e todos as gravações do canal deletadas. A monetização da plataforma se da através de propagandas, inscrições e doações, sendo parte do dinheiro destinado ao canal e parte da própria \textit{Twitch}. A interface da plataforma opera com a arquitetura centralizada, porém os dados são distribuídos
+ 
 \section{Memo}
 
 É uma aplicação mídia social similar ao Twitter, armazena os dados dos seus usuário em \textit{blockchains} (com blocos de tamanho grande, neste caso o BCashABC~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário dados permanentes e incensurável.
-Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchains} causa tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
-\begin{figure}[htb!]
+Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchains}  tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
+\begin{figure}[H]
 \centering\includegraphics[width=.55\textwidth]{fig/Memo.jpg}
 \caption%[This figure has a shorter caption now]%
         {\label{fig:memo-protocol}Protocolo Memo~\cite{Memo1}}
 \end{figure}
 
-\section{\textit{Twitch}}
- É uma rede social de transmissão de vídeo que surgiu em junho de 2011. 
- O conteúdo da plataforma pode ser visto ao vivo ou sob demanda. 
- Em 2015 a \textit{Twitch} bateu a marca de mais de cem milhões de espectadores por mês~\cite{Twitch1}. Pela natureza do conteúdo ser ao vivo é garantido certa liberdade a censura, porém se algum ato violar a politica da plataforma o canal pode ser banido indefinidamente e todos as gravações do canal deletadas. A monetização da plataforma se da através de propagandas, inscrições e doações, sendo parte do dinheiro destinado ao canal e parte da própria \textit{Twitch}. A interface da plataforma opera com a arquitetura centralizada, porém os dados são distribuídos
-\begin{table}[htb]
+\section{\textit{Twetch}}
+Assim como o \textit{Memo} é uma aplicação similar ao \textit{Twitter}, com arquitetura distribuída, que também utiliza \textit{blockchain} (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados) para armazenar os dados dos usuários.
+
+\textit{Twetch} promete eu seu site ser uma rede social onde o usuário é dono de seus dados e e ganha dinheiro pelo seu conteúdo sem interferência de terceiros, garante um sistema de chat completamente privado onde apenas acessível a quem o usuário der permissão, permitindo que seus dados sejam realmente apenas seus~\cite{Twetch1}.
+
+A monetização é controlada pelo usuário que pode determinar quanto irá cobrar para interagirem com seu \textit{post} (veja figura \ref{fig:twetch-profit}), qualquer um pode comentar em qualquer \textit{post} porém a funcionalidade \textit{TrollToll} permite cobrar um valor maior de um usuário para interagir no seu \textit{post}, uma maneira de evitar usuários sem bloqueá-los. Essas funcionalidades de personalização de cobrança e anonimato dos dados, fizeram com que a rede social alcançasse a marca de um milhão de transações na \textit{blockchain} apenas dezoito meses após sua criação~\cite{Twetch2}. 
+
+\begin{figure}[htb!]
+\centering\includegraphics[width=.35\textwidth]{fig/profit.png}
+\caption%[This figure has a shorter caption now]%
+        {\label{fig:twetch-profit}Monetização no \textit{Twetch}~\cite{Twetch1}}
+\end{figure}
+
+\section{Comparativo}
+
+Para a ilustrar a analise aqui feita, foi criada a tabela \ref{tab:tab1} onde separamos elementos que julgamos importantes da análise individual feita previamente nesse capítulo das mídias sociais atuais.
+
+Através das plataformas e dos elementos de comparação analisados na tabela \ref{tab:tab1}, podemos inferir que aplicações que tem sua arquitetura centralizada sofrem de problemas de censura inerentes à própria infraestrutura, mesmo as que não necessitam de cadastro para serem utilizadas, exemplo \textit{4chan}. Enquanto arquiteturas distribuídas que utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguem garantir total resistência à censura. Fica evidente que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los.    
+
+Outro elemento que pode se inferir a partir da análise, é que o modelo de monetização interfere no número de usuários, assim as redes sociais com o modelo \textit{pay-to-use} , apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades e não realizam cobrança direta ao usuário.
+
+\begin{table}[H]
 \begin{center}
 \caption{\label{tab:tab1}Tabela Comparativa das Redes Sociais}
 %\rowcolors{4}{black!10}{black!15}
@@ -381,185 +412,62 @@ Essa imutabilidade é muito interessante para garantir a liberdade e o livre arb
 \noalign{\smallskip}
 \hline
 \multirow{1}{*}{\textbf{Rede Social}} & {\textbf{Monetização}} & {\textbf{Arquitetura}} & {\textbf{Base de Usuários}} & {\textbf{Sensibilidade à Censura}}
-\tabularnewline \hline Facebook   &  Anúncios intrusivos  & Centralizada     & 2.7B [citation] &   Extremamente Sensível à Censura        
-\tabularnewline 4Chan             &  Anúncios não-intrusivos  & Centralizada     & 20M [citation] &   Sensível à Censura        
-\tabularnewline Diaspora          &    & Descentralizada  & 756k [https://the-federation.info/diaspora]  &   Relativamente Sensível a Censura
-\tabularnewline Bitstagram        &  pay-to-use  & Distribuída      &  &  Resistente à Censura
-\tabularnewline Memo              &  pay-to-use  & Distribuída      &  &  Resistente à Censura   \tabularnewline Twitch            &  pay and earn  & interface centralizada, dados distribuídos &  &  Resistente à Censura*       
+\tabularnewline
+\hline
+Facebook       &  Anúncios intrusivos     & Centralizada     & 2.7B  & Extremamente Sensível à Censura        
+\tabularnewline 
+Twitch         &  Anúncios intrusivos     & Centralizada     & 100M  &  Sensível à Censura 
+\tabularnewline 
+4Chan          &  Anúncios não-intrusivos & Centralizada     & 20M   & Sensível à Censura
+\tabularnewline 
+Diaspora       &  Anúncios opcionais      & Descentralizada  & 756k~\cite{Diaspora3} &  Relativamente Sensível a Censura
+\tabularnewline 
+Memo           &  pay-to-use              & Distribuída      & 20.5k &  Resistente à Censura   
+\tabularnewline 
+Twetch         &  pay and earn            & GUI centr., dados distr. & 16.9k  &  Resistente à Censura*       
+\tabularnewline
+Bitstagram     &  pay-to-use              & Distribuída      & 10.2k & Resistente à Censura
 \end{tabular}}
 \end{center}
 \end{table}
 
-\section{Comparativo}
-Através das plataformas analisadas e dos elementos de comparação, podemos inferir que aplicações que tem sua arquitetura centralizada sofrem de problemas de censura inerentes à própria infraestrutura, mesmo as que necessitam de cadastro para utilizá-las, exemplo 4chan. Enquanto arquiteturas distribuídas que utilizam algum tipo de proteção aos dados de seus usuários como o Memo e o Bitstagram que utilizam blockchain para garantir a proteção e imutabilidade dos dados conseguem garantir total resistência à censura.
+\chapter{Arquitetura baseada na Web 3.0}
 
-Outro elemento que pode se inferir a partir da análise, é que o modelo de monetização interfere no número de usuários, assim as redes sociais com o modelo pay-to-use , apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades e não realizam cobrança direta ao usuário.
+Propomos uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede \textit{peer-to-peer} e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
+Assim retirando o poder de ação sobre os dados, que hoje as corporações detentoras de mídia sociais populares têm, e distribuindo esse poder entre seus usuários.
 
+\section{Cenário ganha-ganha}
 
-
-\chapter{Nossa proposta: arquitetura baseada na Web 3.0}
-
-Propomos uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede peer-to-peer e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
+Usuários 
 Quando as corporações por trás das mídias sociais perderem o monopólio que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando seus interesses com os interesses dos usuários.
 Interesses que, atualmente, estão majoritariamente focados em tornar suas plataformas jardins com muros cada vez mais altos.
-
-
+Empresas com interesses alinhados com seus consumidores criam mercado eficientes. 
+Salientamos que nossa proposta vem com benefícios para as corporações que aproveitarão uma diminuição das suas obrigações e responsabilidades.
+Pois poderão, por exemplo, simplificar suas políticas de cumprimento das leis de proteção de dados regionais (LGPD, GDPR) e, uma vez que madura a rede peer-to-peer, poderão aproveitá-la como CDN (rede de entrega de conteúdo do inglês \textit{content delivery network}).
 
 Para que haja real descentralização dos dados, é necessário que estruturas de dados sejam escolhidas e padrões e protocolos criados e seguidos.
+O primeiro desafio é atravessar o muro, facilitar a migração dos dados do usuários de um plataforma centralizada da web 2.0 para uma descentralizada da web 3.0, para isso scrapers fáceis de usar
 
-\chapter{Arquitetura aplicada: descentralizando o 4chan.org}
+\chapter{Cronograma}
 
-Com o objetivo de instanciar um exemplo concreto da estratégia de transição que propomos, implementaremos ferramentas que permitam o armazenamento e compartilhamento de conteúdo do 4chan de forma descentralizada.
-Prevemos três ferramentas necessárias para o bom funcionamento do projeto:
-\begin{enumerate*}[label=(\arabic*)]
-    \item Um \textit{scraper} com alta confiabilidade e desempenho,
-    \item um módulo de \textit{networking} capaz de localizar quais peers possuem quais dados, e
-    \item um módulo de criptografia para assinar e verificar assinaturas, a fim de montarmos uma \textit{internet of trust}. 
-\end{enumerate*}
-
-\section{Requisitos da Solução}
-
-Neste capítulo serão apresentados os Requisitos Funcionais e Requisitos Não Funcionais do sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
-
-Segundo Sommerville (2011, p. 57)~\cite{SOMMERVILLE1}, os requisitos de um sistema são:
-
-\begin{directcite}
-as descrições do que o sistema deve fazer, os serviços que oferece e as restrições a seu funcionamento.
-Esses requisitos refletem as necessidades dos clientes para um sistema que serve a uma finalidade determinada, como controlar um dispositivo, colocar um pedido ou encontrar informações.
-\end{directcite}
-
-\subsection{Requisitos Funcionais}
-
-Os requisitos funcionais de um sistema representam as necessidades que o sistema deverá suprir e todas as funções que o sistema deve ter.
-Sobre os requisitos funcionais de uma solução, Sommerville (2011, p. 59) considera que~\cite{SOMMERVILLE1}:
-
-\begin{directcite}
-São declarações de serviços que o sistema deve fornecer, de como
-o sistema deve reagir a entradas específicas e de como o sistema
-deve se comportar em determinadas situações. Em alguns casos, os
-requisitos funcionais também podem explicitar o que o sistema não
-deve fazer.
-\end{directcite}
-
-De acordo com a análise realizada o sistema possui os seguintes requisitos funcionais.
+Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e nosso planejamento.
 
 \begin{enumerate}
-    \item Módulo de \textit{scraping}:
-    \begin{enumerate}
-        \item \textbf{baixar todo o texto de uma thread.} explicação 
-        \item baixar toda a mídia (fotos, vídeos) de uma thread.
-        \item baixar todas threads de um board.
-        \item reconhecer quando uma thread estiver fechada e marcá-la como tal para evitar desperdício de recursos.
-        \item monitorar threads por novos posts e baixá-los assim que postados.
-        \item monitorar boards por novos posts e adicioná-las a fila de monitoramento de threads assim que criadas.
-        \item converter os dados baixados em um formato padronizado.
-    \end{enumerate}
-    \item Módulo de \textit{networking}:
-    \begin{enumerate}
-        \item Requisitar conteúdo para outros peers.
-        \item Servir conteúdo baixado para outros peers.
-    \end{enumerate}
-    \item Módulo de criptografia:
-    \begin{enumerate}
-        \item Escolher em quais peers confio para baixar conteúdo que não esteja disponível no servidor do 4chan.
-    \end{enumerate}
-\end{enumerate}
-
-\subsection{Requisitos Não Funcionais}
-
-Sobre os requisitos não funcionais de uma solução, Sommerville (2011, p. 59) considera que~\cite{SOMMERVILLE1}:
-
-\begin{directcite}
-Os requisitos não funcionais, como o nome sugere, são requisitos
-que não estão diretamente relacionados com os serviços específicos
-oferecidos pelo sistema a seus usuários.
-Eles podem estar
-relacionados às propriedades emergentes do sistema, como
-confiabilidade, tempo de resposta e ocupação de área.
-\end{directcite}
-
-Em outras palavras, os requisitos não funcionais de um sistema representam as necessidades internas do sistema, necessidades estas que devem ser de compreensão do desenvolvedor, resumindo-se aos itens de segurança, usabilidade, confiabilidade, desempenho, hardware e software.
-De acordo com a análise realizada, o sistema possui os seguintes requisitos não funcionais:
-
-\begin{enumerate}
-    \item Ter desempenho em termos de \textit{response time} similares às redes que já estou acostumado.
-    \item Empregar um formato de dados base ado em padrões livres e \textit{open-source}.
-    \item Utilizar estruturas de dados que permitam downloads de granularidade pequena (não quero ter que baixar um \textit{board} inteiro se eu só quiser uma \textit{thread}).
-    \item Utilizar estruturas de dados que possam ser replicadas e atualizadas independentemente e paralelamente num rede peer-to-peer sem a necessidade de coordenação entre as réplicas nem uma entidade central (CRDTs SIGLA + CITAR \url{https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type}
-    \item O formato de dados deve evitar duplicação de conteúdo, a fim de economizar recursos de armazenamento.
-\end{enumerate}
-
-\section{Tecnologias que utilizaremos}
-
-Enfatizamos que o que guiou nossas escolhas de tecnologias foram os seguintes princípios:
-
-\begin{enumerate}
-    \item Comunidade ativa
-    \item É free e open-source software
-    \item Emprega formatos largamente difundidos
-    \item Funciona offline
-\end{enumerate}
-
-\subsection{\label{sec:ipfs}InterPlanetary File System}
-
-IPFS is a peer-to-peer distributed file system and hypermedia protocol~\cite{IPFS}.
-It provides a high throughput content-addressed block storage model, with content-addressed hyper links; all through its core data format called IPLD (InterPlanetary Linked Data) which is going to be further explained in subsection~\ref{subsec:ipld}.
-Juan Benet, IPFS's author, often describes it in his talks as a single BitTorrent swarm\ref{bittorent-swarm} with peers exchanging objects within a Git repository~\cite{github:ipfspaper}.
-This is simple, informal, and incomplete, but it is a powerful analogy that captures the essential mechanics of IPFS.
-\longfootnote[bittorent-swarm]{
-    Together, all peers (including seeds) sharing a torrent are called a swarm.
-}
-IPFS has no single point of failure, nodes do not need to trust each other, and all peers are independent.
-This section will now go into each relevant subsystem of IPFS.
-
-\subsubsection{\label{subsec:ipld}IPLD}
-
-IPLD is a common hash-chain format for distributed data structures that are universally addressable and linkable~\cite{github:ipld}.
-All IPFS data is stored and transferred in this format.
-Shortly said, it is a Merkle DAG where links between objects are cryptographic hashes of the objects' to which they point.
-An IPLD implementation offers developers the ability to traverse it using Unix-style paths when the Merkle DAG has named Merkle links, a data model to describe Merkle DAGs that is flexible, JSON-inspired, and self-describing, and standard serialization algorithms for different formats (e.g., JSON, CBOR, Protobuf, RDF).
-These structures allow us to do for data what URLs and links did for HTML web pages.
-It is also worth emphasizing that no feature is lost when using this data format.
-
-\subsubsection{\label{subsec:libp2p}libp2p}
-
-An ever-growing, fully modular, flexible, and extensible network stack; a collection of peer-to-peer protocols geared towards multi-platform interoperability with high-latency scenarios considered and easy upgrades in mind.
-Protocols for finding peers and connecting to them, and for finding content and transferring it.
-All while keeping it secure by not relying on centralized registers and third parties (allowing users to work offline or work on their LAN only), as well as enabling encrypted connections by default.
-
-One of the main goals of developing libp2p separately from IPFS is so that developers no longer need to reinvent the P2P networking wheel yet again in the near-future.
-Each big Web3.0 project like BitTorrent or DAT had to write their networking code mostly from scratch.
-Juan Benet often refers to IPFS as a thin waste protocol\ref{foot:thinWaist}; meaning the data structures are what needs to be standardized and everything else will communicate.
-\longfootnote[foot:thinWaist]{
-    The term “thin-waist” has been used because there is a vast diversity of applications and hardware that sit above and below the thin waist of universally shared control mechanisms (IPLD). Further details on network architecture and protocols can be found on this Caltech wiki page by Doyle et al~\cite{INTERNETWAIST} and, more formally, on a 2005 paper by Doyle as well on the robustness of the internet~\cite{INTERNETROBUSTNESS}.
-}
-
-\section{Implementação}
-
-Focaremos nossos esforços de implementação inteiramente no scraper, pois é o mais relevante para fins de demonstração do conceito e de contribuição open-source.
-Graças aos excelentes esforços da Protocol Labs no IPFS~\ref{label da seção que explica o ipfs}, poderemos nos apoiar nos ombros de gigantes no tocante a questão de \textit{networking} realizando apenas de integrações simples com a API da libp2p~\ref{subsec:libp2p} e da IPLD~\ref{subsec:ipld}.
-
-\subsection{Diagramas de arquitetura}
-
-\subsection{Estruturas de dados}
-
-\subsection{Cronograma}
-\begin{enumerate}
-% 	\item \label{ela-pro} Elaboração da proposta de TC.
-% 	\item \label{anI} Análise dos métodos de localização de regiões candidatas em imagens digitais e
-% 		reconhecimento de caracteres através de redes neurais.
-% 	\item \label{anII} Análise do funcionamento de OCR's já homologados em PC.
-% 	\item \label{anIII} Análise dos modelos implementados em hardware estudados no item III. 
-% 	\item \label{dI} Estudo do Linux Embarcado.
-% 	\item \label{dII}  Validação dos módulos de localização de regiões candidatas.
-% 	\item \label{dIII} Implementação do módulo de caputra de imagem. 
-% 	\item \label{esc-tcI}  Escrita do TC I.
-% 	\item \label{imI} Implementação da máquina de estados para controle da análise de imagem.
-% 	\item \label{imII} Desenvolvimento da camada de integração.
-% 	\item \label{imIII} Integração dos módulos que compõe o sistema.
-% 	\item \label{tec} Teste e correções.
-% 		\subitem Comparar desempenho entre hardware e software.
-% 	\item \label{esc-tcII} Escrita do TC II.
+	\item \label{cron:proposal} Elaboração da proposta de TC.
+	\item \label{cron:analiseI} Análise 
+	\item \label{cron:analiseII} Análise
+	\item \label{cron:analiseIII} Análise 
+	\item \label{cron:estudoI} Estudo
+	\item \label{cron:estudoII}  Estudo 
+	\item \label{cron:estudoIII} Estudo
+	\item \label{cron:esc-tcI}  Escrita do TC I.
+	\item \label{cron:imI} Implementação
+	\item \label{cron:imII} Implementação
+	\item \label{cron:imIII} Implementação
+	\item \label{cron:tec} Teste e correções.
+		\subitem correção 1
+		\subitem correção 2
+	\item \label{cron:esc-tcII} Escrita do TC II.
 \end{enumerate}
 
 \definecolor{midgray}{gray}{.5}
@@ -567,56 +475,36 @@ Graças aos excelentes esforços da Protocol Labs no IPFS~\ref{label da seção 
 	\centering
 		\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
-		&\multicolumn{5}{c|}{2021}\
+		&\multicolumn{5}{c|}{2021}\\
 		\hline
 		&MAR&ABR&MAI&JUN&JUL\\
 		\hline
-		\ref{ela-pro}&\cellcolor{midgray}&&&&\\
+		\ref{cron:proposal}&\cellcolor{midgray}&&&&\\
 		\hline
-		\ref{anI}&&\cellcolor{midgray}&&&\\
+		\ref{cron:analiseI}&&\cellcolor{midgray}&&&\\
 		\hline	
-		\ref{anII}&&\cellcolor{midgray}&&&\\
+		\ref{cron:analiseII}&&\cellcolor{midgray}&&&\\
 		\hline			
-		\ref{anIII}&&\cellcolor{midgray}&\cellcolor{midgray}&&\\
+		\ref{cron:analiseIII}&&\cellcolor{midgray}&\cellcolor{midgray}&&\\
 		\hline	
-		\ref{dI}&&&\cellcolor{midgray}&&&&&&&\\
+		\ref{cron:estudoI}&&&\cellcolor{midgray}&&\\
 		\hline
-		\ref{dII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\ref{cron:estudoII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
 		\hline	
-		\ref{dIII}&&&&\cellcolor{midgray}&\cellcolor{midgray}\\
+		\ref{cron:estudoIII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
 		\hline	
-		\ref{esc-tcI}&&&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}\\
+		\ref{cron:esc-tcI}&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}&&\\
 		\hline	
-		\ref{imI}&&&&&\cellcolor{midgray}\\
+		\ref{cron:imI}&&&&\cellcolor{midgray}&\\
+		\hline	
+		\ref{cron:imII}&&\cellcolor{midgray}&&&\\
+		\hline	
+		\ref{cron:imIII}&&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\hline	
+		\ref{cron:tec}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\hline	
+		\ref{cron:esc-tcII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}\\
 		\hline	
 		\end{tabular}
 \end{table}
 
-\chapter{Testes do sistema}
-
-\chapter{Validação com usuário}
-
-\chapter{Metodologia}
-
-A metodologia empregada para o planejamento e desenvolvimento do sistema deste trabalho de conclusão é o tradicional modelo cascata.
-Esse modelo funciona como um exemplo de um processo dirigido a planos, onde, em princípio deve-se planejar e programar todas as atividades do processo até a implementação e a manutenção do dele~\cite{SOMMERVILLE1}.
-
-Consiste numa sequência de fases em que cada fase dá suporte para a próxima, assim o produto de cada fase torna-se a entrada para a seguinte~\cite{BALTZAN1}, a fase inicial é definição de requisitos que busca estabelecer os serviços, restrições e metas do sistema, normalmente por meio de consultas com o usuário~\cite{SOMMERVILLE1}; a próxima fase projeto de sistema e software é a fase em que a identificação e descrição das abstrações fundamentais do sistema é realizada, alocando os requisitos do sistema por meio de uma arquitetura geral do sistema~\cite{SOMMERVILLE1}; a terceira fase implementação e teste unitário é a fase de desenvolvimento do projeto como um conjunto de programas ou unidades de programa, utilizando o teste unitário para verificar de cada unidade, tendo certeza de que a mesma cumpra sua especificação~\cite{SOMMERVILLE1}; a quarta fase integração e teste de sistema é quando as unidades criadas na fase anterior de maneira independente são integradas e testadas como um sistema único e completo, verificando se todos os requisitos estão sendo atendidos~\cite{SOMMERVILLE1}.
-Na fase final, Operação e manutenção, é o momento em que o sistema é de fato instalado e colocado em uso, é onde os eventuais erros que não apareceram anteriormente são resolvidos e, também, onde novos requisitos podem ser descobertos~\cite{SOMMERVILLE1}. 
-
-Por mais que essa seja uma metodologia não mais tão utilizada pelas empresas devido à sua característica de precisão extrema que não leva em consideração mudanças durante o desenvolvimento do projeto~\cite{BALTZAN1}, para este trabalho ela se torna uma boa escolha, pois se trata de um Trabalho de Conclusão de Curso, com um único desenvolvedor e prazos muito bem definidos.
-Devido à inexistência de um cliente e visando um público alvo, reuniões com o cliente são impossíveis e testes durante o desenvolvimento do trabalho com alguém que faça parte do público alvo não acontecerão facilmente, o modelo cascata se torna a melhor opção como metodologia de desenvolvimento do projeto. A partir de agora as fases alvo são: a codificação, os testes e a implementação/manutenção do sistema, concluindo assim o ciclo completo do modelo tradicional em cascata.
-
-\chapter{Conclusão}
-
-\section{Limitações}
-
-
-
-\section{Trabalhos futuros}
-
-\subsection{Sistema de governança}
-
-A definição dos formatos e estruturas de dados precisa ser gerida de forma aberta, transparente, e não-momnopolística.
-
-\subsection{}
