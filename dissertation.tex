@@ -5,8 +5,8 @@ Surgindo nos anos 2000 com os avanços na qualidade do serviço e inclusão mass
 Hoje evoluíram a ponto de representarem o maior tráfego da internet, com o mesmo \textit{Facebook} tendo alcançado a marca de 2 bilhões de usuários~\cite{Facebook2}~\cite{RedesSociais1}.
 
 A rápida ascensão das mídias sociais fizeram com que empresas, após pouco mais de uma década de sua criação, aparecessem nos rankings de empresas mais valiosas do mundo~\cite{RedesSociais2}.
-O sucesso das redes sociais se deve à inclusão de mais pessoas aos espaços de discussão, fazendo com que pequenos grupos pudessem influenciar e mudar grandes estruturas, formando um espaço de discussão com implicações globais~\cite{RedesSociais3}.
-Assim, as novas mídias sociais serviram de berço para importantes movimentos das primeiras décadas do século XXI como: a primavera árabe, protestos pré-copa no Brasil, \textit{Brexit} no Reino Unido, e em diversas eleições pelo mundo dando destaque para a eleição Estadunidense em 2016 e a Brasileira em 2018~\cite{RedesSociais4}.
+O sucesso das redes sociais se deve à inclusão de mais pessoas aos espaços de discussão, fazendo com que pequenos grupos pudessem influenciar e mudar grandes estruturas, formando um espaço de discussão com implicações globais~\cite{stadtfeld2020emergence}.
+Assim, as novas mídias sociais serviram de berço para importantes movimentos das primeiras décadas do século XXI como: a primavera árabe, protestos pré-copa no Brasil, \textit{Brexit} no Reino Unido, e em diversas eleições pelo mundo dando destaque para a eleição Estadunidense em 2016 e a Brasileira em 2018~\cite{gonzalez2016networked}.
 
 As novas mídias sociais definitivamente são um avanço se comparado às mídias tradicionais, visto que concedem a inclusão de mais pessoas aos espaços de discussão.
 Entretanto, possuem um problema em comum com suas antecessoras: o controle privado da discussão pública e com o adendo de ter este controle ainda mais concentrado em poucas entidades do que no modelo anterior.
@@ -18,11 +18,14 @@ Exemplos disso são a lei brasileira LGPD (Lei Geral de Proteção de Dados) e a
 Ambas são regulações que visam proteger os usuários e seus dados em relação aos que controlam esses dados, assim as empresas devem cumprir certas obrigações com seus usuários envolvendo multas em caso de descumprimento dessas obrigações.
 
 O problema inicial que iremos abordar será o da centralização, pois com este diversas outras adversidades surgem, incluindo a principal que é o controle dos dados dos usuários por corporações e o mau uso deles; fato esse que foi o gerador das leis de proteção de dados já citadas.
-Para evitar esse problema, propomos redes sociais descentralizadas, onde os usuários controlam seus dados e escolhem com quem compartilhar, estabelecendo uma plataforma que serve de meio de compartilhamento e não de concentração de informação.
+Para evitar esse problema, propomos redes sociais descentralizadas, onde os usuários controlem seus dados e escolham com quem compartilhar, estabelecendo uma plataforma que serve de meio de compartilhamento e não de concentração de informação.
 
-O modelo distribuído confere ao usuário (que é o criador de conteúdo das redes sociais) o poder sobre seus dados, podendo utilizá-los em outras plataformas evitando a duplicação de dados e facilitando a migração destes em novas plataformas, aumentando a disponibilidade visto que não dependerá de um servidor centralizado vulnerável a  ponto único de falha, e permitindo a utilização da aplicação mesmo que nodos não estejam disponíveis e também em redes de área local sem acesso a rede externa.
+O modelo distribuído conferirá ao usuário (que é o criador de conteúdo das redes sociais) o poder sobre seus dados, podendo utilizá-los em outras plataformas e migrá-los para novas plataformas.
+Ele também aumenta a disponibilidade (\textit{availability} do teorema CAP) visto que não dependerá de um servidor centralizado com um ponto único de falha.
+Além disso, permitirá a utilização da aplicação em redes de área local (LAN) sem acesso a rede externa e, mesmo que o nodo esteja offline (sem conexão de rede), ele ainda poderá \textit{browse} (navegar) o conteúdo que tiver disponível localmente (arquivado ou em cache).
 
-Um dos benefícios da arquitetura que será proposta é delimitar as funções do usuário e da plataforma, fazendo com que o modelo arquitetônico das redes sociais fique claro e não permita a utilização de dados de usuários por terceiros, invertendo os papéis conferindo ao usuário o poder e as obrigações em relação aos seus dados, e tornando a plataforma apenas no elo de ligação entre usuários.
+Um dos benefícios da arquitetura que será proposta é delimitar as funções do usuário e da plataforma, fazendo com que o modelo arquitetônico das redes sociais fique claro e possibilite o uso de mídias sociais sem a utilização de dados de usuários por terceiros.
+Conferindo ao usuário o poder e as obrigações em relação aos seus dados.
 
 Diante deste contexto, o objetivo geral deste trabalho é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
@@ -45,7 +48,7 @@ Como o inteiro objetivo de mídias sociais é o compartilhamento de conteúdo ge
 }
 Portanto, criar soluções novas e completamente separadas do tradicional está longe do ideal e, na nossa opinião, é prejudicial ao ecossistema, pois introduz mais fragmentação.
 
-Acreditamos que para possibilitar o alavancamento de um \textit{shift} no uso de mídias sociais controladas exclusivamente por terceiros para algo mais descentralizado seja necessária uma solução que faça bom uso do conteúdo já disponível nas mídias sociais atuais e, idealmente, que os interesses das, atualmente extremamente poderosas, empresas do espaço possam ser alinhados com os interesses dos usuários. 
+Acreditamos que, para possibilitar o alavancamento de um \textit{shift} no uso de mídias sociais controladas exclusivamente por terceiros para algo mais descentralizado, seja necessária uma solução que faça bom uso do conteúdo já disponível nas mídias sociais atuais e, idealmente, que os interesses das, atualmente extremamente poderosas, empresas do espaço possam ser alinhados com os interesses dos usuários. 
 
 \section{A importância da descentralização}
 
@@ -62,7 +65,7 @@ Quando falamos em centralização, evidenciamos nesse contexto de mídias sociai
 \end{enumerate*}
 
 \subsection{Censura}
-As redes sociais deram um falsa sensação de democracia na produção de conteúdo, pois saímos de um modelo da web 1.0 onde poucos produzem e muitos consomem para um ambiente da web 2.0 onde muitos produzem e muitos consomem. Porém a infraestrutura desse ambiente é controlada por empresas privadas que submetem os seus usuários a seus termos de uso, tiram proveito do conteúdo gerado por seus usuários e impõem arbitrariamente punições a opiniões contrárias a da empresa.
+As redes sociais deram uma falsa sensação de democracia na produção de conteúdo, pois saímos de um modelo da web 1.0 onde poucos produzem e muitos consomem para um ambiente da web 2.0 onde muitos produzem e muitos consomem. Porém a infraestrutura desse ambiente é controlada por empresas privadas que submetem os seus usuários a seus termos de uso, tiram proveito do conteúdo gerado por seus usuários e impõem arbitrariamente punições a opiniões contrárias a da empresa.
 
 O grande crédito e influência dados as plataformas sociais corporativas encobriram  problemas como a alta influência que as redes sociais sofrem dos poderes políticos e econômicos, já que a infraestrutura de comunicação e tecnologia é moldada por regimes regulatórios, acordos internacionais, ganancias corporativas e práticas intrusivas de vigilância. Assim segundo Sasha Costanza-Chock\cite{Censura1}:
 
@@ -70,7 +73,6 @@ O grande crédito e influência dados as plataformas sociais corporativas encobr
 \begin{directcite}
 'Em termos empresariais, "Conteúdo Gerado por Usuário" significa produto cultural gratuito disponível para monetização e contratos de licenciamento cruzado. "Participação" significa dados de usuário para minerar e vender para fins de propagandas e publicidade, e todo usuário ativo está sujeito a vigilância e censura.'
 \end{directcite}
-
 
 
 % nicolas
@@ -92,7 +94,7 @@ O grande crédito e influência dados as plataformas sociais corporativas encobr
 \subsection{Interesses}
 
 Teoria de jogos dita que, se atalhos existem para alcançar algum objetivo, jogadores encontrarão esse atalho e o explorarão.
-Por serem entidades privadas e terem controle incontestado das suas plataformas, na busca de alcançar seu objetivo-mór, a maximização dos lucros que se dão através dos usuários vendo e/ou clicando em anúncios, os game-theoretic shortcuts aqui são sobre
+Por serem entidades privadas e terem controle incontestado das suas plataformas, na busca de alcançar seu objetivo-mór, a maximização dos lucros que se dão através dos usuários vendo e/ou clicando em anúncios, os game-theoretic shortcuts envolvem:
 \begin{enumerate}
     \item abusar dos mecanismos de falsa recompensa  para nos manter engajados,
     \item adquirir competidores assim que se tornem uma ameaça (e.g., Facebook adquirindo WhatsApp, Instagram, LiveRail, Onavo, Redkix, e outras 83\footnote{\url{https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Facebook}} empresas menos conhecidas da área.
@@ -102,13 +104,13 @@ Por serem entidades privadas e terem controle incontestado das suas plataformas,
 Essas são apenas algumas das estratégias que podem ser empregadas (e na prática sempre são) quando os incentivos se desalinham.
 E eles só se desalinham porque a centralização torna isso possível concedendo poderes que nenhuma entidade única deveria ter sobre coisas muito valiosas como nossa atenção, nossos dados pessoais, nossas preferências, e nosso conteúdo.
 
-Acreditamos que, quando ``derrubarmos os muros'' desses \textit{walled gardens}\ref{foot:walled-gardens}, as corporações não terão escolha fora direcionar seus esforços a conquistar os usuários para usarem seus front-ends, pois graças aos dados descentralizados, a competição poderá surgir muito mais facilmente.
+Acreditamos que, quando ``derrubarmos os muros'' desses \textit{walled gardens}\ref{foot:walled-gardens}, as corporações não terão escolha fora direcionar seus esforços a conquistar os usuários para usarem suas interfaces gráficas, pois graças aos dados descentralizados, a competição poderá surgir muito mais facilmente.
 
 \longfootnote[foot:walled-gardens]{
     \textit{Walled gardens}~\cite{CLOSEDPLAT} se referem a plataformas tecnológicas que possuem barreiras artificiais levantadas por seus criadores com a intenção de dificultar que usuários migrem para uma plataforma competidora, talvez possibilitando um monopólio.
 }
 
-Desta forma, a questão de pesquisa que norteará este trabalho será: ``Como deverá ser a arquitetura de redes sociais que permitirá que a informação seja compartilhada?''
+Desta forma, a questão de pesquisa que norteará este trabalho será: ``Como podemos transicionar as mídias sociais atuais para um modelo mais descentralizado sem perdermos os usuários e o conteúdo delas?''
 
 A hipótese sobre a qual o trabalho está norteado é: ``As plataformas de mídias sociais mais usadas atualmente são centralizadas e por isso detêm o poder de ação sobre os dados dos usuários, utilizando esse controle para impor barreiras e manter seus usuários.''.
 
@@ -176,8 +178,8 @@ A extração pode ser feita através de diversas estratégias; as mais comuns~\c
 
 \section{Redes de computadores}
 
-Rede de computadores ou Rede de dados, é um conjunto de dois ou mais dispositivos eletrônicos de computação (ou módulos processadores ou nós da rede) interligados por um sistema de comunicação digital (ou link de dados), guiados por um conjunto de regras (protocolo de rede) para compartilhar entre si informação, serviços, e recursos físicos e lógicos[referencia].
-Nessa seção, abordaremos uma arquitetura de rede centralizada e uma descentralizada (Ponto-a-Ponto).
+Rede de computadores (ou rede de dados) é um conjunto de dois ou mais dispositivos eletrônicos de computação (ou módulos processadores ou nodos de uma rede) interligados por um sistema de comunicação digital (ou link de dados), guiados por um conjunto de regras (protocolo de rede) para compartilhar entre si informação, serviços, e recursos físicos e lógicos.
+Nessa seção, discorreremos sobre arquiteturas de redes centralizadas vs arquiteturas descentralizadas (ponto-a-ponto).
 
 \subsection{Redes centralizadas}
 
@@ -188,14 +190,14 @@ Assim caso o nodo central falhar toda a rede se torna inoperável.
 
 \subsection{Redes \textit{peer-to-peer}}
 
-São arquitetura de redes de computadores onde cada um dos pontos ou nós da rede funciona tanto como cliente quanto como servidor, permitindo compartilhamentos de serviços e dados sem a necessidade de um servidor central.
-Por não se basear em uma arquitetura cliente-servidor, onde apenas o servidor é responsável pela execução de todas as funções da rede, o P2P (Peer-to-Peer) tem uma enorme vantagem justamente por não depender de um servidor e de todos os nós estarem interconectados permitindo o acesso a qualquer nó de qualquer nó. 
+São arquitetura de redes de computadores onde cada um dos pontos ou nodos da rede funciona tanto como cliente quanto como servidor, permitindo compartilhamentos de serviços e dados sem a necessidade de um servidor central.
+Por não se basear em uma arquitetura cliente-servidor, onde apenas o servidor é responsável pela execução de todas as funções da rede, o P2P (Peer-to-Peer) tem uma enorme vantagem justamente por não depender de um servidor e de todos os nodos estarem interconectados permitindo o acesso a qualquer nodo de qualquer nodo. 
 Por esse motivo a rede tem uma elevada disponibilidade.%~\ref{cap disponibilidade}
 \begin{figure}[htb!]
 \centering\includegraphics[width=.65\textwidth]{fig/Centralized-vs-Decentralized-vs-Distributed-Networks.eps}
 \caption[Representação das arquiteturas de redes]
-        {\label{fig:tipos-de-redes}Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada 
-        (c) Distribuída~\cite{Imagem1} }
+        {\label{fig:tipos-de-redes}Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada (c) Distribuída~\cite{Imagem1}
+}
 \end{figure}
 %TODO verificar essa citação e achar .svg
 
@@ -208,9 +210,8 @@ Funções de \textit{hash} são usadas em muitas partes da criptografia e existe
 
 \begin{figure}[htb!]
 \centering
-\label{fig:função-hash}
 \includesvg[width = \textwidth]{fig/Cryptographic_Hash_Function.svg}
-\caption[Representação da entrada e saída de uma função de hash criptográfica]{
+\caption[Representação da entrada e saída de uma função de hash criptográfica]{\label{fig:função-hash}
     Uma função de hash criptográfica (especificamente, SHA-1) funcionando.
     Note que mesmo pequenas mudanças na sua entrada alteram drasticamente a saída do resultado, pelo chamado efeito avalanche.
     
@@ -337,42 +338,63 @@ A fim de que possamos formular soluções que mitiguem as principais desvantagen
 Seu proposito inicial foi superado e hoje é uma rede social com proposito mais geral do que o inicial,
 conta com a marca de dois bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}.
 Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o \textit{Facebook}\footnote{\url{https://www.facebook.com/}} ou até mesmo pelo próprio \textit{Facebook} censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
+
 \begin{figure}[htb!]
-\centering\includesvg[width = .2\textwidth]{fig/Facebook_icon.svg}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:twetch-profit}\textit{Facebook, Inc.}(original logo)~\cite{wiki:facebooklogo}}
+\centering
+\includesvg[width = .2\textwidth]{fig/Facebook_icon.svg}
+\caption[Facebook's logo]{\label{fig:facebook-icon}
+    \textit{Facebook, Inc.} (original logo) %nicolas citação estava incorreta "\cite{wiki:facebooklogo"
+}
 \end{figure}
 
-\section{4chan}
+\section{\textit{4chan}}
 
 É uma rede social que funciona como um quadro de avisos baseado em imagens, onde qualquer pessoa pode postar comentários e compartilhar imagens, usuários não precisam se cadastrar para participar de uma comunidade.
-Apesar do anonimato prometido, qualquer postagem tem que passar pelas regras do \textit{4chan}\footnote{\url{https://www.4chan.org/}} e podem ser deletadas a qualquer momento pela equipe de moderação~\cite{4chan1}.
+Apesar do anonimato prometido, qualquer postagem tem que passar pelas regras do 4chan\footnote{\url{https://www.4chan.org/}} e podem ser deletadas a qualquer momento pela equipe de moderação~\cite{4chan1}.
 Foi criado no ano de dois mil e três e alcançou a marca de mais de vinte milhões de acessos por mês. Não há cobrança pelo uso da rede social e a monetização é feita por propagandas no site~\cite{4chan2}.
+
 \begin{figure}[htb!]
-\centering\includesvg[width = .35\textwidth]{fig/4chan_logo.svg}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:twetch-profit}\textit{4chan} logo~\cite{4chanlogo}}
+\centering
+\includesvg[width = .4\textwidth]{fig/4chan_logo.svg}
+\caption[4chan's logo]{\label{fig:4chan-logo}
+    \textit{4chan's} logo.
+    
+    Fonte: \url{https://seeklogo.com/vector-logo/395964/4chan}
+}
 \end{figure}
+
 \section{Diaspora}
 
 É uma rede social descentralizada criada no ano de dois mil e dez, conta com mais de dois milhões de usuários e permite integração com outras redes sociais como \textit{Twitter}, \textit{Facebook}, e \textit{Tumblr}~\cite{Diaspora1}.
 O usuário tem controle sobre seus dados podendo baixar a qualquer momento todos os dados de texto e imagem que foram carregados na plataforma, permite a liberdade para escolher em qual servidor ficará seus dados, além da transparência por ser um software de código aberto licenciado sob a licença GNU AGPL (Affero General Public License)~\cite{Diaspora2}. 
 Uma das marcas da \textit{Diaspora}\footnote{\url{https://diasporafoundation.org/}} é a promessa de ser uma rede social resistente à censura devido a sua arquitetura descentralizada.
 Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}, porem por padrão não mantém anúncios, sendo a opção de adicionar propagandas dos usuários para a monetização de seus \textit{posts}.
+
 \begin{figure}[htb!]
-\centering\includesvg[width = .25\textwidth]{fig/Diaspora_logo.svg}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:twetch-profit}\textit{Diaspora} logo~\cite{diasporalogo}}
+\centering
+\includesvg[width = .25\textwidth]{fig/Diaspora_logo.svg}
+\caption[Diaspora's logo]{\label{fig:diaspora-logo}
+   \textit{Diaspora} logo
+    
+    Fonte: \url{https://www.iconfinder.com/icons/231175/social_social_media_square_logo_media_diaspora_icon}
+}
 \end{figure}
+
 \section{Bitstagram}
 
 É uma rede social de fotos que permite o usuário armazenar as fotos em uma \textit{blockchain} (com o tamanho de bloco consideravelmente grande como\textit{BCashSV}~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados), e quando necessário a aplicação lê as imagens na \textit{blockchains}.
 As fotos postadas no \textit{Bitstagram}\footnote{\url{https://bitstagram.bitdb.network/}} são imutáveis e são cobradas, esse é um fator que afasta os usuários visto que se a foto postada for a foto errada não terão como editar e ainda será cobrado, isso tira a naturalidade com que os usuários utilizam a rede social, sendo um problema se comparado aos seus concorrentes centralizados.
+
 \begin{figure}[htb!]
-\centering\includegraphics[width = .5\textwidth]{fig/bitstagram_logo.png}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:twetch-profit}\textit{Bitstagram} logo~\cite{bitstagramlogo}}
+\centering
+\includegraphics[width = .5\textwidth]{fig/bitstagram_logo.png}
+\caption[Bitstagram's logo]{\label{fig:bitstagram-logo}
+    \textit{Bitstagram}'s logo
+    
+    Fonte: \url{https://bitstagram.bitdb.network/}
+}
 \end{figure}
+
 \section{\textit{Twitch}}
 
 É uma rede social de transmissão de vídeo que surgiu em junho de 2011. 
@@ -380,32 +402,43 @@ O conteúdo da plataforma pode ser visto ao vivo ou sob demanda.
 Em dois mil e quinze a \textit{Twitch}\footnote{\url{https://www.twitch.tv/}} bateu a marca de mais de cem milhões de espectadores por mês~\cite{Twitch1}.
 Pela natureza do conteúdo ser ao vivo é garantido certa liberdade a censura, porém se algum ato violar a politica da plataforma o canal pode ser banido indefinidamente e todos as gravações do canal deletadas.
 A monetização da plataforma se da através de propagandas, inscrições e doações, sendo parte do dinheiro destinado ao canal e parte da própria \textit{Twitch}.
-\begin{figure}[htb!]
-\centering\includesvg[width = .3\textwidth]{fig/twitch_logo.svg}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:twetch-profit}\textit{Twitch} logo~\cite{diasporalogo}}
-\end{figure}
-\section{Memo}
 
-É uma aplicação mídia social similar ao \textit{Twitter}, armazena os dados dos seus usuário em \textit{blockchains} (com blocos de tamanho grande, neste caso o \textit{BCashABC}~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário dados permanentes e incensurável.
-Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchains}  tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
+\begin{figure}[htb!]
+\centering
+\includesvg[width = .3\textwidth]{fig/twitch_logo.svg}
+\caption[Twitch's logo]{\label{fig:twitch-logo}
+    \textit{Twitch}'s logo% "\cite{diasporalogo}" nicolas diaspora citado no twitch?
+}
+\end{figure}
+
+\section{\textit{Memo}}
+
+Memo\footnote{\url{https://memo.cash/}} é uma aplicação mídia social similar ao \textit{Twitter}, mas que armazena os dados dos seus usuário em uma \textit{blockchain} (com blocos de tamanho grande, neste caso o \textit{BCashABC}~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário posts permanentes e incensuráveis.
+Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchain} tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
+
 \begin{figure}[H]
-\centering\includegraphics[width=.55\textwidth]{fig/Memo.jpg}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:memo-protocol}Protocolo Memo~\cite{Memo1}}
+\centering
+\includegraphics[width=.55\textwidth]{fig/Memo.jpg}
+\caption[Protocolo Memo]{\label{fig:memo-protocol}
+    Protocolo Memo~\cite{Memo1}
+}
 \end{figure}
 
 \section{\textit{Twetch}}
-Assim como o \textit{Memo}\footnote{\url{https://memo.cash/}} é uma aplicação similar ao \textit{Twitter}, com arquitetura distribuída, que também utiliza \textit{blockchain} (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados) para armazenar os dados dos usuários.
 
-\textit{Twetch}\footnote{\url{https://twetch.app/}} promete eu seu site ser uma rede social onde o usuário é dono de seus dados e e ganha dinheiro pelo seu conteúdo sem interferência de terceiros, garante um sistema de chat completamente privado onde apenas acessível a quem o usuário der permissão, permitindo que seus dados sejam realmente apenas seus~\cite{Twetch1}.
+Assim como o \textit{Memo} é uma aplicação similar ao \textit{Twitter}, com arquitetura distribuída, que também utiliza \textit{blockchain} (com o tamanho de bloco consideravelmente grande como BCashSV~\cite{BTCSV} cujos blocos tinham limite de 128MB à época e agora têm 2GB com planos para serem ilimitados) para armazenar os dados dos usuários.
 
-A monetização é controlada pelo usuário que pode determinar quanto irá cobrar para interagirem com seu \textit{post} (veja figura \ref{fig:twetch-profit}), qualquer um pode comentar em qualquer \textit{post} porém a funcionalidade \textit{TrollToll} permite cobrar um valor maior de um usuário para interagir no seu \textit{post}, uma maneira de evitar usuários sem bloqueá-los. Essas funcionalidades de personalização de cobrança e anonimato dos dados, fizeram com que a rede social alcançasse a marca de um milhão de transações na \textit{blockchain} apenas dezoito meses após sua criação~\cite{Twetch2}. 
+\textit{Twetch}\footnote{\url{https://twetch.app/}} promete eu seu site ser uma rede social onde o usuário é dono de seus dados e ganha dinheiro pelo seu conteúdo sem interferência de terceiros, garante um sistema de chat completamente privado onde apenas acessível a quem o usuário der permissão, permitindo que seus dados sejam realmente apenas seus~\cite{Twetch1}.
+
+A monetização é controlada pelo usuário que pode determinar quanto irá cobrar para interagirem com seu \textit{post} (veja a figura~\ref{fig:twetch-profit}), qualquer um pode comentar em qualquer \textit{post}, porém a funcionalidade \textit{TrollToll} permite cobrar um valor maior de um usuário para interagir no seu \textit{post}, uma maneira de evitar usuários sem bloqueá-los.
+Essas funcionalidades de personalização de cobrança e anonimato dos dados, fizeram com que a rede social alcançasse a marca de um milhão de transações na \textit{blockchain} apenas dezoito meses após sua criação~\cite{Twetch2}. 
 
 \begin{figure}[htb!]
-\centering\includegraphics[width=.35\textwidth]{fig/profit.png}
-\caption%[This figure has a shorter caption now]%
-        {\label{fig:twetch-profit}Monetização no \textit{Twetch}~\cite{Twetch1}}
+\centering
+\includegraphics[width=.35\textwidth]{fig/profit.png}
+\caption[Monetização no Twetch]{
+    \label{fig:twetch-profit} Screenshot demonstrando a monetização no \textit{Twetch}~\cite{Twetch1}
+}
 \end{figure}
 
 \section{Comparativo}
@@ -468,7 +501,7 @@ Conveniente nos nossos olhos implica no uso de estruturas de dados auto-verifica
 \section{Rede de compartilhamento de dados peer-to-peer}
 
 Depender de livre associação dos usuários provavelmente condenaria o projeto a falhar.
-Logo, propomos a criação de um protocolo não somente de envio de arquivos, mas também de \textit{location tracking} (rastreamento de localizações) para permitir que um nó da rede descubra quais outros nós possuem algum item.
+Logo, propomos a criação de um protocolo não somente de envio de arquivos, mas também de \textit{location tracking} (rastreamento de localizações) para permitir que um nodo da rede descubra quais outros nodos possuem algum item.
 Algumas diretrizes gerais para a rede são:
 \begin{itemize}
     \item suportar grandes quantidades de arquivos (na escala de bilhões)
@@ -483,17 +516,17 @@ Algumas diretrizes gerais para a rede são:
 
 Um dos casos de uso centrais do nosso projeto é acoplar resistência à censura às mídias sociais.
 Para tal, precisamos de algum mecanismo que nos permita distinguir quais usuários são confiáveis o suficiente para baixarmos conteúdo que não esteja mais hospedado no provedor original (e.g., que tenha sido apagado dos servidores do Facebook).
-Sem empregar autoridades centrais, a única solução para consenso (confiança) global, num sistema distribuído com participantes desconhecidos, estabelecida são blockchains com \textit{cryptocurrencies} associadas como Bitcoin~\cite{bitcoin-paper}.
+Sem empregar autoridades centrais, a única solução para consenso (confiança) global, num sistema distribuído com participantes desconhecidos, estabelecida são blockchains com \textit{cryptocurrencies} associadas como Bitcoin~\cite{nakamoto2008bitcoin}.
 Utilizar uma blockchain já estabelecida, envolveria custos para aquisição dos tokens e implementar uma própria traria várias complicações e preocupações de segurança e complexidade.
 Então, seguindo o princípio KISS\footnote{``Keep It Simple, Stupid.'', \url{https://en.wikipedia.org/wiki/KISS_principle}}, optamos por uma solução customizada em que um grafo direcionado (uma rede, uma internet) de confiança emerge como consequência do design feito.
 Design esse que será explicado a seguir:
 
 \begin{itemize}
     \item Cada usuário pode criar um par de chaves criptográficas assimétricas para si
-    \item Cada usuário deverá também manter uma lista de chaves públicas dos nós em que ele confia
+    \item Cada usuário deverá também manter uma lista de chaves públicas dos nodos em que ele confia
     \item Cada usuário pode assinar as \textit{hashes} do conteúdo que ele disponibilizar para download
-    \item Deve ser mantida uma estrutura de dados (compartilhada para não onerar os nós a ponto de sacrificarmos a descentralização) que mapeie IDs de posts para \textit{hashes} endereçadoras da rede \textit{peer-to-peer}
-    \item Quando um usuário adicionar um nó confiável à sua lista de nós confiáveis, ele deve ser capaz de parametrizar um inteiro especificando a quantos níveis de indireção ele confia nesse nó (e.g., 0: apenas ele, 1: ele e os nós que ele confia, e assim por diante) 
+    \item Deve ser mantida uma estrutura de dados (compartilhada para não onerar os nodos a ponto de sacrificarmos a descentralização) que mapeie IDs de posts para \textit{hashes} endereçadoras da rede \textit{peer-to-peer}
+    \item Quando um usuário adicionar um nodo confiável à sua lista de nodos confiáveis, ele deve ser capaz de parametrizar um inteiro especificando a quantos níveis de indireção ele confia nesse nodo (e.g., 0: apenas ele, 1: ele e os nodos que ele confia, e assim por diante) 
 \end{itemize}
 
 Dadas essas premissas, vamos explicar agora o fluxo para um usuário download da rede \textit{peer-to-peer} um post hipotético que tenha sido apagado dos servidores oficiais da plataforma em questão.
@@ -502,10 +535,10 @@ Dadas essas premissas, vamos explicar agora o fluxo para um usuário download da
     \item Tentar acessar um post por sua ID
     \item Notar que ele foi apagado
     \item Query a rede com a ID do post para descobrir a \textit{hash} dele
-    \item Query a rede com a \textit{hash} para descobrir quais nós possuem esse post
-    \item Verificar se algum desses nós se encontra na minha lista de nós confiáveis
+    \item Query a rede com a \textit{hash} para descobrir quais nodos possuem esse post
+    \item Verificar se algum desses nodos se encontra na minha lista de nodos confiáveis
         \subitem Caso algum esteja, download dele.
-        \subitem Caso nenhum esteja, um aviso deve ser dado ao usuário perguntando se ele está disposto a download de um nó não-confiável.
+        \subitem Caso nenhum esteja, um aviso deve ser dado ao usuário perguntando se ele está disposto a download de um nodo não-confiável.
 \end{enumerate}
 
 \section{Consequências da quebra dos muros}
