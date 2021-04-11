@@ -42,9 +42,6 @@ Entretanto, a tecnologia para criar plataformas do tipo não apenas existe há a
 Como o inteiro objetivo de mídias sociais é o compartilhamento de conteúdo gerado e curado por usuários, o \textit{network-effect}\ref{foot:net-effect} é especialmente expressivo aqui.
 \longfootnote[foot:net-effect]{
     Em teoria econômica, o fenômeno em que o valor agregado a um bem ou serviço é proporcional ao número de usuários utilizando-o é chamado de efeito de rede~\cite{wiki:net-effect}, em referência às redes de teoria de redes do corpo teórico da matemática, onde o número de arestas de uma rede totalmente conectada cresce quadraticamente em função do número de vértices.
-    In economics, a network effect (also called network externality or demand-side economies of scale) is the phenomenon by which the value or utility a user derives from a good or service depends on the number of users of compatible products. Network effects are typically positive, resulting in a given user deriving more value from a product as other users join the same network. The adoption of a product by an additional user can be broken into two effects: an increase in the value to all other users ( "total effect") and also the enhancement of other non-users motivation for using the product ("marginal effect").[1]
-
-
 }
 Portanto, criar soluções novas e completamente separadas do tradicional está longe do ideal e, na nossa opinião, é prejudicial ao ecossistema, pois introduz mais fragmentação.
 
@@ -302,9 +299,17 @@ Praticamente, entretanto, usa-se funções de \textit{hash} criptográficas, poi
 
 Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
 
-\section{Objetivo gerais}
+\section{Objetivos gerais}
 
-O objetivo geral deste trabalho de conclusão é investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+% O objetivo geral deste trabalho de conclusão é investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+O objetivo geral deste trabalho de conclusão é three-fold.
+Firstly, to attempt to empower users over their data and over the way they want to interact with it (e.g., using a custom front-end to access one's Instagram DMs or a different recommendation algorithm for one's TikTok For You page).
+Secondly, to diminish the walled-garden-granted ``power'' social media platforms currently have over their users (e.g., hindering creators' reach because of their political opinions or making obscene changes to their apps' interfaces).
+And thirdly, (mostly as a consequence of the previous ones) to allow for much easier historical archiving efforts as content will be seldom lost\footnotemark.
+\footnotetext{
+    Because there will be control mechanisms (probably some sort of DHT) tracking what data each host/node has.
+    Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media.
+}
 
 \section{Objetivos específicos}
 
@@ -395,11 +400,16 @@ A monetização é controlada pelo usuário que pode determinar quanto irá cobr
 
 \section{Comparativo}
 
-Para a ilustrar a analise aqui feita, foi criada a tabela \ref{tab:tab1} onde separamos elementos que julgamos importantes da análise individual feita previamente nesse capítulo das mídias sociais atuais.
+Para ilustrar a análise aqui feita, foi criada a tabela \ref{tab:tab1} onde separamos elementos que julgamos importantes da análise individual feita previamente neste capítulo das mídias sociais atuais.
 
-Através das plataformas e dos elementos de comparação analisados na tabela \ref{tab:tab1}, podemos inferir que aplicações que tem sua arquitetura centralizada sofrem de problemas de censura inerentes à própria infraestrutura, mesmo as que não necessitam de cadastro para serem utilizadas, exemplo \textit{4chan}. Enquanto arquiteturas distribuídas que utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguem garantir total resistência à censura. Fica evidente que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los.    
+Através das plataformas e dos elementos de comparação analisados na tabela \ref{tab:tab1}, podemos inferir que aplicações que apresentaram na coluna arquitetura a característica centralizada  apresentam na coluna sensibilidade à censura que são sensíveis a  censura, sofrem de problemas de censura pois a arquitetura centralizada apresenta defeitos que facilitam a censura, por exemplo o ponto único de falha pois havendo um ponto na rede que concentra todos os dados e recursos da rede tendo o controle sobre esse ponto se é capaz de controlar todo o fluxo de dados da rede, facilitando a censura. Mesmo redes sociais que não necessitam de cadastro para serem utilizadas como \textit{4chan}, por ser centralizada apresentam vulnerabilidade à censura. 
 
-Outro elemento que pode se inferir a partir da análise, é que o modelo de monetização interfere no número de usuários, assim as redes sociais com o modelo \textit{pay-to-use} , apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades e não realizam cobrança direta ao usuário.
+Enquanto as redes sociais que apresentaram na coluna arquiteturas a característica de  distribuídas e utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguiram apresentar na coluna sensibilidade a censura total resistência à censura. Fica evidente que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los. Assim, por os dados estarem distribuídos pela rede exercer algum controle sobre eles fica dificultado pois um mesmo dado pode estar em vários nodos da rede, assim para exercer a mesma influência que no modelo centralizado necessita o controle de todos os nodos da rede. Outro aliado é o armazenamento de dados na \textit{blockchain}, pois armazenando os dados no formato de transações garante a autenticidade dos dados pela rede, assegurando também a imutabilidade dos dados.
+
+Outro elemento que pode se inferir a partir da análise, é que os resultados  da coluna monetização interferem nos resultados da coluna base de usuários, assim as redes sociais que apresentam o modelo \textit{pay-to-use}/\textit{pay and earn} , apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades, isso naturalmente se deve ao fato que cobrança diretas ao usuário aparentam ser mais intrusivas que publicidades pelo site, apresentando assim uma barreira de entrada. Outro dado relaciona a coluna de base de usuário é a relação com a coluna arquitetura, assim redes sociais que apresentam arquiteturas centralizadas contém mais usuários que as que apresentam arquiteturas distribuídas, isso se deve a dois fatores, o primeiro as redes sociais de arquitetura centralizada existem a mais tempo sendo amplamente difundidas nos anos dois mil, enquanto redes sociais distribuídas começam a surgir na segunda metade da década de dois mil e dez. O segundo fato é os já mencionados \textit{Walled gardens}, detendo o maior número de usuários por terem surgido primeiro as redes sociais centralizadas criam barreiras para evitar a migração de seus usuários para outras redes sociais, dificultando o surgimento e crescimento de redes sociais distribuídas.
+
+Assim concluímos a comparação, analisando que as redes sociais com arquitetura distribuída apresentam vantagens importantes se comparadas às que apresentam arquitetura centralizada, porém ainda não apresentam uma forma atrativa para atrair os usuários de plataformas centralizadas, seja por seus problemas na barreira de entrada com o modelo monetização, ou por barreiras impostas pelas outras plataformas para a migração de usuários, necessitando um modelo de transição gradual e amigável ao usuário.
+
 
 \begin{table}[H]
 \begin{center}
@@ -436,17 +446,22 @@ Bitstagram     &  pay-to-use              & Distribuída      & 10.2k & Resisten
 Propomos uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede \textit{peer-to-peer} e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
 Assim retirando o poder de ação sobre os dados, que hoje as corporações detentoras de mídia sociais populares têm, e distribuindo esse poder entre seus usuários.
 
-\section{Cenário ganha-ganha}
+\section{Consequências da quebra do muro}
+% \section{Cenário ganha-ganha}
 
-Usuários 
-Quando as corporações por trás das mídias sociais perderem o monopólio que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando seus interesses com os interesses dos usuários.
-Interesses que, atualmente, estão majoritariamente focados em tornar suas plataformas jardins com muros cada vez mais altos.
-Empresas com interesses alinhados com seus consumidores criam mercado eficientes. 
+Quando as corporações por trás das mídias sociais perderem o controle que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando  interesses com os  usuários.
+Interesses que, atualmente, estão majoritariamente focados em tornar suas plataformas jardins com muros cada vez mais altos, enquanto seus usuários querem apenas uma ferramenta eficiente e confortável para se comunicarem.
 Salientamos que nossa proposta vem com benefícios para as corporações que aproveitarão uma diminuição das suas obrigações e responsabilidades.
 Pois poderão, por exemplo, simplificar suas políticas de cumprimento das leis de proteção de dados regionais (LGPD, GDPR) e, uma vez que madura a rede peer-to-peer, poderão aproveitá-la como CDN (rede de entrega de conteúdo do inglês \textit{content delivery network}).
+Ainda, os usuários beneficiar-se-ão não somente da foco redirecionado da empresa original atualizando sua interface com a melhor UX possível, mas também do saudável ecossistema de competição que surgirá para a criação de interfaces alternativas e aglomerativas (e.g., combinando o feed de stories do Instagram e do Facebook, o feed de fleets do Twitter, e o de status do WhatsApp num só).
 
-Para que haja real descentralização dos dados, é necessário que estruturas de dados sejam escolhidas e padrões e protocolos criados e seguidos.
-O primeiro desafio é atravessar o muro, facilitar a migração dos dados do usuários de um plataforma centralizada da web 2.0 para uma descentralizada da web 3.0, para isso scrapers fáceis de usar
+\section{Web-scrapers como estratégia de extração de dados não-consensual}
+
+O primeiro desafio é ``atravessar o muro'', i.e., facilitar a migração do conteúdo dos usuários de um plataforma centralizada da web 2.0 para uma descentralizada da web 3.0 sem dependermos da boa vontade das corporações que as controlam.
+Para isso propomos que se desenvolva web-scrapers open-source para que usuários possam \textit{download} conteúdo facilmente.
+Ademais, para que haja real descentralização dos dados, é necessário que estruturas de dados sejam escolhidas e padrões e protocolos criados e seguidos. 
+
+\section{}
 
 \chapter{Cronograma}
 
