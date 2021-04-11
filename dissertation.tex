@@ -71,7 +71,7 @@ O grande crédito e influência dados as plataformas sociais corporativas encobr
 
 
 \begin{directcite}
-'Em termos empresariais, "Conteúdo Gerado por Usuário" significa produto cultural gratuito disponível para monetização e contratos de licenciamento cruzado. "Participação" significa dados de usuário para minerar e vender para fins de propagandas e publicidade, e todo usuário ativo está sujeito a vigilância e censura.'
+Em termos empresariais, ``Conteúdo Gerado por Usuário'' significa produto cultural gratuito disponível para monetização e contratos de licenciamento cruzado. ``Participação'' significa dados de usuário para minerar e vender para fins de propagandas e publicidade, e todo usuário ativo está sujeito a vigilância e censura.
 \end{directcite}
 
 
@@ -95,12 +95,14 @@ O grande crédito e influência dados as plataformas sociais corporativas encobr
 
 Teoria de jogos dita que, se atalhos existem para alcançar algum objetivo, jogadores encontrarão esse atalho e o explorarão.
 Por serem entidades privadas e terem controle incontestado das suas plataformas, na busca de alcançar seu objetivo-mór, a maximização dos lucros que se dão através dos usuários vendo e/ou clicando em anúncios, os game-theoretic shortcuts envolvem:
+
 \begin{enumerate}
     \item abusar dos mecanismos de falsa recompensa  para nos manter engajados,
     \item adquirir competidores assim que se tornem uma ameaça (e.g., Facebook adquirindo WhatsApp, Instagram, LiveRail, Onavo, Redkix, e outras 83\footnote{\url{https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Facebook}} empresas menos conhecidas da área.
     \item criar limitações artificias de interoperabilidade (estilo \textit{vendor lock-in}) para que um usuário não consiga utilizar serviços de terceiros ou próprios em conjunto, e
     \item usar os dados dos usuários como ``reféns'' para segurá-los em suas plataformas (e.g., não tendo como exportar os dados).
 \end{enumerate}
+
 Essas são apenas algumas das estratégias que podem ser empregadas (e na prática sempre são) quando os incentivos se desalinham.
 E eles só se desalinham porque a centralização torna isso possível concedendo poderes que nenhuma entidade única deveria ter sobre coisas muito valiosas como nossa atenção, nossos dados pessoais, nossas preferências, e nosso conteúdo.
 
@@ -112,7 +114,7 @@ Acreditamos que, quando ``derrubarmos os muros'' desses \textit{walled gardens}\
 
 Desta forma, a questão de pesquisa que norteará este trabalho será: ``Como podemos transicionar as mídias sociais atuais para um modelo mais descentralizado sem perdermos os usuários e o conteúdo delas?''
 
-A hipótese sobre a qual o trabalho está norteado é: ``As plataformas de mídias sociais mais usadas atualmente são centralizadas e por isso detêm o poder de ação sobre os dados dos usuários, utilizando esse controle para impor barreiras e manter seus usuários.''.
+A hipótese sobre a qual o trabalho está norteado é: ``As plataformas de mídias sociais mais usadas atualmente são centralizadas e por isso detêm o poder de ação sobre os dados dos usuários, utilizando esse controle para impor barreiras e manter seus usuários.''
 
 
 % O esgotamento do modelo de arquitetura de software da Web 2.0 na figura das redes sociais torna nítida a necessidade de se propôr, não apenas novas arquiteturas, mas também, modelos de transição.
@@ -132,8 +134,10 @@ O modelo de fases da web visa explicar as evoluções significativas da web, no 
 \subsection{Web 1.0}
 
 Na primeira fase da Web, Web 1.0, os sites contém conteúdo estático e não são interativos com o usuário.
-O surgimento da web foi marcado pela centralização da produção de conteúdo. 
-Ainda com poucos usuários, e esses em sua grande maioria fazendo um uso bastante técnico da rede, predominavam os sites de empresas e instituições recheados de páginas “em construção”. Evoluindo de suas raízes de uso militar e universitário, a internet começou a caminhar e tomar forma diante das necessidades das pessoas. Essa foi a era do e-mail, dos motores de busca simplistas e uma época onde todo site tinha uma seção de links recomendados.
+O surgimento da web foi marcado pela centralização da produção de conteúdo~\cite{Web31}. 
+Ainda com poucos usuários, e esses em sua grande maioria fazendo um uso bastante técnico da rede, predominavam os sites de empresas e instituições recheados de páginas ``em construção''.
+Evoluindo de suas raízes de uso militar e universitário, a internet começou a caminhar e tomar forma diante das necessidades das pessoas.
+Essa foi a era do e-mail, dos motores de busca simplistas e uma época onde todo site tinha uma seção de links recomendados~\cite{Web31}.
 
 O usuário era apenas responsável por navegar e localizar conteúdo relevante, agindo predominantemente de modo passivo, num processo onde poucos produzem e muitos consomem.
 A novidade foi a democratização do acesso à informação.
@@ -150,7 +154,7 @@ A novidade da Web 2.0 foi a democratização da produção de informação.
 \subsection{Web 3.0}
 
 Na terceira fase, Web 3.0, será adicionado o poder de alta personalização dos dados da web por parte do usuário, promovendo a democratização da capacidade de ação e conhecimento, o que anteriormente era apenas acessível a companhias e governos.
-O termo Web 3.0 foi criado pelo jornalista John Markoff, do New York Times, baseado na evolução do termo Web 2.0 criado por O’Really em 2004~\cite{Web32}. Outras denominações desse mesmo momento são ``Web Semântica'' ou ``Web Inteligente''.
+O termo Web 3.0 foi criado pelo jornalista John Markoff, do New York Times, baseado na evolução do termo Web 2.0 criado por O’Really em 2004~\cite{Web32}. Algumas evoluções desse momento poderão ser a ``Web Semântica'' ou a ``Web Inteligente''.
 
 Essa era da internet permite a conexão de usuários até mesmo fora do resto da web, permitindo o agrupamento de conteúdo na web de modo a contextualizar a informação e agrupá-la mais eficiente e rapidamente.
 
@@ -164,7 +168,8 @@ A extração pode ser feita através de diversas estratégias; as mais comuns~\c
 \begin{itemize}
     \item \textbf{HTML parsing} consiste em analisar a estrutura de um HTML (\textit{Hypertext Markup Language}), identificar elementos parecidos e então extrair os dados de forma automatizada. 
     Essa técnica é melhor utilizada com páginas HTML com estruturas similares.
-    \item \textbf{DOM parsing} uma evolução da técnica de \textit{HTML parsing}, utiliza-se muito o CSS (Cascading Stylesheets) e o \textit{JavaScript} para  realizar a extração. O uso dessa técnica revela novas formas de endereçar partes da página.
+    \item \textbf{DOM parsing} uma evolução da técnica de \textit{HTML parsing}, utiliza-se muito o CSS (Cascading Stylesheets) e o \textit{JavaScript} para  realizar a extração.
+    O uso dessa técnica revela novas formas de endereçar partes da página.
     \item \textbf{XPath} (XML Path Language) funciona de modo similar aos endereçamentos da técnica de \textit{DOM parsing}.
     O nome sugere o uso para documentos XML (XML Path Language).
     Porém também pode ser utilizado para documentos HTML.
@@ -178,34 +183,37 @@ A extração pode ser feita através de diversas estratégias; as mais comuns~\c
 
 \section{Redes de computadores}
 
-Rede de computadores (ou rede de dados) é um conjunto de dois ou mais dispositivos eletrônicos de computação (ou módulos processadores ou nodos de uma rede) interligados por um sistema de comunicação digital (ou link de dados), guiados por um conjunto de regras (protocolo de rede) para compartilhar entre si informação, serviços, e recursos físicos e lógicos.
+Rede de computadores (ou rede de dados) é um conjunto de dois ou mais dispositivos eletrônicos de computação (ou módulos processadores ou nodos de uma rede) interligados por um sistema de comunicação digital (ou link de dados), guiados por um conjunto de regras (protocolo de rede) para compartilhar entre si informação, serviços, e recursos físicos e lógicos~\cite{wiki:redecomputadores}.
 Nessa seção, discorreremos sobre arquiteturas de redes centralizadas vs arquiteturas descentralizadas (ponto-a-ponto).
 
 \subsection{Redes centralizadas}
 
 São arquitetura de redes de computadores que visam centralizar o acesso a dados e serviços.
-Assim todos os outros nodos da rede dependem de um nodo central que controla todos os recursos da rede.
-Esse tipo de rede sofre do ponto único de falha ou ponto crítico de falha é uma tradução vinda da língua inglesa da expressão \textit{Single Point of Failure} para designar um local num sistema informático que, caso falhe, provoca a falha de todo o sistema.
+Assim todos os outros nodos da rede dependem de um nodo central que controla todos os recursos da rede.~\cite{wiki:modelorede}
+Esse tipo de rede sofre do ponto único de falha ou ponto crítico de falha é uma tradução vinda da língua inglesa da expressão \textit{Single Point of Failure} para designar um local num sistema informático que, caso falhe, provoca a falha de todo o sistema.~\cite{wiki:modelorede}
 Assim caso o nodo central falhar toda a rede se torna inoperável.
 
 \subsection{Redes \textit{peer-to-peer}}
 
-São arquitetura de redes de computadores onde cada um dos pontos ou nodos da rede funciona tanto como cliente quanto como servidor, permitindo compartilhamentos de serviços e dados sem a necessidade de um servidor central.
-Por não se basear em uma arquitetura cliente-servidor, onde apenas o servidor é responsável pela execução de todas as funções da rede, o P2P (Peer-to-Peer) tem uma enorme vantagem justamente por não depender de um servidor e de todos os nodos estarem interconectados permitindo o acesso a qualquer nodo de qualquer nodo. 
-Por esse motivo a rede tem uma elevada disponibilidade.%~\ref{cap disponibilidade}
+São arquitetura de redes de computadores onde cada um dos pontos ou nodos da rede funciona tanto como cliente quanto como servidor, permitindo compartilhamentos de serviços e dados sem a necessidade de um servidor central~\cite{wiki:modelorede}.
+Por não se basear em uma arquitetura cliente-servidor, onde apenas o servidor é responsável pela execução de todas as funções da rede, o P2P (Peer-to-Peer) tem uma enorme vantagem justamente por não depender de um servidor e de todos os nodos estarem interconectados permitindo o acesso a qualquer nodo de qualquer nodo~\cite{wiki:modelorede}.
+Por esse motivo a rede tem uma elevada disponibilidade.%~\ref{CAP disponibilidade}
+
 \begin{figure}[htb!]
-\centering\includegraphics[width=.65\textwidth]{fig/Centralized-vs-Decentralized-vs-Distributed-Networks.eps}
-\caption[Representação das arquiteturas de redes]
-        {\label{fig:tipos-de-redes}Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada (c) Distribuída~\cite{Imagem1}
-}
+\centering
+\includegraphics[width=\textwidth]{fig/Centralized-vs-Decentralized-vs-Distributed-Networks.eps}
+\caption[Representação das arquiteturas de redes]{\label{fig:tipos-de-redes}
+    Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada (c) Distribuída~\cite{Imagem1}
+}%TODO verificar essa citação e achar .svg
 \end{figure}
-%TODO verificar essa citação e achar .svg
+
 
 \section{Funções de resumo \textit{hash} criptográficas}
 
 Uma função de \textit{hash} é uma função determinística que tem como objetivo ``embaralhar'' e sumarizar a entrada.
 Frequentemente, o objetivo dessas funções é, dado uma entrada arbitrária de comprimento indefinido, gerar uma saída de comprimento fixo, como você pode ver na figura~\ref{fig:função-hash}.
-Para tal, utiliza-se algum dos modos de operação de cifras de blocos\footnote{\url{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}}.
+Note que mesmo pequenas mudanças na sua entrada alteram drasticamente a saída do resultado, pelo chamado efeito avalanche.
+Para tal, utiliza-se algum dos modos de operação de cifras de blocos~\cite{wiki:cifras}.
 Funções de \textit{hash} são usadas em muitas partes da criptografia e existem muitos tipos diferentes de funções de \textit{hash}, cada um com diferentes propriedades de segurança~\cite{HASH1}.
 
 \begin{figure}[htb!]
@@ -213,8 +221,7 @@ Funções de \textit{hash} são usadas em muitas partes da criptografia e existe
 \includesvg[width = \textwidth]{fig/Cryptographic_Hash_Function.svg}
 \caption[Representação da entrada e saída de uma função de hash criptográfica]{\label{fig:função-hash}
     Uma função de hash criptográfica (especificamente, SHA-1) funcionando.
-    Note que mesmo pequenas mudanças na sua entrada alteram drasticamente a saída do resultado, pelo chamado efeito avalanche.
-    
+
     Fonte: \url{https://commons.wikimedia.org/wiki/File:Cryptographic_Hash_Function.svg}
 }
 \end{figure}
@@ -246,20 +253,20 @@ Aqui estão alguns exemplos de usos das funções \textit{hash} criptográficas:
 
 Uma importante aplicação desses \textit{hashes} de segurança é na verificação da integridade de arquivos e mensagens.
 Determinar se qualquer alteração foi feita a uma mensagem (ou um arquivo).
-Por essa razão, muitos algoritmos de assinatura digital apenas confirmam a autenticidade do resumo de uma mensagem para ser ``autenticado''.
+Por essa razão, muitos algoritmos de assinatura digital apenas confirmam a autenticidade do resumo de uma mensagem para ser ``autenticado''.~\cite{wiki:hashapp1}
 Verificar a autenticidade do resumo de uma mensagem é considerado prova de que a mensagem em si é autêntica.
 
 \subsubsection{Verificação de senha}
 
 Uma aplicação relacionada é a verificação de senha. 
-Armazenar todas as senhas de um usuário como puro texto pode resultar em uma quebra massiva de segurança caso o arquivo de senha seja comprometido.
+Armazenar todas as senhas de um usuário como puro texto pode resultar em uma quebra massiva de segurança caso o arquivo de senha seja comprometido.~\cite{wiki:hashapp2}
 Uma maneira de reduzir esse perigo é apenas armazenar o resumo de cada senha.
 Para autenticar um usuário, calcula-se o resumo da senha fornecida pelo usuário e o compara-se ao resumo armazenado.
 Note que essa abordagem impede que a senha original seja recuperada se esquecida ou perdida, e terá que ser substituída por uma nova. 
 
 \subsubsection{Identificador de arquivo}
 
-Um resumo de mensagem também pode servir como um identificador confiável de arquivo; diversos sistemas de gerenciadores de código fonte, como \textit{Git}, \textit{Mercurial}, e \textit{Monotone}, usam \textit{checksums} de vários tipos de conteúdo (conteúdo de arquivo, árvores de diretório, informação ancestral, etc.) para identificá-los unicamente.
+Um resumo de mensagem também pode servir como um identificador confiável de arquivo; diversos sistemas de gerenciadores de código fonte, como \textit{Git}, \textit{Mercurial}, e \textit{Monotone}, usam \textit{checksums} de vários tipos de conteúdo (conteúdo de arquivo, árvores de diretório, informação ancestral, etc.) para identificá-los unicamente.~\cite{wiki:hashapp3}
 \textit{Hashes} são usados para identificar arquivos em redes de compartilhamento de arquivos.
 Tais \textit{hashes} de arquivo costumam aparecer no começo de listas de \textit{hashes} ou em árvores de \textit{hashes} o que propicia ainda mais benefícios.
 
@@ -305,26 +312,16 @@ Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
 
 \section{Objetivos gerais}
 
-% O objetivo geral deste trabalho de conclusão é investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
-O objetivo geral deste trabalho de conclusão é three-fold.
-Firstly, to attempt to empower users over their data and over the way they want to interact with it (e.g., using a custom front-end to access one's Instagram DMs or a different recommendation algorithm for one's TikTok For You page).
-Secondly, to diminish the walled-garden-granted ``power'' social media platforms currently have over their users (e.g., hindering creators' reach because of their political opinions or making obscene changes to their apps' interfaces).
-And thirdly, (mostly as a consequence of the previous ones) to allow for much easier historical archiving efforts as content will be seldom lost, because there will be control mechanisms (probably some sort of DHT) tracking what data each host/node has.
-Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media\footnotemark.
-\footnotetext{
-    Arquivos digitais com registros de terem existido, mas que nenhuma cópia pode ser encontrada mais.
-    Projeto que cataloga famous lost media: \url{https://lostmediawiki.com/Home}
-}
-
+O objetivo geral deste trabalho de conclusão é investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
 \section{Objetivos específicos}
 
 Para atingir o objetivo geral, foram estabelecidos os seguintes objetivos específicos:
 
 \begin{itemize}
-    \item mapear e identificar vantagens e desvantagens do funcionamento da arquitetura centralizada das mídias sociais da Web 2.0.
+    \item mapear e identificar vantagens e desvantagens do funcionamento das mídias sociais existentes.
     \item propor uma arquitetura descentralizada baseada na Web 3.0.
-    \item desenvolver um protótipo para a migração da arquitetura através de um sistema que nos permita transformá-la de mídias sociais existentes da Web 2.0 em mídias sociais descentralizadas da Web 3.0.
+    \item desenvolver um conjunto de ferramentas para auxiliar na migração da arquitetura das mídias sociais existentes da Web 2.0 em mídias sociais descentralizadas da Web 3.0.
 \end{itemize}
 
 \chapter{Análise das mídias sociais atuais}
@@ -341,7 +338,7 @@ Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja p
 
 \begin{figure}[htb!]
 \centering
-\includesvg[width = .2\textwidth]{fig/Facebook_icon.svg}
+\includesvg[height = 0.15\textheight]{fig/Facebook_icon.svg}
 \caption[Facebook's logo]{\label{fig:facebook-icon}
     \textit{Facebook, Inc.} (original logo) %nicolas citação estava incorreta "\cite{wiki:facebooklogo"
 }
@@ -355,7 +352,7 @@ Foi criado no ano de dois mil e três e alcançou a marca de mais de vinte milh�
 
 \begin{figure}[htb!]
 \centering
-\includesvg[width = .4\textwidth]{fig/4chan_logo.svg}
+\includesvg[height = 0.15\textheight]{fig/4chan_logo.svg}
 \caption[4chan's logo]{\label{fig:4chan-logo}
     \textit{4chan's} logo.
     
@@ -372,7 +369,7 @@ Permite a monetização do seu conteúdo através de propagandas usando a rede \
 
 \begin{figure}[htb!]
 \centering
-\includesvg[width = .25\textwidth]{fig/Diaspora_logo.svg}
+\includesvg[height = 0.15\textheight]{fig/Diaspora_logo.svg}
 \caption[Diaspora's logo]{\label{fig:diaspora-logo}
    \textit{Diaspora} logo
     
@@ -405,7 +402,7 @@ A monetização da plataforma se da através de propagandas, inscrições e doa�
 
 \begin{figure}[htb!]
 \centering
-\includesvg[width = .3\textwidth]{fig/twitch_logo.svg}
+\includesvg[height = 0.15\textheight]{fig/twitch_logo.svg}
 \caption[Twitch's logo]{\label{fig:twitch-logo}
     \textit{Twitch}'s logo% "\cite{diasporalogo}" nicolas diaspora citado no twitch?
 }
@@ -418,7 +415,7 @@ Essa imutabilidade é muito interessante para garantir a liberdade e o livre arb
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.55\textwidth]{fig/Memo.jpg}
+\includegraphics[width=\textwidth]{fig/Memo.jpg}
 \caption[Protocolo Memo]{\label{fig:memo-protocol}
     Protocolo Memo~\cite{Memo1}
 }
@@ -433,19 +430,19 @@ Assim como o \textit{Memo} é uma aplicação similar ao \textit{Twitter}, com a
 A monetização é controlada pelo usuário que pode determinar quanto irá cobrar para interagirem com seu \textit{post} (veja a figura~\ref{fig:twetch-profit}), qualquer um pode comentar em qualquer \textit{post}, porém a funcionalidade \textit{TrollToll} permite cobrar um valor maior de um usuário para interagir no seu \textit{post}, uma maneira de evitar usuários sem bloqueá-los.
 Essas funcionalidades de personalização de cobrança e anonimato dos dados, fizeram com que a rede social alcançasse a marca de um milhão de transações na \textit{blockchain} apenas dezoito meses após sua criação~\cite{Twetch2}. 
 
-\begin{figure}[htb!]
+\begin{figure}[H]
 \centering
-\includegraphics[width=.35\textwidth]{fig/profit.png}
-\caption[Monetização no Twetch]{
-    \label{fig:twetch-profit} Screenshot demonstrando a monetização no \textit{Twetch}~\cite{Twetch1}
+\includegraphics[width=0.75\textwidth]{fig/profit.png}
+\caption[Monetização no Twetch]{\label{fig:twetch-profit}
+    Screenshot demonstrando a monetização no \textit{Twetch}~\cite{Twetch1}
 }
 \end{figure}
 
 \section{Comparativo}
 
-Para ilustrar a análise aqui feita, foi criada a tabela \ref{tab:tab1} onde separamos elementos que julgamos importantes da análise individual feita previamente neste capítulo das mídias sociais atuais.
+Nesta seção iremos fazer comparações entre as rede sociais analisada previamente neste capítulo, para isso utilizaremos a tabela \ref{tab:social-media-comparison} para ilustrar a análise aqui feita e destacar elementos que julgamos importantes da análise individual feita das mídias sociais atuais.
 
-Através das plataformas e dos elementos de comparação analisados na tabela \ref{tab:tab1}, podemos inferir que aplicações que apresentaram na coluna arquitetura a característica centralizada  apresentam na coluna sensibilidade à censura que são sensíveis a  censura, sofrem de problemas de censura pois a arquitetura centralizada apresenta defeitos que facilitam a censura, por exemplo o ponto único de falha pois havendo um ponto na rede que concentra todos os dados e recursos da rede tendo o controle sobre esse ponto se é capaz de controlar todo o fluxo de dados da rede, facilitando a censura. Mesmo redes sociais que não necessitam de cadastro para serem utilizadas como \textit{4chan}, por ser centralizada apresentam vulnerabilidade à censura. 
+Através das plataformas e dos elementos de comparação analisados na tabela \ref{tab:social-media-comparison}, podemos inferir que aplicações que apresentaram na coluna arquitetura a característica centralizada  apresentam na coluna sensibilidade à censura que são sensíveis a  censura, sofrem de problemas de censura pois a arquitetura centralizada apresenta defeitos que facilitam a censura, por exemplo o ponto único de falha pois havendo um ponto na rede que concentra todos os dados e recursos da rede tendo o controle sobre esse ponto se é capaz de controlar todo o fluxo de dados da rede, facilitando a censura. Mesmo redes sociais que não necessitam de cadastro para serem utilizadas como \textit{4chan}, por ser centralizada apresentam vulnerabilidade à censura. 
 
 Enquanto as redes sociais que apresentaram na coluna arquiteturas a característica de  distribuídas e utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguiram apresentar na coluna sensibilidade a censura total resistência à censura. Fica evidente que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los. Assim, por os dados estarem distribuídos pela rede exercer algum controle sobre eles fica dificultado pois um mesmo dado pode estar em vários nodos da rede, assim para exercer a mesma influência que no modelo centralizado necessita o controle de todos os nodos da rede. Outro aliado é o armazenamento de dados na \textit{blockchain}, pois armazenando os dados no formato de transações garante a autenticidade dos dados pela rede, assegurando também a imutabilidade dos dados.
 
@@ -455,41 +452,46 @@ Assim concluímos a comparação, analisando que as redes sociais com arquitetur
 
 
 \begin{table}[H]
-\begin{center}
-\caption{\label{tab:tab1}Tabela Comparativa das Redes Sociais}
-%\rowcolors{4}{black!10}{black!15}
-\setlength{\tabcolsep}{.25cm}
-\resizebox{1.0\linewidth}{!}{
-\begin{tabular}
-{ r*{2}{>{\columncolor[gray]{0.95}}c>{\columncolor[gray]{1.0}}c}}
-\noalign{\smallskip}
-\hline
-\multirow{1}{*}{\textbf{Rede Social}} & {\textbf{Monetização}} & {\textbf{Arquitetura}} & {\textbf{Base de Usuários}} & {\textbf{Sensibilidade à Censura}}
-\tabularnewline
-\hline
-Facebook       &  Anúncios intrusivos     & Centralizada     & 2.7B  & Extremamente Sensível à Censura        
-\tabularnewline 
-Twitch         &  Anúncios intrusivos     & Centralizada     & 100M  &  Sensível à Censura 
-\tabularnewline 
-4Chan          &  Anúncios não-intrusivos & Centralizada     & 20M   & Sensível à Censura
-\tabularnewline 
-Diaspora       &  Anúncios opcionais      & Descentralizada  & 756k~\cite{Diaspora3} &  Relativamente Sensível a Censura
-\tabularnewline 
-Memo           &  pay-to-use              & Distribuída      & 20.5k &  Resistente à Censura   
-\tabularnewline 
-Twetch         &  pay and earn            & GUI centr., dados distr. & 16.9k  &  Resistente à Censura*       
-\tabularnewline
-Bitstagram     &  pay-to-use              & Distribuída      & 10.2k & Resistente à Censura
-\end{tabular}}
-\end{center}
+    \begin{center}
+        %\rowcolors{4}{black!10}{black!15}
+        \setlength{\tabcolsep}{.25cm}
+        \resizebox{1.0\linewidth}{!}{
+            \begin{tabular}
+                { r*{2}{>{\columncolor[gray]{0.95}}c>{\columncolor[gray]{1.0}}c}}
+                \noalign{\smallskip}
+                \hline
+                \multirow{1}{*}{\textbf{Rede Social}} & {\textbf{Monetização}} & {\textbf{Arquitetura}} & {\textbf{Base de Usuários}} & {\textbf{Sensibilidade à Censura}}
+                \tabularnewline
+                \hline
+                Facebook    &  Anúncios intrusivos     & Centralizada             & 2.7B  & Extremamente Sensível        
+                \tabularnewline 
+                Twitch      &  Anúncios intrusivos     & Centralizada             & 100M  &  Sensível 
+                \tabularnewline 
+                4Chan       &  Anúncios não-intrusivos & Centralizada             & 20M   & Sensível
+                \tabularnewline 
+                Diaspora    &  Anúncios opcionais      & Descentralizada          & 756k~\cite{Diaspora3} &  Relativamente Sensível
+                \tabularnewline 
+                Memo        &  pay-to-use              & Distribuída              & 20.5k  &  Resistente   
+                \tabularnewline 
+                Twetch      &  pay and earn            & GUI centr., dados distr. & 16.9k  &  Resistente*       
+                \tabularnewline
+                Bitstagram  &  pay-to-use              & Distribuída              & 10.2k  & Resistente
+            \end{tabular}
+        }
+    \end{center}
+    \caption{\label{tab:social-media-comparison}
+        Comparação das redes sociais ordenadas por número de usuários.\\
+        Fonte: os autores.
+    }
 \end{table}
 
-\chapter{Arquitetura baseada na Web 3.0}
+\chapter{Proposta de arquitetura baseada na Web 3.0}
 
-Propomos uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede \textit{peer-to-peer} e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
+Propomos o desenvolvimento de um conjunto de ferramentas que auxiliem no que efetivamente seria uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede \textit{peer-to-peer} e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
 Assim retirando o poder de ação sobre os dados, que hoje as corporações detentoras de mídia sociais populares têm, e distribuindo esse poder entre seus usuários.
 
-Nas próximas seções apresentaremos individualmente cada classe de programas necessária para concretizar nossa visão para uma mídia social. Em seguida, na última seção, teremos clarificações sobre como nossa solução lida com os problemas delineados no capítulo~\ref{chap:problem}. 
+Nas próximas seções apresentaremos individualmente cada ferramenta necessária para concretizar nossa visão para uma mídia social.
+Em seguida, na última seção, teremos clarificações sobre como nossa solução lida com os problemas delineados no capítulo~\ref{chap:problem}. 
 
 \section{Web-scrapers como estratégia de extração de dados não-consensual}
 
@@ -505,7 +507,7 @@ Logo, propomos a criação de um protocolo não somente de envio de arquivos, ma
 Algumas diretrizes gerais para a rede são:
 \begin{itemize}
     \item suportar grandes quantidades de arquivos (na escala de bilhões)
-    \item prevenir duplicação de conteúdo\ref{foot:content-dup}
+    \item prevenir duplicação de conteúdo~\ref{foot:content-dup}
     \item permitir que os usuários decidam qual conteúdo, se algum, vão armazenar em seus computadores permanentemente
 \end{itemize}
 \longfootnote[foot:content-dup]{
@@ -550,9 +552,25 @@ Salientamos que nossa proposta vem com benefícios para as corporações que apr
 Pois poderão, por exemplo, simplificar suas políticas de cumprimento das leis de proteção de dados regionais (LGPD, GDPR) e, uma vez que madura a rede \textit{peer-to-peer}, poderão aproveitá-la como CDN (rede de entrega de conteúdo do inglês \textit{content delivery network}).
 Ainda, os usuários beneficiar-se-ão não somente da foco redirecionado da empresa original atualizando sua interface com a melhor UX possível, mas também do saudável ecossistema de competição que surgirá para a criação de interfaces alternativas e aglomerativas (e.g., combinando o feed de stories do Instagram e do Facebook, o feed de fleets do Twitter, e o de status do WhatsApp num só).
 
+% Novo: O objetivo geral deste trabalho de conclusão é tripartite.
+% \begin{enumerate*}[label=(\arabic*)]
+%     \item conceder aos usuários controle sobre seus dados e conteúdo para interagirem com eles como queiram,
+%     \item diminuir o poder que plataformas de mídias sociais atualmente têm sobre seus usuários, e, majoritariamente como consequência dos seus antecessores, 
+%     \item facilitar esforços de arquivamento para fins históricos, legais, e entretenimento.
+% \end{enumerate*}
+
+% Firstly, to attempt to empower users over their data and over the way they want to interact with it (e.g., using a custom GUI to access one's Instagram DMs or a different recommendation algorithm for one's TikTok For You page).
+% Secondly, to diminish the walled-garden-granted ``power'' social media platforms currently have over their users (e.g., hindering creators' reach because of their political opinions or making obscene changes to their apps' interfaces).
+% And thirdly, (mostly as a consequence of the previous ones) to allow for much easier historical archiving efforts as content will be seldom lost, because there will be control mechanisms (probably some sort of DHT) tracking what data each host/node has.
+% Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media\footnotemark.
+% \footnotetext{
+%     Arquivos digitais com registros de terem existido, mas que nenhuma cópia pode ser encontrada mais.
+%     Projeto que cataloga famous lost media: \url{https://lostmediawiki.com/Home}
+% }
+
 \chapter{Cronograma}
 
-Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e nosso planejamento.
+Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e nosso planejamento, relatando as atividades que já foram e que serão desenvolvidas.
 
 \begin{enumerate}
     \item \label{cron:search} Investigação e análise das redes sociais atuais.
@@ -578,7 +596,7 @@ Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e 
 \definecolor{midgray}{gray}{.5}
 \begin{table}[!htbp]
 	\centering
-		\begin{tabular}{|c|c|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
 		&\multicolumn{5}{c|}{2021}\\
 		\hline
@@ -620,6 +638,9 @@ Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e 
 		\hline
 		\ref{cron:esc-tcII}&&&&&\cellcolor{midgray}\\
 		\hline	
-		\end{tabular}
+	\end{tabular}
+	\caption{\label{tab:schedule}
+    	Cronograma de atividades.\\
+    	Fonte: os autores.
+}
 \end{table}
-
