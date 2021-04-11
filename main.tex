@@ -40,6 +40,7 @@
 %----------------------------------------------------------------
 % Para inserção de figuras.
 \usepackage{graphicx}
+\usepackage{svg}
 % Utilize a opção 'pdftex' se você estiver usando o pdflatex (que
 % permite figuras em formatos como .jpg ou .png)
 %\usepackage[pdftex]{graphicx}
@@ -60,9 +61,10 @@
 %\usepackage{algorithm}
 
 % custom packages
+\usepackage{amsmath}
+\usepackage[center]{caption}
 \usepackage[inline]{enumitem}
 \usepackage{url}
-\usepackage{svg}
 \urlstyle{rm}
 
 % create longfootnote macro
@@ -86,8 +88,8 @@
 
 \author{Nei Cardoso, Nicolas Curço}
 
-\title{O Futuro das Redes Sociais na Web 3.0}
-      {The Future of Social Media in the Web 3.0}
+\title{Descentralizando Mídias Sociais da Web 2.0}
+      {Decentralizing Social Media of the Web 2.0}
 
 % \tipotrabalho{\ptci}         % Proposta de Trabalho de Conclusão
 \tipotrabalho{\tci}         % Trabalho de Conclusão I
@@ -135,11 +137,16 @@
 % Resumo, com as palavras-chave passadas por parâmetro
 % (OBRIGATÓRIO, ao menos para teses e dissertações)
 %----------------------------------------------------------------
-\begin{resumo}{mídia social, web 3.0}
+\begin{resumo}{mídia social, descentralização, web 3.0, \textit{scraping}}
 % Este trabalho debate o futuro e propõe soluções para problemas das redes sociais.
 % Devido a sua interdisciplinaridade, mídias sociais são muito difíceis de serem estudadas sob um aspecto isolado, assim será proposto o uso de novas tecnologias buscando melhorar o funcionamento e o uso das redes sociais tanto em aspectos computacionais como em aspectos sociológicos, políticos e éticos. Abordando os problemas e sugerindo soluções de forma isolada, por fim propondo o uso de uma rede social na Web 3.0.
-Este trabalho expõe os problemas das redes sociais advindos de serem plataformas fechadas e propõe uma estratégia para mitigá-los.
-Sugerindo soluções de forma isolada e, por fim, concretizaremos nossa estratégia com o desenvolvimento de uma solução que faça a transição do modelo atual , Web 2.0 , para  uma nova arquitetura de software, Web 3.0 , que vise superar as limitações da anterior.
+%Este trabalho expõe os problemas das redes sociais advindos de serem plataformas fechadas e propõe uma estratégia para mitigá-los.Sugerindo soluções de forma isolada e, por fim, concretizaremos nossa estratégia com o desenvolvimento de uma solução que faça a transição do modelo atual , Web 2.0 , para  uma nova arquitetura de software, Web 3.0 , que vise superar as limitações da anterior.
+Este trabalho expõe problemas das redes sociais modernas e propõe uma estratégia para mitigá-los.
+Através de uma análise das mídias sociais atuais com um enfoque nas arquiteturas e distribuição dos dados nestas arquiteturas, identificamos e expomos alguns de seu problemas com uma causa em comum: elas serem plataformas fechadas.
+Portanto propomos, a partir dos dados levantados na nossa análise, um conjunto de ferramentas capaz de transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+Essa transformação se daria através de uma migração de dados entre as diferentes arquiteturas, para isso algumas barreiras erguidas teriam de ser rompidas, com o auxilio de técnicas de \textit{scraping}, redes peer-to-peer, e criptografia, a fim de torná-las plataformas abertas.
+
+%Tudo isso com o objetivo de identificar melhorias na forma de circulação de dados numa rede social, otimizando o tráfego e a identificação de dados na redes como também dando aos usuários o poder de ação sobre os seus dados.
 \end{resumo}
 
 %----------------------------------------------------------------
@@ -168,12 +175,16 @@ erat sed diam voluptua at
 %----------------------------------------------------------------
 \sigla{AGPL}{Affero General Public License}
 \sigla{API}{Application programming interface}
+\sigla{CDN}{Content Delivery Network}
 \sigla{CSS}{Cascading Style Sheets}
+\sigla{DAG}{Directed Acyclic Graphs}
 \sigla{DOM}{Document Object Model}
 \sigla{GDPR}{General Data Protection Regulation}
+\sigla{GUI}{Graphical User Interface}
 \sigla{HTML}{Hypertext Markup Language}
 \sigla{HTTP}{Hypertext Transfer Protocol}
 \sigla{JSON}{JavaScript Object Notation}
+\sigla{LAN}{Local Area Network}
 \sigla{LGPD}{Lei Geral de Proteção de Dados}
 \sigla{XML}{Extensible Markup Language}
 \sigla{XPATH}{XML Path Language}
