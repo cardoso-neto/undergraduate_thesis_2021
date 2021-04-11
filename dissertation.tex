@@ -1,6 +1,3 @@
-
-
-
 \chapter{Introdução}
 
 Redes sociais são plataformas online onde pessoas interagem entre si construindo relações sociais.
@@ -28,7 +25,6 @@ O modelo distribuído confere ao usuário (que é o criador de conteúdo das red
 Um dos benefícios da arquitetura que será proposta é delimitar as funções do usuário e da plataforma, fazendo com que o modelo arquitetônico das redes sociais fique claro e não permita a utilização de dados de usuários por terceiros, invertendo os papéis conferindo ao usuário o poder e as obrigações em relação aos seus dados, e tornando a plataforma apenas no elo de ligação entre usuários.
 
 Diante destes contexto, o objetivo geral deste trabalho é desenvolver um sistema para transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
-
 
 \chapter{Caracterização do problema e justificativa}
 
@@ -62,47 +58,59 @@ Quando falamos em centralização, evidenciamos nesse contexto de mídias sociai
     \item vulnerabilidade à corrupção.
 \end{enumerate*}
 
+\subsection{Censura}
+As redes sociais deram um falsa sensação de democracia na produção de conteúdo, pois saímos de um modelo da web 1.0 onde poucos produzem e muitos consomem para um ambiente da web 2.0 onde muitos produzem e muitos consomem. Porém a infraestrutura desse ambiente é controlada por empresas privadas que submetem os seus usuários a seus termos de uso, tiram proveito do conteúdo gerado por seus usuários e impõem arbitrariamente punições a opiniões contrárias a da empresa.
+
+O grande crédito e influência dados as plataformas sociais corporativas encobriram  problemas como a alta influência que as redes sociais sofrem dos poderes políticos e econômicos, já que a infraestrutura de comunicação e tecnologia é moldada por regimes regulatórios, acordos internacionais, ganancias corporativas e práticas intrusivas de vigilância. Assim segundo Sasha Costanza-Chock\cite{Censura1}:
+
+
+\begin{directcite}
+'Em termos empresariais, "Conteúdo Gerado por Usuário" significa produto cultural gratuito disponível para monetização e contratos de licenciamento cruzado. "Participação" significa dados de usuário para minerar e vender para fins de propagandas e publicidade, e todo usuário ativo está sujeito a vigilância e censura.'
+\end{directcite}
+
+
+
+% nicolas
+%network effect, agora elas têm muito alcance e muitos dados
+%por serem controladas por third parties
+%eles podem usar esse alcance para influenciar opiniões
+%e.g. elections, brexit, primavera árabe, movimentos sociais/políticos
+
+%why giving that much power to corporations is a bad idea
+%elas usarão seu poder para se manter no poder
+%exemplo: Facebook selling user data
+%GPDR, tentando conter o poder que os dados dão para corporações
+%"ai precisamos de um corpo legal para controlar isso"
+%"com multas 'pesadas' para puní-los"
+%kkk até parece né uns burocratas usando papel rabiscado ganhando de corporações que valem centenas de bilhões de dólares
+
+%(estatísticas de uso, o user-created content e.g. videos, images, etc)
+
 \subsection{Interesses}
 
 Teoria de jogos dita que, se atalhos existem para alcançar algum objetivo, jogadores encontrarão esse atalho e o explorarão.
 Por serem entidades privadas e terem controle incontestado das suas plataformas, na busca de alcançar seu objetivo-mór, a maximização dos lucros que se dão através dos usuários vendo e/ou clicando em anúncios, os game-theoretic shortcuts aqui são sobre
-\begin{enumerate*}[label=(\arabic*)]
-    \item abusar dos mecanismos de recompensa do nosso cérebro de macaco para nos manter engajados,
+\begin{enumerate}
+    \item abusar dos mecanismos de falsa recompensa  para nos manter engajados,
     \item adquirir competidores assim que se tornem uma ameaça (e.g., Facebook adquirindo WhatsApp, Instagram, LiveRail, Onavo, Redkix, e outras 83\footnote{\url{https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Facebook}} empresas menos conhecidas da área.
     \item criar limitações artificias de interoperabilidade (estilo \textit{vendor lock-in}) para que um usuário não consiga utilizar serviços de terceiros ou próprios em conjunto, e
     \item usar os dados dos usuários como ``reféns'' para segurá-los em suas plataformas (e.g., não tendo como exportar os dados).
-\end{enumerate*}
+\end{enumerate}
 Essas são apenas algumas das estratégias que podem ser empregadas (e na prática sempre são) quando os incentivos se desalinham.
-E eles só se desalinham porque a centralização torna isso possível.
-Concedendo poder que nenhuma entidade única deveria ter sobre coisas tão valiosas quanto nossa atenção, nossos dados pessoais, nossas preferências, e nosso conteúdo.
+E eles só se desalinham porque a centralização torna isso possível concedendo poderes que nenhuma entidade única deveria ter sobre coisas muito valiosas como nossa atenção, nossos dados pessoais, nossas preferências, e nosso conteúdo.
 
-% social media began as toys
-% social media evolved to be used by millions all the time
-% network effect, agora elas têm muito alcance e muitos dados
-% por serem controladas por third parties
-% eles podem usar esse alcance para influenciar opiniões
-% e.g. elections, brexit, primavera árabe, movimentos sociais/políticos
-
-% why giving that much power to corporations is a bad idea
-% elas usarão seu poder para se manter no poder
-% exemplo: Facebook selling user data
-% GPDR, tentando conter o poder que os dados dão para corporações
-% "precisamos de um corpo legal para controlar isso"
-% "com multas pesadas para puní-los"
-
-% (estatísticas de uso, o user-created content e.g. videos, images, etc)
-
-O esgotamento do modelo de arquitetura de software da Web 2.0 na figura das redes sociais torna nítida a necessidade de se propôr, não apenas novas arquiteturas, mas também, modelos de transição.
-Que visem suplantar os problemas das antigas arquiteturas, enquanto trazendo melhoras substanciais ao seus usuários em todas as etapas.
-Afinal, dada a alta quantidade de usuários que as mídias atuais possuem e o \textit{network effect} [citation], seria difícil competir com essas gigantes pelos seus usuários, pois elas mantêm os dados deles reféns erguendo \textit{walled gardens}\ref{foot:walled-gardens}.
+Acreditamos que, quando ``derrubarmos os muros'' desses \textit{walled gardens}\ref{foot:walled-gardens}, as corporações não terão escolha fora direcionar seus esforços a conquistar os usuários para usarem seus front-ends, pois graças aos dados descentralizados, a competição poderá surgir muito mais facilmente.
 \longfootnote[foot:walled-gardens]{
     \textit{Walled gardens}~\cite{CLOSEDPLAT} se referem a plataformas tecnológicas que possuem barreiras artificiais levantadas por seus criadores com a intenção de dificultar que usuários migrem para uma plataforma competidora, talvez possibilitando um monopólio.
 }
 
-A centralização confere muito poder aos seus administradores, pois podem influenciar um grande número de usuários e podem fazê-lo de forma bem focada (usando os dados dos seus algoritmos de direcionamento de anúncios).
-Isso será chamado censura interna ao longo deste trabalho, i.e., quando membros pertencentes à organização que controla a aplicação influenciam o conteúdo através de meios não-disponíveis aos usuários.
-A Centralização também os torna muito vulneráveis à censura externa, i.e., quando membros externos à organização os compelem usando quaisquer meios a influenciarem no conteúdo independentemente da vontade da organização.
-Além das alegações de pesado viés político~\cite{TLIB} e visões conspurcadas de justiça social fortemente entrelaçadas na cultura dessas empresas~\cite{DAMORE}, temos a proposital falta de transparência nos feeds algorítmicos empregados delas que, aparentemente, compartilham da ilusão coletiva de segurança por obscuridade que é provadamente ineficaz a longo prazo.
+% O esgotamento do modelo de arquitetura de software da Web 2.0 na figura das redes sociais torna nítida a necessidade de se propôr, não apenas novas arquiteturas, mas também, modelos de transição.
+% Que visem suplantar os problemas das antigas arquiteturas, enquanto trazendo melhoras substanciais ao seus usuários em todas as etapas.
+
+% A centralização confere muito poder aos seus administradores, pois podem influenciar um grande número de usuários e podem fazê-lo de forma bem focada (usando os dados dos seus algoritmos de direcionamento de anúncios).
+% Isso será chamado censura interna ao longo deste trabalho, i.e., quando membros pertencentes à organização que controla a aplicação influenciam o conteúdo através de meios não-disponíveis aos usuários.
+% A Centralização também os torna vulneráveis à censura externa, i.e., quando membros externos à organização os compelem usando quaisquer meios a influenciarem no conteúdo independentemente da vontade da organização.
+% Além das alegações de pesado viés político~\cite{TLIB} e visões conspurcadas de justiça social fortemente entrelaçadas na cultura dessas empresas~\cite{DAMORE}, temos a proposital falta de transparência nos feeds algorítmicos empregados delas que, aparentemente, compartilham da ilusão coletiva de segurança por obscuridade que é provadamente ineficaz a longo prazo.
 
 \chapter{Fundamentação teórica}
 
@@ -140,7 +148,7 @@ Essa era da internet permite a conexão de usuários até mesmo fora do resto da
 \textit{Web-scraping} é uma técnica de extração de dados que visa extrair, estruturar e armazenar os dados de um fonte web com a finalidade de obter algum resultado.
 Enfatizamos que se trata de uma técnica não-consensual, ou seja, que não exige consentimento dos donos dos sites que serão \textit{scraped}.
 
-A extração pode ser feita através de diversas estratégias; as mais comuns segundo~\cite{Scraping1} são: 
+A extração pode ser feita através de diversas estratégias; as mais comuns~\cite{Scraping1} são: 
 
 \begin{itemize}
     \item \textbf{HTML parsing} consiste em analisar a estrutura de um HTML (\textit{Hypertext Markup Language}), identificar elementos parecidos e então extrair os dados de forma automatizada. 
@@ -173,22 +181,90 @@ Assim caso o nodo central falhar toda a rede se torna inoperável.
 
 São arquitetura de redes de computadores onde cada um dos pontos ou nós da rede funciona tanto como cliente quanto como servidor, permitindo compartilhamentos de serviços e dados sem a necessidade de um servidor central.
 Por não se basear em uma arquitetura cliente-servidor, onde apenas o servidor é responsável pela execução de todas as funções da rede, o P2P (Peer-to-Peer) tem uma enorme vantagem justamente por não depender de um servidor e de todos os nós estarem interconectados permitindo o acesso a qualquer nó de qualquer nó. 
-Por esse motivo a rede tem uma elevada disponibilidade~\ref{cap disponibilidade}
+Por esse motivo a rede tem uma elevada disponibilidade.%~\ref{cap disponibilidade}
 \begin{figure}[htb!]
 \centering\includegraphics[width=.65\textwidth]{fig/Centralized-vs-Decentralized-vs-Distributed-Networks.eps}
 \caption[Representação das arquiteturas de redes]
         {\label{fig:tipos-de-redes}Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada 
-        (c) Distribuída~\cite{Imagem1} TODO verificar essa citação e achar .svg}
+        (c) Distribuída~\cite{Imagem1} }
+\end{figure}
+%TODO verificar essa citação e achar .svg
+
+\section{Funções de resumo \textit{hash} criptográficas}
+
+Uma função de \textit{hash} é uma função determinística que tem como objetivo ``embaralhar'' e sumarizar a entrada.
+Frequentemente, o objetivo dessas funções é, dado uma entrada arbitrária de comprimento indefinido, gerar uma saída de comprimento fixo, como você pode ver na figura~\ref{fig:função-hash}.
+Para tal, utiliza-se algum dos modos de operação de cifras de blocos\footnote{\url{https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation}}.
+Funções de \textit{hash} são usadas em muitas partes da criptografia e existem muitos tipos diferentes de funções de \textit{hash}, cada um com diferentes propriedades de segurança~\cite{HASH1}.
+
+\begin{figure}[htb!]
+\centering
+\label{fig:função-hash}
+\includesvg[width = 483.7pt]{fig/Cryptographic_Hash_Function.svg}
+\caption[Representação da entrada e saída de uma função de hash criptográfica]{
+    Uma função de hash criptográfica (especificamente, SHA-1) funcionando.
+    Note que mesmo pequenas mudanças na sua entrada alteram drasticamente a saída do resultado, pelo chamado efeito avalanche.
+    
+    % \textbf{Fonte:} \url{https://commons.wikimedia.org/wiki/File:Cryptographic_Hash_Function.svg}
+}
 \end{figure}
 
-\section{Funções de hash criptográficas}
+\subsection{Propriedades}
 
-Nicolau, faz essa por mim, se tu puderes nem sei o que dizer aqui, mas lembro que o roland ficava incomodando para falar algo mesmo sendo algo que a gente aprende em algoritmos estruturas de dados 1
-falando nisso, tu vais fazer ou fizeste essa cadeira já?
+As funções \textit{hash} criptográficas são projetadas para receber uma cadeia de caracteres de qualquer tamanho como entrada e produzir um valor \textit{hash} de tamanho fixo.
+Para uma função de \textit{hash} ser considerada criptograficamente útil, no mínimo, ela deve ser resistente aos ataques de colisão, pré-imagem, e segunda-pré-imagem. 
+
+\begin{itemize}
+    \item \textbf{Resistência à pré-imagem}, dado um valor \textit{hash} h deve ser difícil encontrar qualquer mensagem m tal que h = \textit{hash}(m).
+    Este conceito está relacionado ao da função de mão única (ou função unidirecional).
+    Funções que não possuem essa propriedade estão vulneráveis a ataques de pré-imagem.
+    \item \textbf{Resistência à segunda pré-imagem}, dada uma entrada m1 deve ser difícil encontrar outra entrada m2 tal que \textit{hash}(m1) = \textit{hash}(m2).
+    Funções que não possuem essa propriedade estão vulneráveis a ataques de segunda pré-imagem.
+    \item \textbf{Resistência à colisão},  deve ser difícil encontrar duas mensagens diferentes m1 e m2 tal que \textit{hash}(m1) = \textit{hash}(m2).
+    Tal par é chamado de colisão \textit{hash} criptográfica. Essa propriedade também é conhecida como forte resistência à colisão.
+    Ela requer um valor \textit{hash} com pelo menos o dobro do comprimento necessário para resistência à pré-imagem; caso contrário, colisões podem ser encontradas através de um ataque do aniversário.
+\end{itemize}
+
+\subsection{Aplicações}
+
+Aqui estão alguns exemplos de usos das funções \textit{hash} criptográficas:
+
+\subsubsection{Verificação de integridade}
+
+Uma importante aplicação desses \textit{hashes} de segurança é na verificação da integridade de arquivos e mensagens.
+Determinar se qualquer alteração foi feita a uma mensagem (ou um arquivo).
+Por essa razão, muitos algoritmos de assinatura digital apenas confirmam a autenticidade do resumo de uma mensagem para ser ``autenticado''.
+Verificar a autenticidade do resumo de uma mensagem é considerado prova de que a mensagem em si é autêntica.
+
+\subsubsection{Verificação de senha}
+
+Uma aplicação relacionada é a verificação de senha. 
+Armazenar todas as senhas de um usuário como puro texto pode resultar em uma quebra massiva de segurança caso o arquivo de senha seja comprometido.
+Uma maneira de reduzir esse perigo é apenas armazenar o resumo de cada senha.
+Para autenticar um usuário, calcula-se o resumo da senha fornecida pelo usuário e o compara-se ao resumo armazenado.
+Note que essa abordagem impede que a senha original seja recuperada se esquecida ou perdida, e terá que ser substituída por uma nova. 
+
+\subsubsection{Identificador de arquivo}
+
+Um resumo de mensagem também pode servir como um identificador confiável de arquivo; diversos sistemas de gerenciadores de código fonte, como \textit{Git}, \textit{Mercurial}, e \textit{Monotone}, usam \textit{checksums} de vários tipos de conteúdo (conteúdo de arquivo, árvores de diretório, informação ancestral, etc.) para identificá-los unicamente.
+\textit{Hashes} são usados para identificar arquivos em redes de compartilhamento de arquivos.
+Tais \textit{hashes} de arquivo costumam aparecer no começo de listas de \textit{hashes} ou em árvores de \textit{hashes} o que propicia ainda mais benefícios.
+
+\subsubsection{\textit{Information Retrieval}}
+
+Uma das principais aplicações de uma função de \textit{hash} é permitir uma rápida recuperação dos dados em uma tabela \textit{hash}.
+Por serem funções de \textit{hash} com propriedades específicas, funções de \textit{hash} criptográficas também podem ser utilizadas para essas aplicações.
+Entretanto, comparadas a funções de \textit{hash} padrão, funções de \textit{hash} criptográficas tendem a ser computacionalmente mais caras.
+Por essa razão, elas costumam ser usadas em contextos onde seja necessário que usuários protejam a si mesmo contra a possibilidade de falsificação (criação de dados com o mesmo resumo que os dados esperados) por agentes maliciosos em potencial.
 
 \section{Endereçamento}
 
-Técnicas de endereçamento são utilizadas para referenciar ou apontar (\textit{link}) arquivos na web.
+Nesta seção serão abordadas as técnicas de endereçamento que são utilizadas para referenciar ou apontar (\textit{link}) arquivos na web.
+Segundo o dicionário da \textit{Oxford Languages} a definição de ``link'' na informática é: 
+
+\begin{directcite}
+ato ou efeito de endereçar ou identificar um registro [...] por meio de um endereço.
+\end{directcite}
 
 \subsection{Endereçamento por nomes}
 
@@ -201,11 +277,13 @@ Embora prática e bastante \textit{human-readable}, essa abordagem é repleta de
 \subsection{Endereçamento por conteúdo}
 
 Uma técnica mais moderna de endereçamento é criar identificadores baseados no conteúdo dos arquivos utilizando \textit{checksums} por exemplo.
+É utilizado por programas controladores de versão como o \textit{git}, pois permite verificar rapidamente o conteúdo dos \textit{commits} e identificá-los.
 Praticamente, entretanto, usa-se funções de \textit{hash} criptográficas, pois suas propriedades beneficiam o problema de endereçamento dos seguintes modos:
+
 \begin{itemize}
-    \item \textbf{autenticidade} um arquivo não pode ter sido forjado nem modificado.
-    \item \textbf{busca rápida} existe uma miríade de estruturas de dados com operações de complexidade temporal assintótica amortizada constante para dados que sejam \textit{hashable}. 
-    \item \textbf{deduplicação por padrão} arquivos com o mesmo conteúdo são reaproveitados de forma convergente.
+    \item \textbf{autenticidade}, garante a autenticidade de um arquivo ou recurso contra tentativas de forjamento do conteúdo ou modificações.
+    \item \textbf{busca rápida} existe uma miríade de estruturas de dados com operações de complexidade temporal assintótica amortizada constante para dados que sejam \textit{hashable}.Pois devido a compressão do conteúdo em um resumo é capaz a partir do resumo gerado autenticar e identificar o dado não necessitando a verificação integral do dado.
+    \item \textbf{deduplicação por padrão} arquivos com o mesmo conteúdo são reaproveitados de forma convergente. Pois devido ao resumo gerado pela \textit{hash} arquivos com mesmo conteúdo terão o mesmo nome, pois a \textit{hash} gerada será a partir do conteúdo.
     \item \textbf{imutabilidade} um endereço calculado hoje será o mesmo hoje e sempre.
     \item \textbf{integridade} oferece proteção contra possível corrupção de dados.
 \end{itemize}
@@ -239,7 +317,8 @@ A fim de que possamos formular soluções que mitiguem as principais desvantagen
 
 É uma rede social criada em 2004 nos EUA, para ajudar alunos em universidades a conhecerem uns aos outros.
 Seu proposito inicial foi superado e hoje é uma rede social com proposito mais geral do que o inicial,
-conta com a marca de 2 bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}. Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o Facebook ou até mesmo pelo próprio Facebook censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
+conta com a marca de 2 bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}.
+Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o Facebook ou até mesmo pelo próprio Facebook censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
 
 \section{4chan}
 
@@ -249,10 +328,8 @@ Foi criado em 2003 e alcança a marca de mais de 20 milhões de acessos por mês
 
 \section{Diaspora}
 
-É uma rede social descentralizada criada em 2010, conta com mais de 2 milhões de usuários e permite integração com outras redes sociais como Twitter, Facebook e Tumblr~\cite{Diaspora1}.
-O usuário tem controle sobre seus dados podendo baixar a qualquer momento todos os dados de texto e imagem que foram carregados na plataforma,
-permite a liberdade para escolher em qual servidor ficará seus dados, 
-além da transparência por ser um software de código aberto licenciado sob a licença GNU AGPL (Affero General Public License)~\cite{Diaspora2}. 
+É uma rede social descentralizada criada em 2010, conta com mais de 2 milhões de usuários e permite integração com outras redes sociais como Twitter, Facebook, e Tumblr~\cite{Diaspora1}.
+O usuário tem controle sobre seus dados podendo baixar a qualquer momento todos os dados de texto e imagem que foram carregados na plataforma, permite a liberdade para escolher em qual servidor ficará seus dados, além da transparência por ser um software de código aberto licenciado sob a licença GNU AGPL (Affero General Public License)~\cite{Diaspora2}. 
 Uma das marcas da Diaspora é a promessa de ser uma rede social resistente à censura devido a sua arquitetura descentralizada.
 Permite a monetização do seu conteúdo através de propagandas usando a rede \textit{peer-to-peer}.
 
@@ -283,16 +360,16 @@ As fotos postadas no Bitstagram são imutáveis e são cobradas, esse é um fato
 
 É uma aplicação mídia social similar ao Twitter, armazena os dados dos seus usuário em \textit{blockchains} (com blocos de tamanho grande, neste caso o BCashABC~\cite{BTCABC}, com 32MB), com a finalidade de permitir ao seu usuário dados permanentes e incensurável.
 Essa imutabilidade é muito interessante para garantir a liberdade e o livre arbítrio, porém a cobrança de taxas para o armazenamento na \textit{blockchains} causa tira a naturalidade com que os usuários utilizam a rede social, sendo um empecilho para a popularização da rede social.
-
-% faltou ref a figura no texto
 \begin{figure}[htb!]
-\centering\includegraphics[width=.65\textwidth]{fig/Memo.jpg}
+\centering\includegraphics[width=.55\textwidth]{fig/Memo.jpg}
 \caption%[This figure has a shorter caption now]%
         {\label{fig:memo-protocol}Protocolo Memo~\cite{Memo1}}
 \end{figure}
 
-\section{Comparativo}
-
+\section{\textit{Twitch}}
+ É uma rede social de transmissão de vídeo que surgiu em junho de 2011. 
+ O conteúdo da plataforma pode ser visto ao vivo ou sob demanda. 
+ Em 2015 a \textit{Twitch} bateu a marca de mais de cem milhões de espectadores por mês~\cite{Twitch1}. Pela natureza do conteúdo ser ao vivo é garantido certa liberdade a censura, porém se algum ato violar a politica da plataforma o canal pode ser banido indefinidamente e todos as gravações do canal deletadas. A monetização da plataforma se da através de propagandas, inscrições e doações, sendo parte do dinheiro destinado ao canal e parte da própria \textit{Twitch}. A interface da plataforma opera com a arquitetura centralizada, porém os dados são distribuídos
 \begin{table}[htb]
 \begin{center}
 \caption{\label{tab:tab1}Tabela Comparativa das Redes Sociais}
@@ -308,10 +385,17 @@ Essa imutabilidade é muito interessante para garantir a liberdade e o livre arb
 \tabularnewline 4Chan             &  Anúncios não-intrusivos  & Centralizada     & 20M [citation] &   Sensível à Censura        
 \tabularnewline Diaspora          &    & Descentralizada  & 756k [https://the-federation.info/diaspora]  &   Relativamente Sensível a Censura
 \tabularnewline Bitstagram        &  pay-to-use  & Distribuída      &  &  Resistente à Censura
-\tabularnewline Memo              &  pay-to-use  & Distribuída      &  &  Resistente à Censura   \tabularnewline Twetch            &  pay and earn  & interface centralizada, dados distribuídos &  &  Resistente à Censura*       
+\tabularnewline Memo              &  pay-to-use  & Distribuída      &  &  Resistente à Censura   \tabularnewline Twitch            &  pay and earn  & interface centralizada, dados distribuídos &  &  Resistente à Censura*       
 \end{tabular}}
 \end{center}
 \end{table}
+
+\section{Comparativo}
+Através das plataformas analisadas e dos elementos de comparação, podemos inferir que aplicações que tem sua arquitetura centralizada sofrem de problemas de censura inerentes à própria infraestrutura, mesmo as que necessitam de cadastro para utilizá-las, exemplo 4chan. Enquanto arquiteturas distribuídas que utilizam algum tipo de proteção aos dados de seus usuários como o Memo e o Bitstagram que utilizam blockchain para garantir a proteção e imutabilidade dos dados conseguem garantir total resistência à censura.
+
+Outro elemento que pode se inferir a partir da análise, é que o modelo de monetização interfere no número de usuários, assim as redes sociais com o modelo pay-to-use , apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades e não realizam cobrança direta ao usuário.
+
+
 
 \chapter{Nossa proposta: arquitetura baseada na Web 3.0}
 
@@ -458,6 +542,55 @@ Graças aos excelentes esforços da Protocol Labs no IPFS~\ref{label da seção 
 \subsection{Diagramas de arquitetura}
 
 \subsection{Estruturas de dados}
+
+\subsection{Cronograma}
+\begin{enumerate}
+% 	\item \label{ela-pro} Elaboração da proposta de TC.
+% 	\item \label{anI} Análise dos métodos de localização de regiões candidatas em imagens digitais e
+% 		reconhecimento de caracteres através de redes neurais.
+% 	\item \label{anII} Análise do funcionamento de OCR's já homologados em PC.
+% 	\item \label{anIII} Análise dos modelos implementados em hardware estudados no item III. 
+% 	\item \label{dI} Estudo do Linux Embarcado.
+% 	\item \label{dII}  Validação dos módulos de localização de regiões candidatas.
+% 	\item \label{dIII} Implementação do módulo de caputra de imagem. 
+% 	\item \label{esc-tcI}  Escrita do TC I.
+% 	\item \label{imI} Implementação da máquina de estados para controle da análise de imagem.
+% 	\item \label{imII} Desenvolvimento da camada de integração.
+% 	\item \label{imIII} Integração dos módulos que compõe o sistema.
+% 	\item \label{tec} Teste e correções.
+% 		\subitem Comparar desempenho entre hardware e software.
+% 	\item \label{esc-tcII} Escrita do TC II.
+\end{enumerate}
+
+\definecolor{midgray}{gray}{.5}
+\begin{table}[!htbp]
+	\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		&\multicolumn{5}{c|}{2021}\
+		\hline
+		&MAR&ABR&MAI&JUN&JUL\\
+		\hline
+		\ref{ela-pro}&\cellcolor{midgray}&&&&\\
+		\hline
+		\ref{anI}&&\cellcolor{midgray}&&&\\
+		\hline	
+		\ref{anII}&&\cellcolor{midgray}&&&\\
+		\hline			
+		\ref{anIII}&&\cellcolor{midgray}&\cellcolor{midgray}&&\\
+		\hline	
+		\ref{dI}&&&\cellcolor{midgray}&&&&&&&\\
+		\hline
+		\ref{dII}&&&\cellcolor{midgray}&\cellcolor{midgray}&\\
+		\hline	
+		\ref{dIII}&&&&\cellcolor{midgray}&\cellcolor{midgray}\\
+		\hline	
+		\ref{esc-tcI}&&&\cellcolor{midgray}&\cellcolor{midgray}&\cellcolor{midgray}\\
+		\hline	
+		\ref{imI}&&&&&\cellcolor{midgray}\\
+		\hline	
+		\end{tabular}
+\end{table}
 
 \chapter{Testes do sistema}
 
