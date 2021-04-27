@@ -66,6 +66,13 @@
 \usepackage[inline]{enumitem}
 \usepackage{url}
 \urlstyle{rm}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+% we want ER + above/below + left/right
+\usetikzlibrary{er,positioning}
+
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
 
 % create longfootnote macro
 \makeatletter
@@ -132,18 +139,18 @@
 
 \begin{resumo}{mídia social, descentralização, web 3.0, \textit{scraping}}
 % Devido a sua interdisciplinaridade, mídias sociais são muito difíceis de serem estudadas sob um aspecto isolado, assim será proposto o uso de novas tecnologias buscando melhorar o funcionamento e o uso das redes sociais tanto em aspectos computacionais como em aspectos sociológicos, políticos e éticos. Abordando os problemas e sugerindo soluções de forma isolada, por fim propondo o uso de uma rede social na Web 3.0.
-Este trabalho expõe problemas das redes sociais modernas e propõe uma estratégia para mitigá-los.
-Através de uma análise das mídias sociais atuais com um enfoque nas arquiteturas e distribuição dos dados nestas arquiteturas, identificamos alguns de seu problemas com uma causa em comum: elas serem \textit{walled gardens} (plataformas fechadas).
+Este trabalho busca propor uma alternativa a problemas relacionados às redes sociais modernas.
+Analisando as mídias sociais atuais com um enfoque nas suas arquiteturas e distribuição dos dados, identificamos que alguns de seu problemas possuem uma causa em comum: elas serem \textit{walled gardens} (plataformas fechadas).
 Portanto propomos, a partir dos dados levantados na nossa análise, um conjunto de ferramentas capaz de transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 Essa transformação se daria por via de uma migração de dados entre as diferentes arquiteturas, para isso algumas barreiras erguidas teriam de ser rompidas, com o auxilio de técnicas de \textit{scraping}, redes peer-to-peer, e criptografia, a fim de torná-las plataformas abertas.
 \end{resumo}
 
 \begin{abstract}{social media, decentralization, web 3.0, scraping}
 This paper exposes problems with modern social media and proposes a strategy to mitigate them.
-Through an analysis of current social media focused on their data management design decision, we identified problems with a common cause: them being walled gardens.
-Therefore, we propose, thanks to the data we gathered on our analysis, a set of tools capable of upgrading their centralized web 2 software architecture to a decentralized web3-based one.
-This upgrade would happen by way of migrating the data to an open network, breaking down the garden walls.
-In order to accomplish that, we will enlist the help of tools such as webscraping, peer-to-peer networking, and public-key cryptography.
+Through an analysis of current social media focused on their data management design decisions, we identified many problems with a common cause: them being walled gardens.
+Therefore, we propose, based on the data gathered on our analysis, a set of tools capable of upgrading their centralized web2 software architecture to a decentralized web3-based one.
+This upgrade would consist in migrating the data to an open network, tearing down the garden walls.
+In order to accomplish that, we will make use of estabilished computer science tools such as webscraping, peer-to-peer networking, and public-key cryptography.
 \end{abstract}
 
 %----------------------------------------------------------------
