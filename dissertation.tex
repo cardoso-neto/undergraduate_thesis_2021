@@ -312,14 +312,13 @@ Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
 
 \section{Objetivo geral}
 
- Investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+Investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
 \section{Objetivos específicos}
 
 Para atingir o objetivo geral, foram estabelecidos os seguintes objetivos específicos:
 
 \begin{enumerate}
-    %\item mapear e identificar vantagens e desvantagens do funcionamento das mídias sociais existentes.
     \item propor uma arquitetura descentralizada baseada na Web 3.0.
     \item desenvolver um conjunto de ferramentas para auxiliar na migração da arquitetura das mídias sociais existentes da Web 2.0 em mídias sociais descentralizadas da Web 3.0.
 \end{enumerate}
@@ -512,7 +511,7 @@ Conveniente nos nossos olhos implica no uso de estruturas de dados auto-verifica
 \section{Rede de compartilhamento de dados peer-to-peer}
 
 Depender de livre associação dos usuários provavelmente condenaria o projeto a falhar.
-Logo, propomos a criação de um protocolo não somente de envio de arquivos, mas também de \textit{location tracking} (rastreamento de localizações) para permitir que um nodo da rede descubra quais outros nodos possuem algum item.
+Logo, propomos a criação de um protocolo não somente de envio de arquivos, mas também de \textit{location tracking} (rastreamento de localizações, provavelmente com alguma DHT ou algo similar) para permitir que um nodo da rede descubra quais outros nodos possuem algum item.
 Algumas diretrizes gerais para a rede são:
 \begin{itemize}
     \item suportar grandes quantidades de arquivos (na escala de bilhões)
@@ -561,18 +560,20 @@ Salientamos que nossa proposta vem com benefícios para as corporações que apr
 Pois poderão, por exemplo, simplificar suas políticas de cumprimento das leis de proteção de dados regionais (LGPD, GDPR) e, uma vez que madura a rede \textit{peer-to-peer}, poderão aproveitá-la como CDN (rede de entrega de conteúdo do inglês \textit{content delivery network}).
 Ainda, os usuários beneficiar-se-ão não somente da foco redirecionado da empresa original atualizando sua interface com a melhor UX possível, mas também do saudável ecossistema de competição que surgirá para a criação de interfaces alternativas e aglomerativas (e.g., combinando o feed de stories do Instagram e do Facebook, o feed de fleets do Twitter, e o de status do WhatsApp num só).
 
-% Assim, alcançando geral deste trabalho de conclusão é tripartite.
-% \begin{enumerate*}[label=(\arabic*)]
-%     \item conceder aos usuários controle sobre seus dados e conteúdo para interagirem com eles como queiram,
-%     \item diminuir o poder que plataformas de mídias sociais atualmente têm sobre seus usuários, e, majoritariamente como consequência dos antecessores, 
-%     \item facilitar esforços de arquivamento para fins históricos, legais, e de entretenimento.
-% \end{enumerate*}
+Assim, reforçamos o objetivo tripartite aqui sendo alcançado:
+\begin{enumerate*}[label=(\arabic*)]
+    \item conceder aos usuários controle sobre seus dados e conteúdo para interagirem com eles como queiram,
+    \item diminuir o poder que plataformas de mídias sociais atualmente têm sobre seus usuários, e, por fim,
+    \item facilitar esforços de arquivamento para fins históricos, legais, e de entretenimento.
+\end{enumerate*}
+Enfatizamos que a relevância do ítem 3 não deve ser subestimada.
+Atualmente, podem existir muitas cópias de um arquivo em computadores pelo mundo inteiro, mas sem nenhum modo de encontrá-lo e baixá-lo, podemos considerá-lo \textit{lost media}\footnotemark.
+\footnotetext{
+    Arquivos digitais com registros de terem existido, mas que nenhuma cópia pode ser encontrada mais.
+    Projeto que cataloga famous lost media: \url{https://lostmediawiki.com/Home}
+}
 
 % Firstly, to attempt to empower users over their data and over the way they want to interact with it (e.g., using a custom GUI to access one's Instagram DMs or a different recommendation algorithm for one's TikTok For You page).
 % Secondly, to diminish the walled-garden-granted ``power'' social media platforms currently have over their users (e.g., hindering creators' reach because of their political opinions or making obscene changes to their apps' interfaces).
 % And thirdly, (mostly as a consequence of the previous ones) to allow for much easier historical archiving efforts as content will be seldom lost, because there will be control mechanisms (probably some sort of DHT) tracking what data each host/node has.
-% Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media\footnotemark.
-% \footnotetext{
-%     Arquivos digitais com registros de terem existido, mas que nenhuma cópia pode ser encontrada mais.
-%     Projeto que cataloga famous lost media: \url{https://lostmediawiki.com/Home}
-% }
+% Nowadays, there could even be many copies of a file out there, but with no way for one to find it and download it, it might as well be considered lost media.

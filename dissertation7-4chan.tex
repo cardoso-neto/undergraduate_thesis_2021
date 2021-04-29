@@ -100,14 +100,15 @@ Em outras palavras, os requisitos não funcionais de um sistema representam as n
 De acordo com a análise realizada, o sistema possui os seguintes requisitos não funcionais:
 
 \begin{enumerate}
-    \item \textbf{Desempenho} Ter desempenho em termos de \textit{response time} similares às redes que já estou acostumado.
-    \item \textbf{Tecnologia} Empregar um formato de dados base ado em padrões livres e \textit{open-source}.
+    \item \textbf{Desempenho} Ter desempenho em termos de \textit{response time} similares às redes que já estou acostumado (entre 30 a 300ms, quanto menor melhor).
+    \item \textbf{Tecnologia} Empregar um formato de dados baseado em padrões livres (\textit{free software}) e código aberto (\textit{open-source}).
     \item \textbf{Desempenho} Utilizar estruturas de dados que permitam downloads de granularidade pequena (não quero ter que baixar um \textit{board} inteiro se eu só quiser uma \textit{thread}).
-    \item \textbf{Segurança} Utilizar estruturas de dados que possam ser replicadas e atualizadas independentemente e paralelamente num rede peer-to-peer sem a necessidade de coordenação entre as réplicas nem uma entidade central (CRDTs SIGLA + CITAR \url{https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type}
+    \item \textbf{Segurança} Utilizar estruturas de dados que possam ser replicadas e atualizadas independentemente e paralelamente numa rede peer-to-peer, sem a necessidade de coordenação entre as réplicas, nem uma entidade central (CRDTs, conflict-free replicated data types\footnote{\url{https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type}}).
     \item \textbf{Desempenho} O formato de dados deve evitar duplicação de conteúdo, a fim de economizar recursos de armazenamento.
     \item \textbf{Ambiente} Ser compatíveis com distribuições GNU/Linux.
-    \item \textbf{Usabilidade} Respeitar a filosofia UNIX.
+    \item \textbf{Usabilidade} Seguir os princípios da filosofia UNIX\footnote{\url{https://en.wikipedia.org/wiki/Unix_philosophy}}, especialmente no que diz respeito a modularidade e responsabilidade única.
 \end{enumerate}
+
 \begin{figure}[H]
     \centering
     \includesvg[width=1.1\textwidth]{fig/RequisitosNaoFuncionais.svg}
@@ -117,34 +118,34 @@ De acordo com a análise realizada, o sistema possui os seguintes requisitos nã
     }
 \end{figure}
 
-{
-\renewcommand{\arraystretch}{3}
-\begin{table}[!htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{|X|X|X|}
-        \hline
-        \centering \textbf{ID Requisito}  & \centering  \textbf{Tipo Requisito} & \textbf{Descrição} \\
-        \hline
-        \textbf{RNF01}       & Desempenho       &            Ter desempenho em termos de tempo de resposta similares às redes que já estou acostumado.                \\
-        \hline
-        RNF02   & Tecnologia      &        Empregar um formato de dados baseado em padrões livres e open-source.     \\
-        \hline
-        RNF03 &   Desempenho    & Utilizar estruturas de dados que permitam downloads de granularidade pequena.         \\
-        \hline
-        RNF04     &   Segurança         & Utilizar CRDTs.    \\
-        \hline
-        RNF05 &    Desempenho     & O formato de dados deve evitar duplicação de conteúdo, a fim de economizar recursos de armazenamento.   \\
-        \hline
-        RNF06     &  Ambiente         & Ser compatíveis com distribuições GNU/Linux.               \\
-        \hline
-        RNF07  &    Usabilidade        & Respeitar a filosofia UNIX.   \\
-        \hline
-    \end{tabularx}
-    \caption{\label{tab:non-func-reqs}
-        Cronograma de atividades.\\
-        Fonte: os autores.
-    }
-\end{table}}
+% {
+% \renewcommand{\arraystretch}{3}
+% \begin{table}[!htbp]
+%     \centering
+%     \begin{tabularx}{\textwidth}{|X|X|X|}
+%         \hline
+%         \centering \textbf{ID Requisito}  & \centering  \textbf{Tipo Requisito} & \textbf{Descrição} \\
+%         \hline
+%         \textbf{RNF01}       & Desempenho       &            Ter desempenho em termos de tempo de resposta similares às redes que já estou acostumado.                \\
+%         \hline
+%         RNF02   & Tecnologia      &        Empregar um formato de dados baseado em padrões livres e open-source.     \\
+%         \hline
+%         RNF03 &   Desempenho    & Utilizar estruturas de dados que permitam downloads de granularidade pequena.         \\
+%         \hline
+%         RNF04     &   Segurança         & Utilizar CRDTs.    \\
+%         \hline
+%         RNF05 &    Desempenho     & O formato de dados deve evitar duplicação de conteúdo, a fim de economizar recursos de armazenamento.   \\
+%         \hline
+%         RNF06     &  Ambiente         & Ser compatíveis com distribuições GNU/Linux.               \\
+%         \hline
+%         RNF07  &    Usabilidade        & Respeitar a filosofia UNIX.   \\
+%         \hline
+%     \end{tabularx}
+%     \caption{\label{tab:non-func-reqs}
+%         Cronograma de atividades.\\
+%         Fonte: os autores.
+%     }
+% \end{table}}
 
 \section{Tecnologias que utilizaremos}
 
@@ -207,7 +208,11 @@ Juan Benet often refers to IPFS as a thin waste protocol\ref{foot:thinWaist}; me
 }
 
 \subsection{GNU Privacy Guard}
-gnupg.org
+
+GNU Privacy Guard, também conhecido como GnuPG e GPG\footnote{\url{gnupg.org/}}, é uma implementação livre do padrão OpenPGP definido pela RFC4880.
+GnuPG permite criptografar e assinar dados, gerenciar chaves de diferentes algoritmos (incluindo o estado da arte de criptografia assimétrica), assim como enviar e adquirir chaves públicas de diversos tipos de diretórios e \textit{key servers}.
+GnuPG tem sua principal interface, seguindo tradição UNIX, na linha de comando permitindo fácil integração com outras aplicações.
+Nós o escolhemos também por sua ubiquidade em sistemas compatíveis com POSIX.
 
 \section{Implementação}
 
