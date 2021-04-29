@@ -1,231 +1,3 @@
-
-\chapter{Arquitetura aplicada: 4chan.org}
-
-Com o objetivo de instanciar um exemplo concreto da estratégia de transição que propomos, implementaremos as ferramentas acima propostas de forma que permitam o armazenamento e compartilhamento de conteúdo do 4chan de forma descentralizada.
-Brevemente, essas ferramentas serão:
-\begin{enumerate*}[label=(\arabic*)]
-    \item Um \textit{scraper} confiável e de de alto desempenho,
-    \item um módulo de \textit{networking} capaz de localizar quais peers possuem quais dados, e
-    \item um módulo de criptografia para assinar e verificar assinaturas, a fim de montarmos a \textit{internet of trust}. 
-\end{enumerate*}
-
-\section{Requisitos da Solução}
-
-Neste capítulo serão apresentados os Requisitos Funcionais e Requisitos Não Funcionais da solução para separar a camada de dados da camada de apresentação do 4chan.
-
-Segundo Sommerville (2011, p. 57)~\cite{SOMMERVILLE1}, os requisitos de um sistema são:
-
-\begin{directcite}
-as descrições do que o sistema deve fazer, os serviços que
-oferece e as restrições a seu funcionamento.
-Esses requisitos refletem as necessidades dos clientes para
-um sistema que serve a uma finalidade determinada, como controlar
-um dispositivo, colocar um pedido ou encontrar informações.
-\end{directcite}
-
-\subsection{Requisitos Funcionais}
-
-Os requisitos funcionais de um sistema representam as necessidades que o sistema deverá suprir e todas as funções que o sistema deve ter.
-Sobre os requisitos funcionais de uma solução, Sommerville (2011, p. 59) considera que~\cite{SOMMERVILLE1}:
-
-\begin{directcite}
-São declarações de serviços que o sistema deve fornecer,
-de como o sistema deve reagir a entradas específicas e
-de como o sistema deve se comportar em determinadas situações.
-Em alguns casos, os requisitos funcionais também
-podem explicitar o que o sistema não deve fazer.
-\end{directcite}
-
-De acordo com o nosso entendimento, a solução possui os seguintes requisitos funcionais.
-
-\begin{enumerate}
-    \item Módulo de \textit{scraping}:
-    \begin{enumerate}[label*=\arabic*.]
-        \item baixar todo o texto de uma thread.
-            \subitem escolher uma thread passando sua URL por argumento.
-            \subitem saber quando o download foi concluído.
-        \item baixar toda a mídia (fotos, vídeos) de uma thread.
-            \subitem escolher uma thread passando sua URL por argumento.
-            \subitem monitorar o progresso do download.
-            \subitem poder interromper um download.
-            \subitem continuar um download de onde parou.
-        \item baixar todas threads de um board.
-            \subitem escolher um board passando seu nome como argumento.
-            \subitem monitorar quais threads estão sendo baixadas.
-            \subitem baixar threads utilizando computação paralela.
-            \subitem interromper download.
-            \subitem retomar download.
-        \item reconhecer quando uma thread estiver fechada e marcá-la como tal para evitar desperdício de recursos.
-            \subitem reconhecer threads arquivadas.
-            \subitem reconhecer threads apagadas.
-            \subitem marcar como tal no banco de dados.
-        \item monitorar threads por novos posts e baixá-los assim que postados.
-            \subitem opcionalmente receber um argumento que defina de quanto em quanto tempo checar por novos posts numa thread.
-        \item monitorar boards por novos posts e adicioná-las a fila de monitoramento de threads assim que criadas.
-            \subitem opcionalmente receber um argumento que defina de quanto em quanto tempo checar por novas threads num board.
-        \item converter os dados baixados em um formato padronizado.
-            \subitem opcionalmente receber um argumento para exportar threads.
-            \subitem permitir que o usuário especifique qual dos padrões implementados ele deseja.
-            \subitem utilizar computação paralela na exportação.
-    \end{enumerate}
-    \item Módulo de \textit{networking}:
-    \begin{enumerate}[label*=\arabic*.]
-        \item Requisitar conteúdo para outros peers.
-        \item Servir conteúdo local para outros peers.
-    \end{enumerate}
-    \item Módulo de criptografia:
-    \begin{enumerate}[label*=\arabic*.]
-        \item Criar um novo par de chaves (privada e pública) criptográficas.
-        \item Escolher em quais peers confio para baixar conteúdo que não esteja disponível no servidor do 4chan.
-        \item Exportar minha chave pública em cleartext para compartilhamento.
-        \item Assinar arquivos com minha chave privada.
-        \item Verificar se assinatura de arquivos correspondem a alguma chave pública que tenho marcada como confiável.
-    \end{enumerate}
-\end{enumerate}
-
-\subsection{Requisitos Não Funcionais}
-
-Sobre os requisitos não funcionais de uma solução, Sommerville (2011, p. 59) considera que~\cite{SOMMERVILLE1}:
-
-\begin{directcite}
-Os requisitos não funcionais, como o nome sugere, são requisitos
-que não estão diretamente relacionados com os serviços específicos
-oferecidos pelo sistema a seus usuários.
-Eles podem estar
-relacionados às propriedades emergentes do sistema, como
-confiabilidade, tempo de resposta e ocupação de área.
-\end{directcite}
-
-Em outras palavras, os requisitos não funcionais de um sistema representam as necessidades internas do sistema, necessidades estas que devem ser de compreensão do desenvolvedor, resumindo-se aos itens de segurança, usabilidade, confiabilidade, desempenho, hardware e software.
-De acordo com a análise realizada, o sistema possui os seguintes requisitos não funcionais:
-
-\begin{enumerate}
-    \item \textbf{Desempenho} Ter desempenho em termos de \textit{response time} similares às redes que já estou acostumado.
-    \item \textbf{Tecnologia} Empregar um formato de dados base ado em padrões livres e \textit{open-source}.
-    \item \textbf{Desempenho} Utilizar estruturas de dados que permitam downloads de granularidade pequena (não quero ter que baixar um \textit{board} inteiro se eu só quiser uma \textit{thread}).
-    \item \textbf{Segurança} Utilizar estruturas de dados que possam ser replicadas e atualizadas independentemente e paralelamente num rede peer-to-peer sem a necessidade de coordenação entre as réplicas nem uma entidade central (CRDTs SIGLA + CITAR \url{https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type}
-    \item \textbf{Desempenho} O formato de dados deve evitar duplicação de conteúdo, a fim de economizar recursos de armazenamento.
-    \item \textbf{Ambiente} Ser compatíveis com distribuições GNU/Linux.
-    \item \textbf{Usabilidade} Respeitar a filosofia UNIX.
-\end{enumerate}
-\begin{figure}[H]
-    \centering
-    \includesvg[height=0.65\textheight]{fig/RequisitosNaoFuncionais.svg}
-    \caption[Requisitos Não-Funcionais]{\label{fig:Requisitos_Nao_Funcionais}
-        Requisitos Não-Funcionais\\
-        Fonte: os autores.
-    }
-\end{figure}
-\section{Tecnologias que utilizaremos}
-
-Nesta seção, falaremos sobre as tecnologias que utlizamos 
-
-\subsection{Python multiprocessing}
-https://docs.python.org/3/library/multiprocessing.html
-
-\subsection{Python requests}
-https://docs.python-requests.org/en/master/
-
-\subsection{Python setuptools}
-https://setuptools.readthedocs.io/en/latest/
-
-\subsection{Python toolz}
-https://github.com/pytoolz/toolz
-Functional programming library.
-
-\subsection{\label{sec:ipfs}InterPlanetary File System}
-
-IPFS is a peer-to-peer distributed file system and hypermedia protocol~\cite{IPFS}.
-It provides a high throughput content-addressed block storage model, with content-addressed hyper links; all through its core data format called IPLD (InterPlanetary Linked Data) which is going to be further explained in subsection~\ref{subsec:ipld}.
-Juan Benet, IPFS's author, often describes it in his talks as a single BitTorrent swarm\ref{bittorent-swarm} with peers exchanging objects within a Git repository~\cite{github:ipfspaper}.
-This is simple, informal, and incomplete, but it is a powerful analogy that captures the essential mechanics of IPFS.
-\longfootnote[bittorent-swarm]{
-    Together, all peers (including seeds) sharing a torrent are called a swarm.
-}
-IPFS has no single point of failure, nodes do not need to trust each other, and all peers are independent.
-The following paragraphs will go into each relevant subsystem of IPFS.
-
-\subsubsection{\label{subsec:ipld}IPLD}
-
-IPLD is a common hash-chain format for distributed data structures that are universally addressable and linkable~\cite{github:ipld}.
-All IPFS data is stored and transferred in this format.
-Shortly said, it is a Merkle DAG where links between objects are cryptographic hashes of the objects' to which they point.
-An IPLD implementation offers developers the ability to traverse it using Unix-style paths when the Merkle DAG has named Merkle links, a data model to describe Merkle DAGs that is flexible, JSON-inspired, and self-describing, and standard serialization algorithms for different formats (e.g., JSON, CBOR, Protobuf, RDF).
-These structures allow us to do for data what URLs and links did for HTML web pages.
-It is also worth emphasizing that no feature is lost when using this data format.
-
-\subsubsection{\label{subsec:libp2p}libp2p}
-
-An ever-growing, fully modular, flexible, and extensible network stack; a collection of peer-to-peer protocols geared towards multi-platform interoperability with high-latency scenarios considered and easy upgrades in mind.
-Protocols for finding peers and connecting to them, and for finding content and transferring it.
-All while keeping it secure by not relying on centralized registers and third parties (allowing users to work offline or work on their LAN only), as well as enabling encrypted connections by default.
-
-One of the main goals of developing libp2p separately from IPFS is so that developers no longer need to reinvent the P2P networking wheel yet again in the near-future.
-Each big Web3.0 project like BitTorrent or DAT had to write their networking code mostly from scratch.
-Juan Benet often refers to IPFS as a thin waste protocol\ref{foot:thinWaist}; meaning the data structures are what needs to be standardized and everything else will communicate.
-\longfootnote[foot:thinWaist]{
-    The term “thin-waist” has been used because there is a vast diversity of applications and hardware that sit above and below the thin waist of universally shared control mechanisms (IPLD). Further details on network architecture and protocols can be found on this Caltech wiki page by Doyle et al~\cite{INTERNETWAIST} and, more formally, on a 2005 paper by Doyle as well on the robustness of the internet~\cite{INTERNETROBUSTNESS}.
-}
-
-\subsection{GNU Privacy Guard}
-gnupg.org
-
-\section{Implementação}
-
-Focaremos nossos esforços de implementação inteiramente no scraper, pois é o mais relevante para fins de demonstração do conceito e de contribuição open-source.
-Graças aos excelentes esforços da Protocol Labs no IPFS~\ref{label da seção que explica o ipfs}, poderemos nos apoiar nos ombros de gigantes no tocante a questão de \textit{networking} realizando apenas de integrações simples com a API da libp2p~\ref{subsec:libp2p} e da IPLD~\ref{subsec:ipld}.
-
-\subsection{Modelo de dados}
-
-\begin{tikzpicture}[auto,node distance=1.5cm]
-    \node[entity] (board_node) {Boards}
-        [grow=up,sibling distance=3cm]
-        child {node[attribute] {Name}}
-        child {node[attribute] {Abbreviation}};
-    \node[relationship] (board_thread) [below right = of board_node] {have};
-    \node[entity] (thread_node) [above right = of board_thread]	{Threads}
-        child {node[attribute] {id}};
-    \path (board_thread) edge node {1} (board_node) edge node {N} (thread_node);
-    \node[entity] (post_node) [above = of thread_node] {Posts}
-        [grow=up,sibling distance=3cm]
-        child[grow=left,level distance=3cm] {node[attribute] {id}}
-        child {node[attribute] {Author name}}
-        child {node[attribute] {Media}}
-        child {node[attribute] {Text}};
-    \node[relationship] (thread_post) [above right = of thread_node] {have};
-    \path (thread_post) edge node {1} (thread_node) edge node {N} (post_node);
-\end{tikzpicture}
-
-\subsection{Banco de dados}
-
-Para o nosso banco de dados, escolhemos o que há de mais portátil e acessível: o sistema de arquivos.
-Os dados colaboram para isso, pois não têm nenhuma relação com cardinalidade que nos impeça de modelá-los denormalizados, então assim o fizemos. Como pode ser visto na árvore de diretórios na \textbf{figura X}, temos:
-
-\begin{itemize}
-    \item Uma pasta raíz com N subpastas, cada um correspondendo a um board.
-    \item Cada pasta de board, identificada pela abreviação única do board, possui N subpastas e cada uma dessas corresponde a uma thread.
-    \item Cada pasta de thread possui 
-        \subitem uma subpasta \code{media} onde todas imagens e vídeos da thread são armazenados;
-        \subitem um arquivo \code{thread.json} onde todos dados pertinentes àquela thread são armazenados.
-\end{itemize}
-
-% \begin{verbatim}
-% $ tree 4chan-archive/
-% └── w/
-%     ├── 2131136/
-%     │   ├── media/
-%     │   │   ├── 1600798279711.png
-%     │   │   ├── 1600814639570.jpg
-%     │   │   └── ...
-%     │   └── thread.json
-%     ├── 2180136/
-%     │   ├── media/
-%     │   └── thread.json
-%     └── 2180395/
-%         ├── media/
-%         └── thread.json
-% \end{verbatim}
-
 \chapter{Modelagem do Sistema}
 
 Este capítulo apresenta a modelagem completa das ferramentas
@@ -319,10 +91,10 @@ Permite ao usuário baixar todo o texto de uma thread do 4chan. Para isso o usu�
 Permite ao usuário baixar todo a mídia de uma thread do 4chan. Para isso o usuário deve passar como parâmetro para o \textit{Scraper} a id da thread que deseja baixar a mídia.
 \subsubsection{UC04 - Baixar todo o conteúdo de uma Thread do 4chan}
 Permite ao usuário baixar todo a conteúdo de uma thread do 4chan (mídia e texto). Para isso o usuário deve passar como parâmetro para o \textit{Scraper} a id da thread que deseja baixar todo o conteúdo.
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
-    \includesvg[width=0.6\textwidth]{fig/Ator_Scraper1.svg}
-    \caption[Casos de uso Scraper UC01,UC02,UC03,UC04]{\label{fig:Ator_Scraper1}
+    \includesvg[width=\textwidth]{fig/Ator_Scraper1.svg}
+    \caption[Casos de uso Scraper UC01, UC02, UC03, e UC04]{\label{fig:Ator_Scraper1}
         Casos de uso Scraper UC01,UC02,UC03,UC04\\
         Fonte: os autores.
     }
@@ -379,7 +151,7 @@ Permite ao usuário assinar arquivos com sua chave privada para que os outros pe
 Permite ao usuário identificar a assinatura de um nodo confiável a partir da chave publica na lista de nodos confiáveis. Para isso o usuário necessita ter armazenado na sua lista de nodos confiáveis a chave publica do nodo.
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.5\textwidth]{fig/Ator_Crypto2.svg}
+    \includesvg[width=0.7\textwidth]{fig/Ator_Crypto2.svg}
     \caption[Casos de uso Criptografia UC04,UC05]{\label{fig:Ator_Crypto2}
         Casos de uso Criptografia UC04,UC05\\
         Fonte: os autores.
@@ -646,21 +418,32 @@ O usuário terá o arquivo requisitado.
 
 
 \subsection{Fornecer Conteúdo pela Rede}
+
 \subsubsection{Descrição}
+
 Permite ao usuário fornecer conteúdo pela rede peer-to-peer, para isso ele deve ter o arquivo e configurar a rede para fornecer o conteúdo.
+
 \subsubsection{Atores : Usuário}
+
 \subsubsection{Pré-Condição}
+
 O usuário deve ter armazenado os arquivos que deseja fornecer.
+
 \subsubsection{Pós-Condição}
+
 O usuário estará disponível na para outros usuários quando pesquisarem pelo arquivo servido. 
+
 \subsubsection{Fluxo Principal}
+
 \begin{enumerate}
     \item Se conecta a rede pela linha de comando;
     \item Passa como parâmetro o local do arquivo em sua maquina;
     \item A rede lê o arquivo;
     \item A rede gera uma hash e espoem o arquivo para a rede;
 \end{enumerate}
+
 \subsubsection{Fluxo Alternativo}
+
 \begin{itemize}
     \item O arquivo não existe no caminho informado: ocorre quando no passo 3 a rede não acha o arquivo indicado pelo usuário.
     \begin{enumerate}
@@ -886,16 +669,16 @@ Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e 
 
 
 
-\chapter{Conclusão}
+%\chapter{Conclusão}
 
-\section{Limitações}
+%\section{Limitações}
 
-Usuário 
+%Usuário 
 
-\section{Trabalhos futuros}
+%\section{Trabalhos futuros}
 
-\subsection{Sistema de governança}
+%\subsection{Sistema de governança}
 
-A definição dos formatos e estruturas de dados precisa ser gerida de forma aberta, transparente, e não-monopolística.
+%A definição dos formatos e estruturas de dados precisa ser gerida de forma aberta, transparente, e não-monopolística.
 
-Extensões do scraper (ou outros scrapers) para baixar conteúdos encontrados em links.
+%Extensões do scraper (ou outros scrapers) para baixar conteúdos encontrados em links.
