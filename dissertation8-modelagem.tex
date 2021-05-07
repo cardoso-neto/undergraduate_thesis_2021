@@ -7,18 +7,23 @@ através de sua abstração.
 \section{Diagramas de Atividades}
 
 Nesta seção serão apresentados os diagramas de atividade das ferramentas quem tem contato direto com o usuário(\textit{Scraper} e Rede \textit{Peer-to-Peer}), com foco nas atividades que serão executadas no funcionamento destas ferramentas.
+
 \subsection{Extração de Dados\label{subsec:extracao_de_dados}}
+
 Esse processo realiza a extração de dados da web 2.0, esse é o método principal para a migração de dados da web 2.0 para a web 3.0, as principais atividade do processo podem ser vistas no diagrama de atividades representado na figura ~\ref{fig:extracao_de_dados}.
-\begin{figure}[H]
+
+\begin{figure}[htb]
     \centering
-    \includesvg[width=\textwidth]{fig/Extracao_de_dados.svg}
-    \caption[Diagrama de Atividades : Extração de Dados]{\label{fig:extracao_de_dados}
-        Diagrama de Atividades : Extração de Dados\\
+    \includegraphics[width=\textwidth]{fig/diagrama-extracao-dados.pdf}
+    \caption[Activity diagram: data extraction]{
+        Diagrama de Atividades: Extração de Dados.\\
         Fonte: os autores.
     }
+    \label{fig:extracao_de_dados}
 \end{figure}
+
 Esse processo já está descrito a partir da rede social da web 2.0 que será utilizada para a aplicação das ferramentas deste trabalho, assim além
-do usuário e da ferramenta \textit{scraper} temos a API do \textit{4chan}. Por estarmos utilizando o \textit{4chan} que é uma plataforma que não necessita o cadastro de um usuário não existe o passo para a autenticação junto a API, para outras plataformas como \textit{Facebook} e \textit{Twitter} necessitaríamos um passo a mais e a utilização  de um \textit{token} nas chamadas a API.
+do usuário e da ferramenta \textit{scraper} temos a API do \textit{4chan}. Por estarmos utilizando o \textit{4chan} que é uma plataforma que não necessita o cadastro de um usuário não existe o passo para a autenticação junto a API, para outras plataformas como \textit{Facebook} e \textit{Twitter} necessitaríamos um passo a mais e a utilização de um \textit{token} nas chamadas a API.
 
 O processo começa com a etapa onde o usuário indica qual o dado deseja salvar em seu computador; Exemplo: \textit{board}, \textit{thread}, comentário (Todos exemplos de postagens do \textit{4chan}). E depois o
 formato que deseja que eles sejam salvos; Exemplo: XML, JSON, TXT. Após essa primeira etapa o \textit{scraper} recebe esses dados e cria uma requisição para a API do \textit{4chan} e fica no aguardo da
@@ -26,28 +31,33 @@ reposta, recebido a resposta o \textit{scraper} formata os dados conforme os par
 
 \subsection{Solicitação de Dados pela Rede P2P\label{subsec:Solicitacao_Dados}}
 Este processo realiza a comunicação e a troca de dados dentro da rede P2P, uma fez extraído os dados da web 2.0 esse vai ser o novo formato de obtenção e troca de dados sem a necessidade do 
-do \textit{4chan}. A partir deste processo o usuário fica independente das plataformas da web 2.0. as principais atividade do processo podem ser vistas no diagrama de atividades 
-representado na figura ~\ref{fig:Solicitacao_Dados}. 
-\begin{figure}[H]
-    \includesvg[width= 1.11\textwidth]{fig/Solicitacao_Dados.svg}
-    \caption[Diagrama de Atividades : Solicitação de Dados pela Rede P2P]{\label{fig:Solicitacao_Dados}
-        Diagrama de Atividades : Solicitação de Dados pela Rede P2P\\
+do \textit{4chan}. A partir deste processo o usuário fica independente das plataformas da web 2.0. as principais atividade do processo podem ser vistas no diagrama de atividades representado na figura~\ref{fig:Solicitacao_Dados}.
+
+\begin{figure}[htb]
+    \includegraphics[width=\textwidth]{fig/activity-diagram-p2p-network.pdf}
+    \caption[Activity diagram: P2P network data download]{
+        Diagrama de Atividades: Solicitação de Dados pela Rede P2P.\\
         Fonte: os autores.
     }
+    \label{fig:Solicitacao_Dados}
 \end{figure}
+
 O processo começa com a etapa onde o usuário indica qual o dado deseja acessar; Exemplo:\textit{board}, \textit{thread}, comentário (Todos exemplos de postagens do \textit{4chan}). Depois a rede procura pela \textit{hash} desse \textit{post} na rede para descobrir qual nodo tem esse dado, verificando-se existem nodos da lista de nodos confiáveis do usuário, não tendo nodos da lista confiáveis oferece a opção de baixar
 de um nodo não confiável. Após essa primeira etapa é realizado a comunicação entre os nodos e transferido os arquivos, por fim o usuário escolhe se deseja manter salvo os arquivos 
 em usa máquina. 
 \section{Diagramas de Sequência}
 Nesta seção serão apresentados os diagramas de sequencia das ferramentas quem tem contato direto com o usuário(\textit{Scraper} e Rede \textit{Peer-to-Peer}), com foco na comunicação entre os objetos e nos tempos de execução e reposta das funcionalidade destas ferramentas.
 \subsection{Extração de Dados}
-Esta seção faz a analise dos tempos de execução e resposta do processo de extração de dados descrito na seção~\ref{subsec:extracao_de_dados}. A representação dos tempos de execução podem ser vistas através do diagrama de sequencia representado na figura~\ref{fig:seq_extracao_dados}. 
-\begin{figure}[H]
-    \includesvg[width= 1.10\textwidth]{fig/DiagramadeSequenciaScraper.svg}
-    \caption[Diagrama de Sequência : Extração de Dados]{\label{fig:seq_extracao_dados}
-        Diagrama de Sequência : Extração de Dados\\
+Esta seção faz a analise dos tempos de execução e resposta do processo de extração de dados descrito na seção~\ref{subsec:extracao_de_dados}.
+A representação dos tempos de execução podem ser vistas através do diagrama de sequencia representado na figura~\ref{fig:seq_extracao_dados}.
+
+\begin{figure}[htb]
+    \includegraphics[width=\textwidth]{fig/DiagramadeSequenciaScraper.pdf}
+    \caption[Diagrama de Sequência: Extração de Dados]{
+        Diagrama de Sequência: Extração de Dados.\\
         Fonte: os autores.
     }
+    \label{fig:seq_extracao_dados}
 \end{figure}
 
 O processo inicia com a solicitação síncrona do usuário ao \textit{Scraper}, que envia uma requisição síncrona para a API do \textit{4chan}, o \textit{Scraper} fica a espera de uma resposta assíncrona do \textit{4chan} e envia uma resposta assíncrona para o usuário. 
@@ -56,13 +66,16 @@ se o formato for diferente da resposta da API um tempo de formatação do \texti
 
 \subsection{Solicitação de Dados pela Rede P2P}
 Esta seção faz a analise dos tempos de execução e resposta do processo de solicitação de dados pela \textit{rede peer-to-peer} descrito na seção~\ref{subsec:Solicitacao_Dados}. A representação dos tempos de execução podem ser vistas através do diagrama de sequencia representado na figura~\ref{fig:seq_Solicitacao_dados}. 
+
 \begin{figure}[H]
-    \includesvg[width= 1.11\textwidth]{fig/DiagramaSequenciaRedeP2P.svg}
-    \caption[Diagrama de Sequência :Solicitação de Dados pela Rede P2P]{\label{fig:seq_Solicitacao_dados}
-        Diagrama de Sequência : Solicitação de Dados pela Rede P2P\\
+    \includegraphics[width=\textwidth]{fig/diagrama-sequencia-rede-p2p.pdf}
+    \caption[Sequence diagram: requesting data to peers]{
+        Diagrama de Sequência: Solicitação de Dados pela Rede P2P.\\
         Fonte: os autores.
     }
+    \label{fig:seq_Solicitacao_dados}
 \end{figure}
+
 O processo inicia com solicitação síncrona do usuário a rede \textit{peer-to-peer}, indicando os dados
 requisitados, a rede \textit{peer-to-peer} envia uma resposta assíncrona que pode ser dado encontrado ou dado não encontrado,
 a partir desse dado o usuário envia uma solicitação ao \textit{peer} que contém o conteúdo desejado
@@ -75,7 +88,7 @@ modelados por ferramenta. O objetivo do uso desta modelagem é abordar mais prof
 Por o projeto ser um conjunto de ferramentas, elas serão utilizadas apenas por um tipo de Ator, o usuário. Ele será responsável por fornecer os dados de entrada para as ferramentas, e as configurações que melhor desejar e que possam ser fornecidas as ferramentas.
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.09\textwidth]{fig/Ator.svg}
+    \includesvg[width=0.07\textwidth]{fig/Ator.svg}
     \caption[Diagrama do Ator]{\label{fig:diagrama_do_ator}
         Diagrama do Ator\\
         Fonte: os autores.
@@ -91,9 +104,9 @@ Permite ao usuário baixar todo o texto de uma thread do 4chan. Para isso o usu�
 Permite ao usuário baixar todo a mídia de uma thread do 4chan. Para isso o usuário deve passar como parâmetro para o \textit{Scraper} a id da thread que deseja baixar a mídia.
 \subsubsection{UC04 - Baixar todo o conteúdo de uma Thread do 4chan}
 Permite ao usuário baixar todo a conteúdo de uma thread do 4chan (mídia e texto). Para isso o usuário deve passar como parâmetro para o \textit{Scraper} a id da thread que deseja baixar todo o conteúdo.
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includesvg[width=\textwidth]{fig/Ator_Scraper1.svg}
+    \includesvg[width=0.5\textwidth]{fig/Ator_Scraper1.svg}
     \caption[Casos de uso Scraper UC01, UC02, UC03, e UC04]{\label{fig:Ator_Scraper1}
         Casos de uso Scraper UC01,UC02,UC03,UC04\\
         Fonte: os autores.
@@ -105,6 +118,7 @@ Permite ao usuário informar uma thread para monitoramento no 4chan, assim o scr
 Permite ao usuário informar um board para monitoramento no 4chan, assim o scraper fará consultas constantemente, buscando e baixando alterações no board. Para isso o usuário deve passar como parâmetro para o \textit{Scraper} a id do board que deseja monitorar.  
 \subsubsection{UC07 - Interromper o monitoramento de uma Thread que estiver fechada}
 Permite ao usuário configurar o \textit{Scraper} para parar de monitorar threads que estiverem fechadas.
+
 \begin{figure}[H]
     \centering
     \includesvg[width=0.65\textwidth]{fig/Ator_Scraper2.svg}
@@ -113,7 +127,9 @@ Permite ao usuário configurar o \textit{Scraper} para parar de monitorar thread
         Fonte: os autores.
     }
 \end{figure}
+
 \subsection{Casos de Uso Networking}
+
 Nesta seção será apresentado os casos de uso para o ator usuário com ferramenta \textit{Networking}.
 \subsubsection{UC01 - Procurar Conteúdo pela Rede}
 Permite ao usuário procurar conteúdo pela rede peer-to-peer, para isso ele deve passar o nome ou hash do arquivo que deseja.
@@ -121,6 +137,7 @@ Permite ao usuário procurar conteúdo pela rede peer-to-peer, para isso ele dev
 Permite ao usuário requisitar conteúdo pela rede peer-to-peer, para isso ele deve passar o nome ou hash do arquivo que deseja.
 \subsubsection{UC03 - Fornecer Conteúdo pela Rede}
 Permite ao usuário fornecer conteúdo pela rede peer-to-peer, para isso ele deve ter o arquivo e configurar a rede para fornecer o conteúdo.
+
 \begin{figure}[H]
     \centering
     \includesvg[width=0.5\textwidth]{fig/Ator_Networking1.svg}
@@ -129,7 +146,9 @@ Permite ao usuário fornecer conteúdo pela rede peer-to-peer, para isso ele dev
         Fonte: os autores.
     }
 \end{figure}
+
 \subsection{Casos de Uso Criptografia}
+
 Nesta seção será apresentado os casos de uso para o ator usuário com ferramenta \textit{Criptografia}.
 \subsubsection{UC01 - Criar um par de chaves criptográficas}
 Permite ao usuário criar um par de chaves criptográficas para garantir a autenticidade e integridade no compartilhamento de arquivos na rede.
@@ -137,29 +156,24 @@ Permite ao usuário criar um par de chaves criptográficas para garantir a auten
 Permite ao usuário criar uma lista de nodos confiáveis, para isso o usuário deve armazenar uma lista com a chave pública dos nodos que julgar confiáveis.
 \subsubsection{UC03 - Exportar minha chave pública para Compartilhamento}
 Permite ao usuário exportar a chave pública no formato cleartext para compartilhamento. Para isso o usuário necessita ter um par de chaves criptográficas. 
-\begin{figure}[H]
-    \centering
-    \includesvg[width=0.7\textwidth]{fig/Ator_Crypto1.svg}
-    \caption[Casos de uso Criptografia UC01,UC02,UC03]{\label{fig:Ator_Crypto1}
-        Casos de uso Criptografia UC01,UC02,UC03\\
-        Fonte: os autores.
-    }
-\end{figure}
 \subsubsection{UC04 - Assinar arquivos com a minha chave privada}
 Permite ao usuário assinar arquivos com sua chave privada para que os outros peers da rede que o mantém como nodo confiável e tem sua chave publica possam reconhecer a assinatura e identificar que ele é um peer confiável. Para isso o usuário deve ter um par de chaves criptográficas.
 \subsubsection{UC05 - Verificar se a assinatura de um arquivo pertence a minha lista de nodos confiáveis}
 Permite ao usuário identificar a assinatura de um nodo confiável a partir da chave publica na lista de nodos confiáveis. Para isso o usuário necessita ter armazenado na sua lista de nodos confiáveis a chave publica do nodo.
-\begin{figure}[H]
+
+\begin{figure}[htb]
     \centering
-    \includesvg[width=0.7\textwidth]{fig/Ator_Crypto2.svg}
-    \caption[Casos de uso Criptografia UC04,UC05]{\label{fig:Ator_Crypto2}
-        Casos de uso Criptografia UC04,UC05\\
+    \includegraphics[width=\textwidth]{fig/use-case-diagram-crypto.pdf}
+    \caption[Use case diagram: cryptography module]{
+        Diagram de casos de uso: módulo de criptografia.\\
         Fonte: os autores.
     }
 \end{figure}
+
 \section{Detalhamento dos Casos de Uso}
 
 \subsection{Especificar o Formato dos Dados}
+
 \subsubsection{Descrição}
 Permite ao usuário especificar ao \textit{Scraper} qual o formato dos dados que ele espera receber. Para isso o usuário deve passar como parâmetro para o \textit{Scraper} essa informação, ou configurá-lo previamente com o formato favorito.
 \subsubsection{Atores : Usuário}
@@ -577,18 +591,23 @@ O usuário terá verificado a identidade de quem assinou aquele arquivo.
 A metodologia empregada para o planejamento e desenvolvimento do sistema deste trabalho de conclusão é o tradicional modelo cascata.
 Esse modelo funciona como um exemplo de um processo dirigido a planos, onde, em princípio deve-se planejar e programar todas as atividades do processo até a implementação e a manutenção do dele~\cite{SOMMERVILLE1}.
 
-Consiste numa sequência de fases em que cada fase dá suporte para a próxima, assim o produto de cada fase torna-se a entrada para a seguinte~\cite{BALTZAN1}, a fase inicial é definição de requisitos que busca estabelecer os serviços, restrições e metas do sistema, normalmente por meio de consultas com o usuário~\cite{SOMMERVILLE1}; a próxima fase projeto de sistema e software é a fase em que a identificação e descrição das abstrações fundamentais do sistema é realizada, alocando os requisitos do sistema por meio de uma arquitetura geral do sistema~\cite{SOMMERVILLE1}; a terceira fase implementação e teste unitário é a fase de desenvolvimento do projeto como um conjunto de programas ou unidades de programa, utilizando o teste unitário para verificar de cada unidade, tendo certeza de que a mesma cumpra sua especificação~\cite{SOMMERVILLE1}; a quarta fase integração e teste de sistema é quando as unidades criadas na fase anterior de maneira independente são integradas e testadas como um sistema único e completo, verificando se todos os requisitos estão sendo atendidos~\cite{SOMMERVILLE1}.
-Na fase final, Operação e manutenção, é o momento em que o sistema é de fato instalado e colocado em uso, é onde os eventuais erros que não apareceram anteriormente são resolvidos e, também, onde novos requisitos podem ser descobertos~\cite{SOMMERVILLE1}. 
+Consiste numa sequência de fases em que cada fase dá suporte para a próxima, assim o produto de cada fase torna-se a entrada para a seguinte~\cite{BALTZAN1}.
+A fase inicial é definição de requisitos que busca estabelecer os serviços, restrições e metas do sistema, normalmente por meio de consultas com o usuário~\cite{SOMMERVILLE1}; a próxima fase projeto de sistema e software é a fase em que a identificação e descrição das abstrações fundamentais do sistema é realizada, alocando os requisitos do sistema por meio de uma arquitetura geral do sistema~\cite{SOMMERVILLE1}; a terceira fase implementação e teste unitário é a fase de desenvolvimento do projeto como um conjunto de programas ou unidades de programa, utilizando o teste unitário para verificar de cada unidade, tendo certeza de que a mesma cumpra sua especificação~\cite{SOMMERVILLE1}; a quarta fase integração e teste de sistema é quando as unidades criadas na fase anterior de maneira independente são integradas e testadas como um sistema único e completo, verificando se todos os requisitos estão sendo atendidos~\cite{SOMMERVILLE1}.
+Na fase final, Operação e manutenção, é o momento em que o sistema é de fato instalado e colocado em uso, é onde os eventuais erros que não apareceram anteriormente são resolvidos e, também, onde novos requisitos podem ser descobertos~\cite{SOMMERVILLE1}.
+
 \begin{figure}[H]
     \centering
-    \includesvg[width=\textwidth]{fig/Modelo_Cascata.svg}
-    \caption[Diagrama do Modelo Cascata]{\label{fig:Modelo_Cascata}
-        Diagrama do Modelo Cascata\\
-        Fonte: os autores.
+    \includegraphics[width=\textwidth]{fig/waterfall-development-model.pdf}
+    \caption[Waterfall development model]{\label{fig:Modelo_Cascata}
+        Diagrama ilustrando etapas e fluxos do Modelo Cascata de desenvolvimento e gerenciamento de projetos.\\
+        Fonte: SOMMERVILLE~\cite{SOMMERVILLE1}.
     }
 \end{figure}
+
 Por mais que essa seja uma metodologia não mais tão utilizada pelas empresas devido à sua característica de precisão extrema que não leva em consideração mudanças durante o desenvolvimento do projeto~\cite{BALTZAN1}, para este trabalho ela se torna uma boa escolha, pois se trata de um Trabalho de Conclusão de Curso, com um único desenvolvedor e prazos muito bem definidos.
-Devido à inexistência de um cliente e visando um público alvo, reuniões com o cliente são impossíveis e testes durante o desenvolvimento do trabalho com alguém que faça parte do público alvo não acontecerão facilmente, o modelo cascata se torna a melhor opção como metodologia de desenvolvimento do projeto. A partir de agora as fases alvo são: a codificação, os testes e a implementação/manutenção do sistema, concluindo assim o ciclo completo do modelo tradicional em cascata.
+Devido à inexistência de um cliente e visando um público alvo, reuniões com o cliente são impossíveis e testes durante o desenvolvimento do trabalho com alguém que faça parte do público alvo não acontecerão facilmente, o modelo cascata se torna a melhor opção como metodologia de desenvolvimento do projeto.
+A partir de agora as fases alvo são: a codificação, os testes e a implementação/manutenção do sistema, concluindo assim o ciclo completo do modelo tradicional em cascata.
+
 \chapter{Cronograma}
 
 Apresentamos a seguir um cronograma relatando nossas atividades desenvolvidas e nosso planejamento, relatando as atividades que já foram e que serão desenvolvidas.

@@ -98,7 +98,7 @@ Por serem entidades privadas e terem controle incontestado das suas plataformas,
 
 \begin{enumerate}
     \item abusar dos mecanismos de falsa recompensa  para nos manter engajados,
-    \item adquirir competidores assim que se tornem uma ameaça (e.g., Facebook adquirindo WhatsApp, Instagram, LiveRail, Onavo, Redkix, e outras 83\footnote{\url{https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Facebook}} empresas menos conhecidas da área.
+    \item adquirir competidores assim que se tornem uma ameaça (e.g., Facebook adquirindo WhatsApp, Instagram, LiveRail, Onavo, Redkix, e outras 83 empresas\footnote{\url{https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Facebook}} da área.
     \item criar limitações artificias de interoperabilidade (estilo \textit{vendor lock-in}) para que um usuário não consiga utilizar serviços de terceiros ou próprios em conjunto, e
     \item usar os dados dos usuários como ``reféns'' para segurá-los em suas plataformas (e.g., não tendo como exportar os dados).
 \end{enumerate}
@@ -129,15 +129,15 @@ A hipótese sobre a qual o trabalho está norteado é: ``As plataformas de mídi
 
 \section{Modelo de fases da World Wide Web}
 
-O modelo de fases da web visa explicar as evoluções significativas da web, no formato onde uma fase é consequência da outra, de modo que cada uma trouxe novidades que permitiram o surgimento da outra~\cite{Web31}.
+O modelo de fases da web visa explicar as evoluções significativas da web, no formato onde uma fase é consequência da outra, de modo que cada uma trouxe novidades que permitiram o surgimento da outra~\cite{Web32}.
 
 \subsection{Web 1.0}
 
 Na primeira fase da Web, Web 1.0, os sites contém conteúdo estático e não são interativos com o usuário.
-O surgimento da web foi marcado pela centralização da produção de conteúdo~\cite{Web31}.
+O surgimento da web foi marcado pela centralização da produção de conteúdo~\cite{Web32}.
 Ainda com poucos usuários, e esses em sua grande maioria fazendo um uso bastante técnico da rede, predominavam os sites de empresas e instituições recheados de páginas ``em construção''.
 Evoluindo de suas raízes de uso militar e universitário, a internet começou a caminhar e tomar forma diante das necessidades das pessoas.
-Essa foi a era do e-mail, dos motores de busca simplistas e uma época onde todo site tinha uma seção de links recomendados~\cite{Web31}.
+Essa foi a era do e-mail, dos motores de busca simplistas e uma época onde todo site tinha uma seção de links recomendados~\cite{Web32}.
 
 O usuário era apenas responsável por navegar e localizar conteúdo relevante, agindo predominantemente de modo passivo, num processo onde poucos produzem e muitos consomem.
 A novidade foi a democratização do acesso à informação.
@@ -154,7 +154,7 @@ A novidade da Web 2.0 foi a democratização da produção de informação.
 \subsection{Web 3.0}
 
 Na terceira fase, Web 3.0, será adicionado o poder de alta personalização dos dados da web por parte do usuário, promovendo a democratização da capacidade de ação e conhecimento, o que anteriormente era apenas acessível a companhias e governos.
-O termo Web 3.0 foi criado pelo jornalista John Markoff, do New York Times, baseado na evolução do termo Web 2.0 criado por O’Really em 2004~\cite{Web32}. Algumas evoluções desse momento poderão ser a ``Web Semântica'' ou a ``Web Inteligente''.
+O termo Web 3.0 foi criado pelo jornalista John Markoff, do New York Times, baseado na evolução do termo Web 2.0 criado por O'Really em 2004~\cite{Web32}. Algumas evoluções desse momento poderão ser a ``Web Semântica'' ou a ``Web Inteligente''.
 
 Essa era da internet permite a conexão de usuários até mesmo fora do resto da web, permitindo o agrupamento de conteúdo na web de modo a contextualizar a informação e agrupá-la mais eficiente e rapidamente.
 
@@ -190,7 +190,7 @@ Nessa seção, discorreremos sobre arquiteturas de redes centralizadas vs arquit
 
 São arquitetura de redes de computadores que visam centralizar o acesso a dados e serviços.
 Assim todos os outros nodos da rede dependem de um nodo central que controla todos os recursos da rede.~\cite{wiki:modelorede}
-Esse tipo de rede sofre do ponto único de falha ou ponto crítico de falha é uma tradução vinda da língua inglesa da expressão \textit{Single Point of Failure} para designar um local num sistema informático que, caso falhe, provoca a falha de todo o sistema.~\cite{wiki:modelorede}
+Esse tipo de rede sofre do ponto único de falha ou ponto crítico de falha é uma tradução vinda da língua inglesa da expressão \textit{Single Point of Failure} para designar um local num sistema informático que, caso falhe, provoca a falha de todo o sistema~\cite{wiki:modelorede}.
 Assim caso o nodo central falhar toda a rede se torna inoperável.
 
 \subsection{Redes \textit{peer-to-peer}}
@@ -201,10 +201,12 @@ Por esse motivo a rede tem uma elevada disponibilidade.%~\ref{CAP disponibilidad
 
 \begin{figure}[htb!]
     \centering
-    \includegraphics[width=\textwidth]{fig/Centralized-vs-Decentralized-vs-Distributed-Networks.eps}
-    \caption[Representação das arquiteturas de redes]{\label{fig:tipos-de-redes}
-        Representação das arquiteturas de redes: (a) Centralizada (b) Descentralizada (c) Distribuída~\cite{Imagem1}
-    }%TODO verificar essa citação e achar .svg
+    \includegraphics[width=\textwidth]{fig/centralized_decentralized_distributed.pdf}
+    \caption[Graph representation of network architectures]{
+        Representação em grafo dos modelos de computação ou arquiteturas de redes.\\
+        Fonte: \url{https://berty.tech/fr/faq#what-does-decentralized-and-distributed-mean}
+    }
+    \label{fig:tipos-de-redes}
 \end{figure}
 
 
@@ -218,12 +220,12 @@ Funções de \textit{hash} são usadas em muitas partes da criptografia e existe
 
 \begin{figure}[htb!]
     \centering
-    \includesvg[width = \textwidth]{fig/Cryptographic_Hash_Function.svg}
-    \caption[Representação da entrada e saída de uma função de hash criptográfica]{\label{fig:função-hash}
-        Uma função de hash criptográfica (especificamente, SHA-1) funcionando.
-
+    \includegraphics[width=\textwidth]{fig/cryptographic-hash-function.pdf}
+    \caption[Cryptographic hash function input and output examples]{
+        Uma função de hash criptográfica (especificamente, SHA-1) funcionando.\\
         Fonte: \url{https://commons.wikimedia.org/wiki/File:Cryptographic_Hash_Function.svg}
     }
+    \label{fig:função-hash}
 \end{figure}
 
 \subsection{Propriedades}
@@ -306,6 +308,28 @@ Praticamente, entretanto, usa-se funções de \textit{hash} criptográficas, poi
     \item \textbf{integridade} oferece proteção contra possível corrupção de dados.
 \end{itemize}
 
+\section{Design de Protocolos}
+
+O uso de camadas no design de protocolos de comunicação faz parte dos princípios básicos de engenharia de sistemas, formando uma \textit{stack}~\cite{wiki:protocol-design}.
+O isolamento de responsabilidades em camadas de uma stack serve para reduzir a ``superfície de contato'' de cada camada (evitando explosões combinatórias quando enumerando os cenários de teste e facilitando a implementação, pois cada camada interage de forma previsível, simples, e bem-definida) e minimizar o acoplamento entre partes distintas do protocolo.
+
+\subsection{Protocolos hourglass\label{subsec:thin-waist}}
+
+Protocolos em formato de ampulheta são chamadas assim, pois eles são a cintura-fina em diagramas que demonstram quais protocolos interagem com quais.
+O termo ``thin-waist'' (cintura-fina) pode ser usado sempre que houver uma grande diversidade dependências bipartites que utilizem algum conjuntos de mecanismos padronizados como uma interface universal para se comunicarem entre si.
+Mais famosamente o termo é usado para se referir à internet (figura~\ref{fig:ip-stack-thin-waist}) e, mais especificamente, aos mecanismos de controle compartilhados universalmente do IP (Internet Protocol ou protocolo de internet), tanto pelas camadas inferiores de hardware quanto pelas superiores de software de nível de aplicação.
+Maiores detalhes sobre arquitetura de redes e protocolos podem ser encontrados sumarizadas nesta página da wiki da Caltech escrita por Doyle et al~\cite{caltech:internet-waist} e, mais formalmente, no seu paper de 2005\footnote{\url{http://netlab.caltech.edu/publications/RobustInternetII-Doyle-2002.pdf}} onde discute a robustez da internet.
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{fig/ip-stack-thin-waist.pdf}
+    \caption[Protolo de Internet: ampulheta]{\label{fig:ip-stack-thin-waist}
+        O Protocolo de Internet servindo de interface universal para sua \textit{network stack}.
+        Em laranja temos definições de transporte; em verde, definições de dados a serem transportados.\\
+        Fonte: os autores.
+    }
+\end{figure}
+
 \chapter{Objetivos}
 
 Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
@@ -333,13 +357,14 @@ A fim de que possamos formular soluções que mitiguem as principais desvantagen
 É uma rede social criada no ano de dois mil e quatro nos EUA, para ajudar alunos em universidades a conhecerem uns aos outros.
 Seu proposito inicial foi superado e hoje é uma rede social com proposito mais geral do que o inicial,
 conta com a marca de dois bilhões de usuários e realiza sua monetização através de propagandas e mensagens pagas~\cite{Facebook1} \cite{Facebook2}.
-Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o \textit{Facebook}\footnote{\url{https://www.facebook.com/}} ou até mesmo pelo próprio \textit{Facebook} censurando postagens de seus usuários~\cite{Facebook4} \cite{Facebook5}.
+Sua arquitetura é centralizada e já viveu alguns escândalos de censura seja por parte de estados que proibiram o \textit{Facebook}\footnote{\url{https://www.facebook.com/}} ou até mesmo pelo próprio \textit{Facebook} censurando postagens de seus usuários~\cite{wiki:fb-crits-contro} \cite{wiki:fb-censorship}.
 
 \begin{figure}[htb!]
     \centering
     \includesvg[height = 0.15\textheight]{fig/Facebook_icon.svg}
     \caption[Facebook's logo]{\label{fig:facebook-icon}
-        \textit{Facebook, Inc.} (original logo) %nicolas citação estava incorreta "\cite{wiki:facebooklogo"
+        \textit{Facebook, Inc.} (original logo)\\
+        Fonte: \url{https://commons.wikimedia.org/wiki/File:Facebook_icon_2013.svg}
     }
 \end{figure}
 
@@ -522,7 +547,7 @@ Algumas diretrizes gerais para a rede são:
     Duplicação, diferentemente de replicação que é quando usuários fazem cópias que são corretamente rastreadas no sistema, se trata de conteúdo armazenado repetidas vezes na rede sem serem associados entre si, o que poderia ser considerado um caso especial de particionamento da rede~\cite{wiki:cap-theorem}, causaria perda de dados e deveria ser considerado um bug.
 }
 
-\section{Internet de confiança}
+\section{Internet de confiança\label{sec:int-of-trust}}
 
 Um dos casos de uso centrais do nosso projeto é acoplar resistência à censura às mídias sociais.
 Para tal, precisamos de algum mecanismo que nos permita distinguir quais usuários são confiáveis o suficiente para baixarmos conteúdo que não esteja mais hospedado no provedor original (e.g., que tenha sido apagado dos servidores do Facebook).
