@@ -8,7 +8,7 @@ A rápida ascensão das mídias sociais fizeram com que empresas, após pouco ma
 O sucesso das redes sociais se deve à inclusão de mais pessoas aos espaços de discussão, fazendo com que pequenos grupos pudessem influenciar e mudar grandes estruturas, formando um espaço de discussão com implicações globais~\cite{stadtfeld2020emergence}.
 Assim, as novas mídias sociais serviram de berço para importantes movimentos das primeiras décadas do século XXI como: a primavera árabe, protestos pré-copa no Brasil, \textit{Brexit} no Reino Unido, e em diversas eleições pelo mundo dando destaque para a eleição Estadunidense em 2016 e a Brasileira em 2018~\cite{gonzalez2016networked}.
 
-As novas mídias sociais definitivamente são um avanço se comparado às mídias tradicionais, visto que concedem a inclusão de mais pessoas aos espaços de discussão.
+As novas mídias sociais são um avanço se comparado às mídias tradicionais, visto que concedem a inclusão de mais pessoas aos espaços de discussão.
 Entretanto, possuem um problema em comum com suas antecessoras: o controle privado da discussão pública e com o adendo de ter este controle ainda mais concentrado em poucas entidades do que no modelo anterior.
 O tamanho poder adquirido nas últimas décadas por essas organizações foi muito maior do que uma empresa poderia ter tido antes e, como sabemos, \textit{com grandes poderes, vêm grandes responsabilidades}.
 Isso gerou incidentes de uso imoral desse poder como a venda de dados do \textit{Facebook} para a \textit{Cambridge Analytica}, caso que resultou numa multa milionária para a empresa norte-americana e serviu de catalisador na mudança da opinião pública sobre o gerenciamento de dados pessoais feito pelas empresas de redes sociais~\cite{wiki:fb-camb-anal-scandal}.
@@ -31,18 +31,18 @@ Diante deste contexto, o objetivo geral deste trabalho é propor uma arquitetura
 
 \chapter{\label{chap:problem}Caracterização do problema e justificativa}
 
-Todas as mais usadas plataformas de mídia social pertencem a entidades privadas com os mais variados interesses.
-Elas são gratuitas para usar, mas as corporações que detêm seu controle possuem fins lucrativos e, em sua grande maioria, são empresas de capital aberto.
+As plataformas mais usadas de mídia social pertencem a entidades privadas com os mais variados interesses.
+Elas são de uso gratuito,no entanto as corporações que detêm seu controle são de fins lucrativos e, em sua grande maioria, são empresas de capital aberto.
 Assim como as empresas da indústria que as precedeu, elas dependem da receita de anúncios para se sustentarem.
 
 Por serem entidades privadas são livres para praticar a censura de qualquer conteúdo ou pessoa que quiserem sem implicações legais.
-Não obstante, uma proporção muito grande (e constantemente crescente) das nossas comunicações diárias acontece através dessas plataformas.
-Plataformas cujo interesse, em vez de prover a melhor experiência de usuário possível, é maximizar seus lucros.
+Não obstante, uma proporção muito grande (e crescente) das nossas comunicações diárias acontece através dessas plataformas.
+Plataformas cujo interesse, em vez de prover a melhor experiência de usuário possível, parecem focar nos lucros.
 
-Para mitigar esse problema de interesses desalinhados, alguém poderia pensar que a solução seria a criação de mídias sociais inteiramente descentralizadas e que não dependam de nenhum terceiro no controle.
-Entretanto, a tecnologia para criar plataformas do tipo não apenas existe há anos, como já foi posta para uso no Dtube, diaspora, LBRY, Peertube, mastodon, scuttlebutt... e uma longa lista de redes sociais com poucos usuários e pouco conteúdo.
+Afim de auxiliar a  mitigar esse problema de interesses desalinhados, acreditamos que a solução seria a criação de mídias sociais inteiramente descentralizadas e que não dependam de nenhum terceiro no controle.
+A tecnologia para criar plataformas deste tipo não apenas existe há anos, como já foi posta para uso no Dtube\footnote{\url{https://d.tube/}}, diaspora\footnote{\url{https://diasporafoundation.org/}}, LBRY\footnote{\url{https://lbry.com/}}, Peertube\footnote{\url{https://joinpeertube.org/}}, mastodon\footnote{\url{https://mastodon.social/about}}, scuttlebutt\footnote{\url{https://scuttlebutt.nz/}}... e uma longa lista de redes sociais com poucos usuários e pouco conteúdo.
 
-Como o inteiro objetivo de mídias sociais é o compartilhamento de conteúdo gerado e curado por usuários, o \textit{network-effect}\ref{foot:net-effect} é especialmente expressivo aqui.
+O objetivo das mídias sociais é o compartilhamento de conteúdo gerado e curado por usuários, o \textit{network-effect}\ref{foot:net-effect} é especialmente expressivo aqui.
 \longfootnote[foot:net-effect]{
     Em teoria econômica, o fenômeno em que o valor agregado a um bem ou serviço é proporcional ao número de usuários utilizando-o é chamado de efeito de rede~\cite{wiki:net-effect}, em referência às redes de teoria de redes do corpo teórico da matemática, onde o número de arestas de uma rede totalmente conectada cresce quadraticamente em função do número de vértices.
 }
@@ -67,7 +67,7 @@ Quando falamos em centralização, evidenciamos nesse contexto de mídias sociai
 \subsection{Censura}
 As redes sociais deram uma falsa sensação de democracia na produção de conteúdo, pois saímos de um modelo da web 1.0 onde poucos produzem e muitos consomem para um ambiente da web 2.0 onde muitos produzem e muitos consomem. Porém a infraestrutura desse ambiente é controlada por empresas privadas que submetem os seus usuários a seus termos de uso, tiram proveito do conteúdo gerado por seus usuários e impõem arbitrariamente punições a opiniões contrárias a da empresa.
 
-O grande crédito e influência dados as plataformas sociais corporativas encobriram  problemas como a alta influência que as redes sociais sofrem dos poderes políticos e econômicos, já que a infraestrutura de comunicação e tecnologia é moldada por regimes regulatórios, acordos internacionais, ganancias corporativas e práticas intrusivas de vigilância. Assim segundo Sasha Costanza-Chock\cite{Censura1}:
+As plataformas sociais corporativas encobriram  problemas como a alta influência que as redes sociais sofrem dos poderes políticos e econômicos, já que a infraestrutura de comunicação e tecnologia é moldada por regimes regulatórios, acordos internacionais, ganancias corporativas e práticas intrusivas de vigilância. Para exemplificar essa situação citamos Sasha Costanza-Chock\cite{Censura1}:
 
 
 \begin{directcite}
@@ -90,8 +90,8 @@ O grande crédito e influência dados as plataformas sociais corporativas encobr
 %kkk até parece né uns burocratas usando papel rabiscado ganhando de corporações que valem centenas de bilhões de dólares
 
 %(estatísticas de uso, o user-created content e.g. videos, images, etc)
-
-\subsection{Interesses}
+% Nome dessa subseção
+\subsection{Alinhamento de Interesses}
 
 Teoria de jogos dita que, se atalhos existem para alcançar algum objetivo, jogadores encontrarão esse atalho e o explorarão.
 Por serem entidades privadas e terem controle incontestado das suas plataformas, na busca de alcançar seu objetivo-mór, a maximização dos lucros que se dão através dos usuários vendo e/ou clicando em anúncios, os game-theoretic shortcuts envolvem:
@@ -112,7 +112,9 @@ Acreditamos que, quando ``derrubarmos os muros'' desses \textit{walled gardens}\
     \textit{Walled gardens}~\cite{CLOSEDPLAT} se referem a plataformas tecnológicas que possuem barreiras artificiais levantadas por seus criadores com a intenção de dificultar que usuários migrem para uma plataforma competidora, talvez possibilitando um monopólio.
 }
 
-Desta forma, a questão de pesquisa que norteará este trabalho será: ``Como podemos transicionar as mídias sociais atuais para um modelo mais descentralizado sem perdermos os usuários e o conteúdo delas?''
+Desta forma, a questão de pesquisa que norteará este trabalho é definido por: 
+
+``Como podemos transicionar as mídias sociais atuais para um modelo mais descentralizado sem perdermos os usuários e o conteúdo delas?''
 
 A hipótese sobre a qual o trabalho está norteado é: ``As plataformas de mídias sociais mais usadas atualmente são centralizadas e por isso detêm o poder de ação sobre os dados dos usuários, utilizando esse controle para impor barreiras e manter seus usuários.''
 
@@ -336,7 +338,7 @@ Apresentamos a seguir os objetivos gerais e específicos do presente trabalho.
 
 \section{Objetivo geral}
 
-Investigar possibilidades para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+Investigar que elementos devem ser considerados para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
 \section{Objetivos específicos}
 
@@ -464,16 +466,7 @@ Essas funcionalidades de personalização de cobrança e anonimato dos dados, fi
 
 \section{Comparativo}
 
-Nesta seção iremos fazer comparações entre as rede sociais analisada previamente neste capítulo, para isso utilizaremos a tabela~\ref{tab:social-media-comparison} para ilustrar a análise aqui feita e destacar elementos que julgamos importantes da análise individual feita das mídias sociais atuais.
-
-Através das plataformas e dos elementos de comparação analisados na tabela~\ref{tab:social-media-comparison}, podemos inferir que aplicações que apresentaram na coluna arquitetura a característica centralizada  apresentam na coluna sensibilidade à censura que são sensíveis a  censura, sofrem de problemas de censura pois a arquitetura centralizada apresenta defeitos que facilitam a censura, por exemplo o ponto único de falha pois havendo um ponto na rede que concentra todos os dados e recursos da rede tendo o controle sobre esse ponto se é capaz de controlar todo o fluxo de dados da rede, facilitando a censura. Mesmo redes sociais que não necessitam de cadastro para serem utilizadas como \textit{4chan}, por ser centralizada apresentam vulnerabilidade à censura.
-
-Enquanto as redes sociais que apresentaram na coluna arquiteturas a característica de  distribuídas e utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguiram apresentar na coluna sensibilidade a censura total resistência à censura. Fica evidente que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los. Assim, por os dados estarem distribuídos pela rede exercer algum controle sobre eles fica dificultado pois um mesmo dado pode estar em vários nodos da rede, assim para exercer a mesma influência que no modelo centralizado necessita o controle de todos os nodos da rede. Outro aliado é o armazenamento de dados na \textit{blockchain}, pois armazenando os dados no formato de transações garante a autenticidade dos dados pela rede, assegurando também a imutabilidade dos dados.
-
-Outro elemento que pode se inferir a partir da análise, é que os resultados  da coluna monetização interferem nos resultados da coluna base de usuários, assim as redes sociais que apresentam o modelo \textit{pay-to-use}/\textit{pay and earn}, apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades, isso naturalmente se deve ao fato que cobrança diretas ao usuário aparentam ser mais intrusivas que publicidades pelo site, apresentando assim uma barreira de entrada. Outro dado relaciona a coluna de base de usuário é a relação com a coluna arquitetura, assim redes sociais que apresentam arquiteturas centralizadas contém mais usuários que as que apresentam arquiteturas distribuídas, isso se deve a dois fatores, o primeiro as redes sociais de arquitetura centralizada existem a mais tempo sendo amplamente difundidas nos anos dois mil, enquanto redes sociais distribuídas começam a surgir na segunda metade da década de dois mil e dez. O segundo fato é os já mencionados \textit{Walled gardens}, detendo o maior número de usuários por terem surgido primeiro as redes sociais centralizadas criam barreiras para evitar a migração de seus usuários para outras redes sociais, dificultando o surgimento e crescimento de redes sociais distribuídas.
-
-Assim concluímos a comparação, analisando que as redes sociais com arquitetura distribuída apresentam vantagens importantes se comparadas às que apresentam arquitetura centralizada, porém ainda não apresentam uma forma atrativa para atrair os usuários de plataformas centralizadas, seja por seus problemas na barreira de entrada com o modelo monetização, ou por barreiras impostas pelas outras plataformas para a migração de usuários, necessitando um modelo de transição gradual e amigável ao usuário.
-
+Nesta seção apresentamos os resultados das comparações entre as rede sociais analisada previamente neste capítulo, para isso utilizaremos a tabela~\ref{tab:social-media-comparison} para ilustrar a análise aqui feita e destacar elementos que julgamos importantes da análise individual feita das mídias sociais atuais.
 
 \begin{table}[H]
     \begin{center}
@@ -489,7 +482,7 @@ Assim concluímos a comparação, analisando que as redes sociais com arquitetur
                 \hline
                 Facebook                              & Anúncios intrusivos     & Centralizada             & 2.7B                        & Extremamente Sensível
                 \tabularnewline
-                Twitch                                & Anúncios intrusivos     & Centralizada             & 100M                        & Sensível
+0                Twitch                                & Anúncios intrusivos     & Centralizada             & 100M                        & Sensível
                 \tabularnewline
                 4Chan                                 & Anúncios não-intrusivos & Centralizada             & 20M                         & Sensível
                 \tabularnewline
@@ -509,6 +502,17 @@ Assim concluímos a comparação, analisando que as redes sociais com arquitetur
     }
 \end{table}
 
+Através das plataformas e dos elementos de comparação analisados na tabela~\ref{tab:social-media-comparison}, podemos inferir que aplicações que apresentaram na coluna arquitetura a característica centralizada  apresentam na coluna sensibilidade à censura que são sensíveis a  censura, sofrem de problemas de censura pois a arquitetura centralizada apresenta defeitos que facilitam a censura, por exemplo o ponto único de falha pois havendo um ponto na rede que concentra todos os dados e recursos da rede tendo o controle sobre esse ponto se é capaz de controlar todo o fluxo de dados da rede, facilitando a censura. Mesmo redes sociais que não necessitam de cadastro para serem utilizadas como \textit{4chan}, por ser centralizada apresentam vulnerabilidade à censura.
+
+Enquanto as redes sociais que apresentaram na coluna "arquiteturas" a característica de  distribuídas e utilizam algum tipo de proteção aos dados de seus usuários como o \textit{Memo} e o \textit{Bitstagram} que utilizam \textit{blockchain} para garantir a proteção e imutabilidade dos dados conseguiram apresentar na coluna sensibilidade a censura total resistência à censura. Fica destacado que quanto mais os dados estão distribuídos na rede mais difícil será  censurar ou deletá-los. Assim, por os dados estarem distribuídos pela rede exercer algum controle sobre eles fica dificultado pois um mesmo dado pode estar em vários nodos da rede, assim para exercer a mesma influência que no modelo centralizado necessita o controle de todos os nodos da rede. Outro aliado é o armazenamento de dados na \textit{blockchain}, pois armazenando os dados no formato de transações garante a autenticidade dos dados pela rede, assegurando também a imutabilidade dos dados.
+
+Outro elemento que pode se inferir a partir da análise, é que os resultados  da coluna monetização interferem nos resultados da coluna base de usuários, assim as redes sociais que apresentam o modelo \textit{pay-to-use}/\textit{pay and earn}, apresentam menor base de usuários se comparadas às que utilizam-se de propagandas e publicidades, isso naturalmente se deve ao fato que cobrança diretas ao usuário aparentam ser mais intrusivas que publicidades pelo site, apresentando assim uma barreira de entrada. Outro dado relaciona a coluna de base de usuário é a relação com a coluna arquitetura, assim redes sociais que apresentam arquiteturas centralizadas contém mais usuários que as que apresentam arquiteturas distribuídas, isso se deve a dois fatores, o primeiro as redes sociais de arquitetura centralizada existem a mais tempo sendo amplamente difundidas nos anos dois mil, enquanto redes sociais distribuídas começam a surgir na segunda metade da década de dois mil e dez. O segundo fato é os já mencionados \textit{Walled gardens}, detendo o maior número de usuários por terem surgido primeiro as redes sociais centralizadas criam barreiras para evitar a migração de seus usuários para outras redes sociais, dificultando o surgimento e crescimento de redes sociais distribuídas.
+
+Assim concluímos a comparação, analisando que as redes sociais com arquitetura distribuída apresentam vantagens importantes se comparadas às que apresentam arquitetura centralizada, porém ainda não apresentam uma forma atrativa para atrair os usuários de plataformas centralizadas, seja por seus problemas na barreira de entrada com o modelo monetização, ou por barreiras impostas pelas outras plataformas para a migração de usuários, necessitando um modelo de transição gradual e amigável ao usuário.
+
+
+
+
 \chapter{Proposta de arquitetura baseada na Web 3.0}
 
 Propomos o desenvolvimento de um conjunto de ferramentas que auxiliem no que efetivamente seria uma separação total entre a camada de dados e a de apresentação, a fim de possibilitar o compartilhamento dos dados em uma rede \textit{peer-to-peer} e impossibilitar que uma só entidade tenha o controle sobre a disseminação da informação.
@@ -523,7 +527,7 @@ Enfatizamos que os seguintes princípios devem guiar todas escolhas de tecnologi
     \item Funcionar offline e independente de \textit{third parties}
 \end{enumerate}
 
-Nas próximas seções apresentaremos individualmente cada ferramenta necessária para concretizar nossa visão para uma mídia social.
+Nas próximas seções descrevemos individualmente cada ferramenta necessária para concretizar nossa visão para uma mídia social.
 Em seguida, na última seção, teremos clarificações sobre como nossa solução lida com os problemas delineados no capítulo~\ref{chap:problem}.
 
 \section{Web-scrapers como estratégia de extração de dados não-consensual}
@@ -576,7 +580,7 @@ Dadas essas premissas, vamos explicar agora o fluxo para um usuário download da
         \subitem Caso nenhum esteja, um aviso deve ser dado ao usuário perguntando se ele está disposto a download de um nodo não-confiável.
 \end{enumerate}
 
-\section{Consequências da quebra dos muros}
+\section{Consequências esperadas da quebra dos muros}
 % \section{Cenário ganha-ganha}
 
 Quando as corporações por trás das mídias sociais perderem o controle que possuem sobre o conteúdo criado pelos usuários, poderão mirar seu foco em tornar sua interface a mais amigável e confortável possível; alinhando seus interesses com os dos usuários.
