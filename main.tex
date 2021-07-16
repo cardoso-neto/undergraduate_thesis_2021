@@ -67,6 +67,12 @@
 \usepackage{url}
 \urlstyle{rm}
 \usepackage[utf8]{inputenc}
+
+\usepackage{tabularx}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}  % vertical centering
+% \renewcommand\tabularxcolumn[1]{>{\Centering}m{#1}}  % vertical and horizontal
+% \setlength{\extrarowheight}{20}
+
 \usepackage{tikz}
 % we want ER + above/below + left/right
 \usetikzlibrary{er,positioning}
@@ -93,13 +99,15 @@
     \@footnotetext}
 \makeatother
 
-\author{Nei Cardoso, Nicolas Curço}
+\author{Nei Cardoso
+
+Nicolas Curço}
 
 \title{Descentralizando Mídias Sociais da Web 2.0}
       {Decentralizing Web 2.0 Social Media}
 
-\tipotrabalho{\ptci}         % Proposta de Trabalho de Conclusão
-% \tipotrabalho{\tci}         % Trabalho de Conclusão I
+% \tipotrabalho{\ptci}         % Proposta de Trabalho de Conclusão
+\tipotrabalho{\tci}         % Trabalho de Conclusão I
 %\tipotrabalho{\tcii}        % Trabalho de Conclusão II
 
 % \curso{\cc} % Ciência da Computação
@@ -123,26 +131,33 @@
 %          {The art of simplicity is a puzzle of complexity.}
 %          {Douglas Horton}
 
-%\begin{agradecimentos}
-%À lorem ipsum, dolor sit amet consetetur sadipscing elitr sed diam
-%nonumy eirmod tempor. invidunt ut labore et dolore magna aliquyam
+\begin{agradecimentos}
+Gostaríamos de agradecer, em especial, à professora Alessandra Costa Smolenaars Dutra, por ter desempenhado sua função com mais dedicação, carinho, e compreensão do que jamais podíamos esperar.
+Não estaríamos aqui sem seu imprescindível apoio e indispensável colaboração.
 
-%À erad sed, diam voluptua at vero, eos et accusam et justo duo
-%dolores et ea rebum stet clita.
+Aos professores
+Alexandre Agustini, 
+Ana Paula Terra Bacelo,
+Cristina Moreira Nunes,
+Daniel Antonio Callegari,
+Eduardo Henrique Pereira de Arruda,
+João Batista Souza de Oliveira,
+Michael da Costa Móra,
+Rodrigo Coelho Barros,
+Sedinei José Nardelli Beber, e 
+Sérgio Johann Filho, 
+pelo conhecimento que transmitiram para nós, pelas correções e ensinamentos que nos permitiram apresentar um melhor desempenho no nosso processo de formação profissional ao longo do curso, por todos os conselhos, pela ajuda, e pela paciência com a qual guiaram o nosso aprendizado, pelos incentivos a investir em nós mesmos, buscar conhecimento por fora, nos dedicarmos aos estudos e ao nosso crescimento pessoal, pelo incentivo e pela inspiração que o entusiasmo de cada um com sua respectiva área do conhecimento representou para nós.
 
-%À kasd gubergren, no sea. takimata sanctus est lorem ipsum dolor sit
-%amet lorem ipsum dolor sit amet. consetetur sadipscing elitr sed
-
-%À diam nonumy, eirmod tempor, invidunt ut labore et dolore magna
-%aliquyam erat sed diam voluptua at.
-%\end{agradecimentos}
+Obrigado.
+\end{agradecimentos}
 
 \begin{resumo}{mídia social, descentralização, web 3.0, \textit{scraping}}
 % Devido a sua interdisciplinaridade, mídias sociais são muito difíceis de serem estudadas sob um aspecto isolado, assim será proposto o uso de novas tecnologias buscando melhorar o funcionamento e o uso das redes sociais tanto em aspectos computacionais como em aspectos sociológicos, políticos e éticos. Abordando os problemas e sugerindo soluções de forma isolada, por fim propondo o uso de uma rede social na Web 3.0.
-Este trabalho busca propor uma alternativa a problemas relacionados às redes sociais modernas.
-Analisando as mídias sociais atuais com um enfoque nas suas arquiteturas e distribuição dos dados, identificamos que alguns de seu problemas possuem uma causa em comum: elas serem \textit{walled gardens} (plataformas fechadas).
-Portanto propomos, a partir dos dados levantados na nossa análise, um conjunto de ferramentas capaz de transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
-Essa transformação se daria por via de uma migração de dados entre as diferentes arquiteturas, para isso algumas barreiras erguidas teriam de ser rompidas, com o auxilio de técnicas de \textit{scraping}, redes peer-to-peer, e criptografia, a fim de torná-las plataformas abertas.
+Este trabalho tem como objetivo propor uma solução para as limitações que as redes sociais atuais impõem sobre o conteúdo que os usuários publicam nelas (e.g.: censura arbitrária, dificuldade de exportar, dificuldade de arquivar, interação apenas online, interação apenas através da sua interface).
+Analisamos as redes sociais com um enfoque nas suas arquiteturas e distribuição de dados e identificamos que várias limitações advêm de uma causa em comum: elas serem \textit{walled gardens} (plataformas fechadas).
+Portanto, a partir dos dados levantados na nossa análise, propomos um conjunto de ferramentas capaz de transformar a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+Essa transformação se dará por via de uma migração dos dados para uma rede aberta.
+Para tal, as barreiras existentes serão rompidas com o auxilio de técnicas de \textit{scraping}, redes \textit{peer-to-peer}, e criptografia, a fim de torná-las plataformas abertas.
 \end{resumo}
 
 \begin{abstract}{social media, decentralization, web 3.0, scraping}
@@ -165,13 +180,14 @@ In order to accomplish that, we will make use of estabilished computer science t
 \sigla{AGPL}{Affero General Public License}
 \sigla{API}{Application programming interface}
 \sigla{CDN}{Content Delivery Network}
+\sigla{CRDT}{Conflict-free Replicated Data Type}
 \sigla{CSS}{Cascading Style Sheets}
 \sigla{DAG}{Directed Acyclic Graphs}
 \sigla{DOM}{Document Object Model}
 \sigla{GDPR}{General Data Protection Regulation}
 \sigla{GUI}{Graphical User Interface}
-\sigla{HTML}{Hypertext Markup Language}
-\sigla{HTTP}{Hypertext Transfer Protocol}
+\sigla{HTML}{HyperText Markup Language}
+\sigla{HTTP}{HyperText Transfer Protocol}
 \sigla{JSON}{JavaScript Object Notation}
 \sigla{LAN}{Local Area Network}
 \sigla{LGPD}{Lei Geral de Proteção de Dados}
@@ -189,6 +205,8 @@ In order to accomplish that, we will make use of estabilished computer science t
 % como mostrado abaixo.
 %----------------------------------------------------------------
 \include{dissertation}
+\include{dissertation7-4chan}
+\include{dissertation8-modelagem}
 % \include{exemplo-cap1}
 % \include{exemplo-cap2}
 

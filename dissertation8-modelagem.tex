@@ -768,24 +768,23 @@ A ferramenta Network-chan tem duas funções principais, adicionar e baixar um a
 
 \section{Validação com usuário}\label{sec:val-usr}
 
-Essa seção descreve as validações feitas junto com os usuários para a ferramenta \texttt{archive-chan} e apenas essa, pois se provou difícil encontrarmos candidatos dispostos aos testes.
-
-\subsection{Archive-Chan}
+Essa seção descreve as validações feitas junto com os usuários para a ferramenta \texttt{archive-chan} e apenas essa, pois encontrar candidatos dispostos aos testes se provou difícil por causa da curta janela de tempo e por causa de quão nicho é o protótipo que desenvolvemos.
 
 No começo de junho, começamos a busca por possíveis alpha testers das nossas ferramentas.
 Nossos contatos todos foram conduzidos em canais públicos (Github e Gitter).
-Focamos nossos esforços em usuários que estivessem comentando ou desenvolvendo scrapers para o 4chan, pois seriam o público mais interessado no nosso ponto de vista.
+Focamos nossos esforços em usuários que estivessem comentando ou desenvolvendo scrapers para o 4chan, pois seriam o público mais interessado no nosso trabalho.
 Conseguimos feedback de três dos usuários que contatamos.
 Importante ressaltar o pouco tempo de procura e quão nicho é o nosso público-alvo atualmente (sabe rodar programas no terminal, gosta de chans, gosta de arquivar páginas da internet offline).
-
 Enviamos aos usuários o link do repositório da ferramenta com o intuito de que dependessem apenas da documentação já disponível no readme e no \texttt{--help} e todos a acharam satisfatória, no entanto todos estavam bastante acostumados com aplicativos de linha de comando.
+
+\subsection{Sugestões}
 
 As subsubseções abaixo serão identificadas pelo nickname do Github de cada um dos usuários, pois todas nossas conversas foram públicas e isso facilitará a verificação das informações que trouxemos.
 
 \subsubsection{LameLemon}
 
 O usuário do Github \texttt{@LameLemon} se comunicou bem pouco e primariamente através de issues no Github\footnote{\url{https://github.com/LameLemon/archive-chan/issues?q=is\%3Aissue}}.
-Ele começara um projeto de scraper para o 4chan em Março de 2019, mas o abandonou em seguida.
+Ele começou um projeto de scraper para o 4chan em Março de 2019, mas o abandonou em seguida.
 Ele incorporou ao seu projeto duas features do archive-chan que nós desenvolvemos:
 
 \begin{itemize}
@@ -798,8 +797,9 @@ Ele incorporou ao seu projeto duas features do archive-chan que nós desenvolvem
 O usuário do Github \texttt{@dermalikmann} sentiu falta de duas features:
 
 \begin{itemize}
-    \item download de threads em batches pela CLI;
-    \item monitoramento com um timer de um conjunto de threads definido pelo usuário.
+    \item download de threads em batches pela CLI;\footnote{\url{https://github.com/cardoso-neto/archive-chan/issues/2}}
+        \subitem desenvolvemos essa feature rapidamente e disponibilizamos documentação dela em \url{https://github.com/cardoso-neto/archive-chan#batch-download-handpicked-threads}.
+    \item monitoramento com um timer de um conjunto de threads definido pelo usuário.\footnote{\url{https://github.com/cardoso-neto/archive-chan/issues/1}}
 \end{itemize} 
 
 \subsubsection{baraa272}
@@ -821,28 +821,42 @@ O usuário do Github \texttt{@baraa272} sentiu falta das seguintes features:
 
 Nossa interação com o usuário pode ser lida em sua inteiridade na sala pública do Gitter em que ela aconteceu: \url{https://gitter.im/archive-chan/community}
 
-\chapter{Conclusão}
+\subsection{Resultados}
 
-Como conclusão deste trabalho, identificamos que atingimos o objetivo de utilizar os dados do 4chan de forma local e compartilhá-los de forma descentralizada.
+Todas os pedidos e sugestões foram relevantes e pretendemos atender todos, alguns com mais prioridade que outros.
+A maioria, no entanto, exige refatorações grandes no código e não pudemos implementar em tempo da entrega desta monografia.
+
+\chapter{Considerações finais}
+
+Ao finalizar este trabalho acreditamos ter atingido o objetivo proposto, utilizar os dados do 4chan de forma local e compartilhá-los de forma descentralizada.
 As ferramentas se mostraram satisfatórias em termos de performance e usabilidade, mas reconhecemos a necessidade de uma simplificação considerável para algo como uma extensão do navegador caso queiramos adoção das massas.
-Para o 4chan, haverá ganhos de redundância e registros históricos.
-Para os usuários, embora ainda não seja uma aplicação totalmente descentralizada, trará os principais benefícios que a descentralização traz: resistência à censura, conteúdo permanente, e maior largura de banda para downloads grandes (pois pode ser paralelizado de vários peers diferentes).
 
-Portanto, vemos que a solução demonstra um modo diferente de utilizarmos a web; mitigando problemas do sistema anterior, mas sem sacrificar o conteúdo e a base de usuários como mídias sociais distribuídas costumam fazer.
-Assim, podemos afirmar que a solução cumpre os objetivos de encontrar os elementos que devem ser considerados para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
+Para o 4chan, haverá ganhos de redundância e registros históricos.
+Para os usuários, embora ainda não seja uma aplicação totalmente descentralizada, trará os principais benefícios que a descentralização traz: resistência à censura, conteúdo permanente, e maior largura de banda para downloads grandes (pois podem ser paralelizados de vários peers diferentes).
+
+Portanto, vemos que a solução demonstra um modo diferente de utilizarmos a web; com potencial para mitigar problemas do sistema anterior, mas sem sacrificar o conteúdo e a base de usuários como mídias sociais distribuídas costumam fazer.
+Assim, podemos afirmar que a solução tem potencial para cumprir os objetivos de encontrar os elementos que devem ser considerados para propor um sistema que transforme a arquitetura de software centralizada das mídias sociais da web 2.0 em uma arquitetura descentralizada baseada na web 3.0.
 
 \section{Limitações}
 
-Como limitações destacamos que a solução proposta neste trabalho ainda é dependente do 4chan para funcionar, visto que ela consome os dados do 4chan e sem ele apenas os dados já baixados poderão ser compartilhados na rede peer-to-peer.
-Isso do ponto de vista desse trabalho não é um problema; isso é \textit{by design}, mas merece atenção por um ponto central de falha que pode ter seu domínio suspenso por exemplo.
+Destacamos os seguintes tópicos como potenciais limitações de design, no ponto de vista dos autores, para a proposta implementada deste trabalho e suas dependências.
 
-Identificamos também que o armazenamento poderá ser um fator limitante da solução visto que os usuários são responsáveis pelo armazenamento dos dados se não quiserem depender do servidor central.
-Assim os dados dependem dos usuários para existir. Mesmo com os usuários podendo dividir a load do armazenamento entre si (i.e., a rede não força ninguém a baixar todos os dados, ou alguma parcela específica) e os dados estarem espalhados por diversos nós, o armazenamento ainda terá a limitação de quanto os usuários estão dispostos a dedicar do seu armazenamento e do quanto estão dispostos a servir esses dados.
+\subsection{Dependências}
+
+A solução proposta neste trabalho ainda é dependente do 4chan para funcionar, visto que ela consome os dados do 4chan e sem ele apenas os dados já baixados poderão ser compartilhados na rede peer-to-peer.
+Isso do ponto de vista desse trabalho não é um problema; isso é \textit{by design}, mas merece atenção por ser um ponto central de falha que pode ter seu domínio suspenso por exemplo.
+
+\subsection{Armazenamento}
+
+Identificamos que o armazenamento poderá ser um fator limitante da solução visto que os usuários são responsáveis pelo armazenamento dos dados se não quiserem depender do servidor central.
+Assim os dados dependem dos usuários para existir.
+Mesmo com os usuários podendo dividir a load do armazenamento entre si (a rede não força ninguém a baixar todos os dados, ou alguma parcela específica) e os dados estarem espalhados por diversos nós, o armazenamento ainda terá a limitação de quanto os usuários estão dispostos a dedicar do seu armazenamento e de quanto estão dispostos a servir esses dados.
 Nós não desenvolvemos nenhum mecanismo de rastreamento que possa dizer quantas cópias de um arquivo existem na rede com precisão para que alguém saiba se pode apagar um arquivo para liberar espaço com segurança ou não.
+
+\subsection{Usabilidade}
 
 Existem também aspectos relacionados à usabilidade que exigem um refinamento na solução para facilitar o uso por usuários menos técnicos (como a eliminação de algumas dependências externas de difícil instalação para leigos comentadas na seção \ref{sec:val-usr}).
 Sobre desempenho, não pudemos executar uma bateria de testes em larga escala para averiguarmos a escalabilidade da DHT a medida que os pares chave-valor aumentam e a medida que nós entrando e saindo da rede se tornam mais frequentes.
-
 
 \section{Trabalho Futuros}
 
@@ -865,3 +879,14 @@ Então precisamos de um módulo extensível que faça o parsing de cada post à 
 
 Um cliente leve (que não seja server, mas apenas cliente) para a rede peer-to-peer, a fim de não onerar a banda de upload de usuários que não queiram disponibilizar seus recursos para outros.
 
+\paragraph{Protocolo de transferência rápida}
+
+Um modo especial para peers transferirem grandes quantidades de conteúdo utilizando arquivos contíguos (.tar, .zip) para evitar o overhead associado a transferir muitos arquivos pequenos pela rede.
+Seria especialmente útil para peers querendo bootstrap um nó de arquivamento histórico por exemplo, ou uma empresa querendo baixar todas as threads que a mencionassem para fins de analytics.
+
+\section{Comentários dos Autores}
+
+Este trabalho nos levou em pesquisas de grande alcance por tudo que há de mais novo e mais libertário na web.
+Nós termos chegado em algo viável é algo que nos motiva muito e pretendemos seguir expandindo esse ecossistema criando mais scrapers capazes de baixar o conteúdo em sua totalidade e replicar o formato das discussões offline para quem assim o quiser.
+Resistência à censura, arquivologia através de uma web permanente, e propriedade sobre o conteúdo sempre foram grandes interesses nossos e, graças às nossas pesquisas, agora sabemos o que precisamos para avançar essas frentes.
+Esperamos ter tempo e oportunidades para nos dedicarmos tanto quanto essa área merece.
